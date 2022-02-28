@@ -3,5 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :participants, :trips
+  has_many :participants
+  has_many :trips, through: :participants
+  has_many :owned_trips, class_name: 'Trip', foreign_key: :user_id
+  validates :username, presence: true
 end
