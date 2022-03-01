@@ -41,7 +41,7 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @trip.update(trip_params)
     authorize @trip
-    redirect_to trips_path
+    redirect_to trip_path
   end
 
   def destroy
@@ -49,5 +49,11 @@ class TripsController < ApplicationController
     authorize @trip
     @trip.destroy
     redirect_to trips_path
+  end
+
+  private
+
+  def trip_params
+    params.require(:trip).permit(:start_date, :end_date, :title, :description, :city)
   end
 end
