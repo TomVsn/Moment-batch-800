@@ -1,2 +1,53 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <h1>Create memories, effortlessly</h1>
+  <h5>Momento is the ultimate trip planner to help you spend memorable moments with your loved ones</h5>
+  <%= link_to "Join us!", trips_path, class: "btn btn-primary"  %>
+</div>
+
+<div class="home-timeline">
+  <h1>How it's work</h1>
+  <div class="container">
+    <div class="row w-50 mx-auto p-3">
+      <div class="col border-end border-dotted content-timeline">
+        <h3>Sign up</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+      <div class="col">
+        <div class="d-flex">
+          <div class="bg-white px-4 d-flex align-items-center justify-content-center my-3" style="margin-left: -50px;">
+            <div class="rounded-circle bg-primary p-1">div</div>
+          </div>
+          <div class="card-timeline flex-grow-1">
+            <div class="number-card-timeline">
+              <p>1</p>
+            </div>
+            <div class="card-timeline-infos">
+            <%= image_tag "signup.png", alt: "Sign up", width: 50 %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="row w-50 mx-auto">
+      <div class="col">
+        <div class="d-flex">
+          <div class="card-timeline flex-grow-1">
+            <div class="number-card-timeline">
+              <p>1</p>
+            </div>
+            <div class="card-timeline-infos">
+            <%= image_tag "signup.png", alt: "Sign up", width: 50 %>
+            </div>
+          </div>
+          <div class="bg-white px-4 d-flex align-items-center justify-content-center my-3" style="margin-right: -50px;">
+            <div class="rounded-circle bg-primary p-1">div</div>
+          </div>
+        </div>
+      </div>
+      <div class="col border-start border-dotted content-timeline">
+        <h3>Sign up</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+    </div>
+  </div>
+</div>
