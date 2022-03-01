@@ -16,53 +16,39 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
 
-    <%= yield %>
+   <div class="content-wrapper">
+      <%= yield %>
+    </div>
 
-<footer class="container-fluid bg-grey" style="height:auto">
+<footer class="container-fluid bg-white" style="height:auto">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6 col-sm-3">
-        <div class="row align-items-center">
-          <div class="col-md-6 col-sm-3" style="border-right: 1px solid grey;">
-            <div class="logo-part" style="height: 100px;">
-              <%= image_tag "Logo.jpg", alt: "logo", class:"img-fluid rounded mx-auto d-block", style:"height:50%"%>
-              <p style="text-align:center;margin-top:20px">16 villa Gaudelet, 75011 Paris</p>
-            </div>
-          </div>
-            <div class="col-md-6 col-sm-3 px-4">
-              <h6>Get to know us</h6>
-              <p>4 little wizards trying to do muggle stuffs.</p>
-            </div>
-        </div>
+    <div class="row align-items-center d-flex justify-content-between">
+      <div class="col-md-4 col-sm-2">
+         <h6>Momento</h6>
+         <p>Copyright © 2022 Momento. All rights reserved </p>
       </div>
-      <div class="col-md-6 col-sm-3">
-        <div class="row">
-          <div class="col-md-6 col-sm-3 px-4">
-              <h6>Find your way</h6>
-              <div class="row ">
-                <div class="col-md-6 col-sm-3">
-                    <ul>
-                      <li> <a href="#">Home</a> </li>
-                      <li> <a href="#">About</a> </li>
-                      <li> <a href="#">Team</a> </li>
-                    </ul>
+        <div class="col-md-4 col-sm-2">
+        </div>
+      <div class="col-md-4 col-sm-2">
+              <div class="social d-flex justify-content-center align-items-center">
+                <div class="social-circle d-flex justify-content-center align-items-center">
+                  <a href="#"><i class="fab fa-github" style="color: black"></i></a>
+                </div>
+                <div class="social-circle d-flex justify-content-center align-items-center">
+                  <a href="#"><i class="fab fa-instagram" style="color: black"></i></a>
+                </div>
+                <div class="social-circle d-flex justify-content-center align-items-center">
+                  <a href="#"><i class="fab fa-facebook" style="color: black"></i></a>
+                </div>
+                <div class="social-circle d-flex justify-content-center align-items-center">
+                  <a href="#"><i class="fab fa-twitter" style="color: black"></i></a>
+                </div>
+                <div class="social-circle d-flex justify-content-center align-items-center">
+                  <a href="#"><i class="fab fa-linkedin" style="color: black"></i></a>
                 </div>
               </div>
-          </div>
-          <div class="col-md-6 col-sm-3">
-              <h6>Let's meet somewhere else</h6>
-              <div class="social">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-              </div>
-              <p>Something wicked this way comes...</p>
-          </div>
-        </div>
       </div>
-   </div>
+    </div>
   </div>
 </footer>
 
