@@ -1,7 +1,7 @@
 class Participant < ApplicationRecord
   belongs_to :user
   belongs_to :trip
-  has_one :event_participants
+  has_many :event_participants
   has_many :accomodation_votes
   has_many :expenses
   has_many :transportations
