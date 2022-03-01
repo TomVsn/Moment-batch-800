@@ -1,53 +1,148 @@
 <div class="banner">
-  <h1>Create memories, effortlessly</h1>
-  <h5>Momento is the ultimate trip planner to help you spend memorable moments with your loved ones</h5>
-  <%= link_to "Join us!", trips_path, class: "btn btn-primary"  %>
+  <div class="banner-title text-center">
+    <h1>Create memories, effortlessly</h1>
+    <h5>Momento is the ultimate trip planner to help you spend memorable moments with your loved ones</h5>
+  </div>
+  <div class="banner-btn">
+    <%= link_to "Join us!", trips_path, class: "btn btn-primary"  %>
+  </div>
 </div>
 
+<%# TIMELINE %>
 <div class="home-timeline">
-  <h1>How it's work</h1>
+  <div class="title d-flex justify-content-center m-5">
+    <h1>How it's work</h1>
+  </div>
+
   <div class="container">
-    <div class="row w-50 mx-auto p-3">
-      <div class="col border-end border-dotted content-timeline">
+    <%# TIMELINE ROW 1 %>
+    <div class="row w-50 mx-auto">
+      <div class="col content-timeline py-5" style="z-index:1; border-right: 1px dashed rgba(0,0,0,0.5);">
         <h3>Sign up</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
       </div>
-      <div class="col">
+      <div class="col py-5">
         <div class="d-flex">
-          <div class="bg-white px-4 d-flex align-items-center justify-content-center my-3" style="margin-left: -50px;">
-            <div class="rounded-circle bg-primary p-1">div</div>
-          </div>
-          <div class="card-timeline flex-grow-1">
-            <div class="number-card-timeline">
-              <p>1</p>
+          <div class="bg-grey-momento px-4 d-flex align-items-center justify-content-center my-3" style="margin-left: -50px; z-index:2;">
+            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:30px; height:30px; background-color: #6AC2C8">
+              <%= image_tag "right-arrow.png", alt: "arrow", width: 20, height: 20 %>
             </div>
-            <div class="card-timeline-infos">
-            <%= image_tag "signup.png", alt: "Sign up", width: 50 %>
+          </div>
+          <div class="card-timeline flex-grow-1" style="z-index:3;">
+            <div class="number-card-timeline d-flex align-items-center justify-content-center">
+              <h3>1</h3>
+            </div>
+            <div class="card-timeline-infos d-flex justify-content-center align-items-center">
+              <%= image_tag "signup.png", alt: "Sign up", width: 75, height: 75 %>
             </div>
           </div>
         </div>
       </div>
     </div>
-     <div class="row w-50 mx-auto">
-      <div class="col">
+
+    <%# TIMELINE ROW 2 %>
+    <div class="row w-50 mx-auto">
+      <div class="col py-5">
         <div class="d-flex">
-          <div class="card-timeline flex-grow-1">
-            <div class="number-card-timeline">
-              <p>1</p>
+          <div class="card-timeline flex-grow-1" style="z-index:3;">
+            <div class="number-card-timeline d-flex align-items-center justify-content-center">
+              <h3>2</h3>
             </div>
-            <div class="card-timeline-infos">
-            <%= image_tag "signup.png", alt: "Sign up", width: 50 %>
+           <div class="card-timeline-infos d-flex justify-content-center align-items-center">
+              <%= image_tag "promotion.png", alt: "Promotion", width: 75, height: 75 %>
             </div>
           </div>
-          <div class="bg-white px-4 d-flex align-items-center justify-content-center my-3" style="margin-right: -50px;">
-            <div class="rounded-circle bg-primary p-1">div</div>
+          <div class="bg-grey-momento px-4 d-flex align-items-center justify-content-center my-3" style="margin-right: -50px; z-index: 2;">
+            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:30px; height:30px; background-color: #6AC2C8; transform: rotate(180deg)">
+             <%= image_tag "right-arrow.png", alt: "arrow", width: 20, height: 20 %>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col border-start border-dotted content-timeline">
-        <h3>Sign up</h3>
+      <div class="col content-timeline py-5" style="z-index:1; border-left: 1px dashed rgba(0,0,0,0.5);">
+        <div class="ps-5">
+          <h3>Invite your friends</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+      </div>
+    </div>
+
+    <%# TIMELINE ROW 3 %>
+    <div class="row w-50 mx-auto">
+      <div class="col content-timeline py-5" style="z-index:1; border-right: 1px dashed rgba(0,0,0,0.5);">
+        <h3>Plan ahead</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+      <div class="col py-5">
+        <div class="d-flex">
+          <div class="bg-grey-momento px-4 d-flex align-items-center justify-content-center my-3" style="margin-left: -50px; z-index:2;">
+            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:30px; height:30px; background-color: #6AC2C8">
+              <%= image_tag "right-arrow.png", alt: "arrow", width: 20, height: 20 %>
+            </div>
+          </div>
+          <div class="card-timeline flex-grow-1" style="z-index:3;">
+            <div class="number-card-timeline d-flex align-items-center justify-content-center">
+              <h3>3</h3>
+            </div>
+            <div class="card-timeline-infos d-flex justify-content-center align-items-center">
+              <%= image_tag "time-management.png", alt: "Plan ahead", width: 75, height: 75 %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# TIMELINE ROW 4 %>
+    <div class="row w-50 mx-auto">
+      <div class="col py-5">
+        <div class="d-flex">
+          <div class="card-timeline flex-grow-1" style="z-index:3;">
+            <div class="number-card-timeline d-flex align-items-center justify-content-center">
+              <h3>4</h3>
+            </div>
+           <div class="card-timeline-infos d-flex justify-content-center align-items-center">
+              <%= image_tag "idea-bulb.png", alt: "Create Memories", width: 75, height: 75 %>
+            </div>
+          </div>
+          <div class="bg-grey-momento px-4 d-flex align-items-center justify-content-center my-3" style="margin-right: -50px; z-index: 2;">
+            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:30px; height:30px; background-color: #6AC2C8; transform: rotate(180deg)">
+             <%= image_tag "right-arrow.png", alt: "arrow", width: 20, height: 20 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col content-timeline py-5" style="z-index:1; border-left: 1px dashed rgba(0,0,0,0.5);">
+        <div class="ps-5">
+          <h3>Create Memories</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+      </div>
+    </div>
+
+    <%# TIMELINE ROW 3 %>
+    <div class="row w-50 mx-auto">
+      <div class="col content-timeline py-5" style="z-index:1; border-right: 1px dashed rgba(0,0,0,0.5);">
+        <h3>Shared with your <br> loved ones</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+      <div class="col py-5">
+        <div class="d-flex">
+          <div class="bg-grey-momento px-4 d-flex align-items-center justify-content-center my-3" style="margin-left: -50px; z-index:2;">
+            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:30px; height:30px; background-color: #6AC2C8">
+              <%= image_tag "right-arrow.png", alt: "arrow", width: 20, height: 20 %>
+            </div>
+          </div>
+          <div class="card-timeline flex-grow-1" style="z-index:3;">
+            <div class="number-card-timeline d-flex align-items-center justify-content-center">
+              <h3>5</h3>
+            </div>
+            <div class="card-timeline-infos d-flex justify-content-center align-items-center">
+              <%= image_tag "chat-bubbles.png", alt: "Shared", width: 75 %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<%# END TIMELINE %>
