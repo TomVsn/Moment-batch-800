@@ -1,0 +1,21 @@
+.banner {
+  min-height: 100vh;
+  background-color: #F2FAEF;
+}
+
+.banner-titles {
+  padding-top: 150px;
+}
+
+#banner-title {
+  font-family: $fredoka;
+  font-size: 60px;
+  color:#14243b;
+}
+
+#banner-description {
+  font-family: $fredoka;
+  font-size: 25px;
+  padding: 20px;
+  color:#14243b;
+}
