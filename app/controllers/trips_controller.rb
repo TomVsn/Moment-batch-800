@@ -23,9 +23,9 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    @trip.participants << current_user
     authorize @trip
     if @trip.save
+      @participant = Participant.new(user: current_user, trip: @trip)
       redirect_to trip_path(@trip)
     else
       render :new
