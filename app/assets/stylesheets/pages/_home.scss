@@ -1,5 +1,16 @@
 // Specific CSS for your home-page.
 .home-timeline {
-  height: 100vh;
+  min-height: 100vh;
   // background-color: white;
+}
+
+.container-green {
+  background-color: #DCF2E9;
+  border-radius: 20px;
+  width: 1100px;
+  height: 465px;
+}
+
+.container-green-title {
+  padding-top: 50px;
 }
