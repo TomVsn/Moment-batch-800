@@ -8,15 +8,15 @@
 
 require 'faker'
 
-# Expense.destroy_all
-# EventParticipant.destroy_all
-# Event.destroy_all
-# AccomodationVote.destroy_all
-# Accomodation.destroy_all
-# Transportation.destroy_all
-# Trip.destroy_all
-# Participant.destroy_all
-# User.destroy_all
+Expense.destroy_all
+EventParticipant.destroy_all
+Event.destroy_all
+AccomodationVote.destroy_all
+Accomodation.destroy_all
+Transportation.destroy_all
+#Participant.destroy_all
+#Trip.destroy_all
+#User.destroy_all
 
 loulou = User.create(email: "loulou@gmail.com", password: "123456", first_name: "Louise", last_name: "Ouldhaddi", username: "loulou")
 pcoppy = User.create(email: "pcoppy@gmail.com", password: "123456", first_name: "Pierre", last_name: "Coppy", username: "pcoppy")
