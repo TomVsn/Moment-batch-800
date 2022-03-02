@@ -57,8 +57,21 @@ Participant.all.each do |participant|
   transportation.save
 end
 
-# 10.times do
-#   accomodation = Accomodation.new
-#   accomodation.confirmed = "false"
-#   accomodation.url = "https://www.airbnb.fr/rooms/38378203?federated_search_id=411e7581-c232-44ee-b60e-46f2ae587aa3&source_impression_id=p3_1646215378_deB%2FC7FDvpGB8Bh%2F"
-# end
+Trip.all.each do |trip|
+  accomodation = Accomodation.new
+  accomodation.confirmed = false
+  accomodation.url = "https://www.airbnb.fr/rooms/38378203?federated_search_id=411e7581-c232-44ee-b60e-46f2ae587aa3&source_impression_id=p3_1646215378_deB%2FC7FDvpGB8Bh%2F"
+  accomodation.picked = false
+  accomodation.trip = trip
+  accomodation.save
+end
+
+
+Accomodation.all.each do |accomodation|
+  Participant.all.each do |participant|
+    accomodation_vote = AccomodationVote.new
+    accomodation_vote.accomodation = accomodation
+    accomodation_vote.participant = participant
+    accomodation_vote.save
+  end
+end
