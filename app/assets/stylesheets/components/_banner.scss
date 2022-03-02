@@ -21,24 +21,26 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-.banner {
-  min-height: 100vh;
-  background-color: #F2FAEF;
-}
 
-.banner-titles {
-  padding-top: 150px;
-}
+  .banner {
+    min-height: 100vh;
+    background-color: #F2FAEF;
+  }
 
-#banner-title {
-  font-family: $fredoka;
-  font-size: 60px;
-  color:#14243b;
-}
+  .banner-titles {
+    padding-top: 150px;
+  }
 
-#banner-description {
-  font-family: $fredoka;
-  font-size: 25px;
-  padding: 20px;
-  color:#14243b;
-}
+  #banner-title {
+    font-family: $fredoka;
+    font-size: 60px;
+    color:#14243b;
+  }
+
+  #banner-description {
+    font-family: $fredoka;
+    font-size: 25px;
+    padding: 20px;
+    color:#14243b;
+  }
+
