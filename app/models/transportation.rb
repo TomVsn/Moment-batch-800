@@ -3,6 +3,6 @@ class Transportation < ApplicationRecord
 
   CATEGORIES = ['bus', 'train', 'plane', 'car', 'various', 'other']
 
-  validates :type, inclusion: { in: CATEGORIES }
+  validates :mean, inclusion: { in: CATEGORIES }
   validates :origin, :destination, presence: true
 end
