@@ -19,7 +19,6 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @participant = Participant.find(params[:participant_id])
     @event.participant = @participant
-    authorize @event
     if @event.save
       @event_participant = EventParticipant.new(event: @event, participant: @participant)
       redirect_to event_path
