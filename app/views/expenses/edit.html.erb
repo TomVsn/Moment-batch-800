@@ -1,0 +1,9 @@
+<div class="container container-form">
+  <h1 style="text-align:center">What is your expense?</h1>
+  <%= simple_form_for [@participant, @expense], url: participant_expenses_path, method: :post do |f| %>
+    <%= f.input :title %>
+    <%= f.input :amount%>
+    <%= f.input :mutual, :label => "Is it a mutual expense?", :as => :select, :default => false%>
+    <%= f.submit %>
+    <% end %>
+</div>

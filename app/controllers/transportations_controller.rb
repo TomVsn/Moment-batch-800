@@ -10,7 +10,7 @@ class TransportationsController < ApplicationController
 
   def show
     @transportation = Transportation.find(params[:id])
-    @trip =  @transportation.participant.trip
+    @trip = @transportation.participant.trip
   end
 
   def new
