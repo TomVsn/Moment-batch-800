@@ -1,0 +1,43 @@
+.home-timeline {
+  min-height: 100vh;
+  // background-color: white;
+}
+
+#timeline-title {
+  font-size: 40px;
+  font-family: $fredoka;
+
+}
+
+.content-timeline-right {
+  z-index:1;
+  border-right: 1px dashed rgba(0,0,0,0.5);
+}
+
+.content-timeline-left {
+  z-index:1;
+  border-left: 1px dashed rgba(0,0,0,0.5);
+}
+
+.timeline-div-arrow-left {
+  margin-left: -50px;
+  z-index:2;
+}
+
+.timeline-div-arrow-right {
+  margin-right: -50px;
+  z-index: 2;
+}
+
+.div-arrow-rounded {
+  width:30px;
+  height:30px;
+  background-color: #6AC2C8;
+}
+
+.div-arrow-rounded-right {
+  width:30px;
+  height:30px;
+  background-color: #6AC2C8;
+  transform: rotate(180deg);
+}
