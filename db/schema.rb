@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_02_102520) do
+ActiveRecord::Schema.define(version: 2022_03_02_111812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,10 +49,8 @@ ActiveRecord::Schema.define(version: 2022_03_02_102520) do
     t.bigint "participant_id", null: false
     t.bigint "trip_id", null: false
     t.text "description"
-    t.date "start_date"
-    t.date "end_date"
-    t.time "start_hour"
-    t.time "end_hour"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["participant_id"], name: "index_events_on_participant_id"
