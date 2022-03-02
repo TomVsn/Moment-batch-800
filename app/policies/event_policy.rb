@@ -1,4 +1,4 @@
-class TripPolicy < ApplicationPolicy
+class EventPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -16,7 +16,7 @@ class TripPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user
+    record.participant.user == user
   end
 
   def update?

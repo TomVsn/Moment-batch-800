@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="card" style="max-width: 18rem; max-height: 18rem;">
+    <h5>Activities</h5>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      +
+    </button>
+
+    <div class="card overflow-scroll border-rounded" style="max-width: 18rem; max-height: 18rem;">
+        <ul class="list-group list-group-flush">
+          <% @trip.events.each do |event| %>
+            <li class="list-group-item">
+              <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
+              <br>
+              <%= event.start_date.hour %>:<%= event.start_date.min %>
+              <%= event.description %>
+              <br>
+              <%= event.participant.user.username %>
+              <ul>
+                <% event.event_participants.each do |event_participant|%>
+                    <li><%= event_participant.participant.user.username %></li>
+                <% end %>
+              </ul>
+              <%= link_to "edit", edit_event_path(event)  %>
+              <% unless @participant.participates?(event) %>
+                <%= simple_form_for [event, @event_participant] do |f|%>
+                  <%= f.submit %>
+                <% end %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@participant, @event] do |f| %>
+          <%= f.input :description %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
