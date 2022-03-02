@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   def index
-    @expenses = Expense.all
     @participant = Participant.find(params[:participant_id])
+    @expenses = Expense.where(participant: @participant)
   end
 
   def show
@@ -18,7 +18,7 @@ class ExpensesController < ApplicationController
     @participant = Participant.find(params[:participant_id])
     @expense.participant = @participant
     if @expense.save
-      redirect_to expense_path
+      redirect_to expense_path(@expense)
     else
       render :new
     end
@@ -42,7 +42,7 @@ class ExpensesController < ApplicationController
 
   private
 
-  def participant_params
-    params.require(:expense).permit(:amount, :total, :mutual)
+  def expenses_params
+    params.require(:expense).permit(:title, :amount, :total, :mutual)
   end
 end

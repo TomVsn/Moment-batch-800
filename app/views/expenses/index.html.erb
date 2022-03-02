@@ -1,0 +1,12 @@
+<h1>This is expense index</h1>
+
+<% @expenses.each do |expense| %>
+  <ul>
+    <li><%= expense.amount %></li>
+    <li><%= link_to "more info", expense_path(expense) %></li>
+    <li><%= link_to %></li>
+    <li><%= link_to  %></li>
+  </ul>
+<% end %>
+
+<h3> <%= link_to "add an expense", new_participant_expense_path(@participant) %></h3>
