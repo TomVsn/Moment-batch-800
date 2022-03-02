@@ -1,7 +1,22 @@
 <h1>hello</h1>
 
 <div class="container">
-  <% @events.each do |event| %>
-    <%= event %>
-  <% end %>
+  <div class="card" style="max-width: 18rem; max-height: 18rem;">
+    <h5>Activities</h5>
+      <div class="card overflow-scroll border-rounded" style="max-width: 18rem; max-height: 18rem;">
+          <ul class="list-group list-group-flush">
+            <% @events.each do |event| %>
+              <li class="list-group-item">
+                <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
+                <br>
+                <%= event.start_date.hour %>:<%= event.start_date.min %>
+                <%= event.description %>
+                <br>
+                <%= event.participant.user.username %>
+                <%= event.trip.title %>
+              </li>
+            <% end %>
+          </ul>
+      </div>
+  </div>
 </div>
