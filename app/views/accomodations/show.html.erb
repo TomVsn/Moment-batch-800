@@ -9,11 +9,13 @@ Total price : <%= @accomodation.price * @duration %>€
 <%= link_to "Back to all your suggestion", trip_accomodations_path(@trip)  %>
 <%= link_to "find out more", @accomodation.url, target: :_blank %>
 
-<%= simple_form_for @accomodation do |t| %>
-  <%= t.input :status, as: :hidden, input_html: {value: true}%>
-  <%= t.check_box :confirmed, type: 'submit' %>
-  <%= label_tag(:confirmed, "Booked?") %>
-<% end %>
+<div data-controller="accomodation-booked">
+  <%= simple_form_for @accomodation do |t| %>
+    <%= t.input :status, as: :hidden, input_html: {value: true}%>
+    <div data-accomodation-booked-target="checkbox"><%= t.check_box :confirmed, type: 'submit', data_action:"click->accomodation-booked#updateBooked" %></div>
+    <%= label_tag(:confirmed, "Booked?") %>
+  <% end %>
+</div>
 
 
 Booked? <%= @accomodation.confirmed %>
