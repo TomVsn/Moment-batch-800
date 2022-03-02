@@ -1,0 +1,19 @@
+<%= @accomodation.title %><br>
+<%= @accomodation.description %><br>
+<%= @accomodation.url %><br>
+<%= @accomodation.confirmed %><br>
+<%= @accomodation.price %>€/price
+<%= (@accomodation.trip.end_date - @accomodation.trip.start_date)/86400 %>/night<br>
+Total price : <%= @accomodation.price * @duration %>€
+
+<%= link_to "Back to all your suggestion", trip_accomodations_path(@trip)  %>
+<%= link_to "find out more", @accomodation.url, target: :_blank %>
+
+<%= simple_form_for @accomodation do |t| %>
+  <%= t.input :status, as: :hidden, input_html: {value: true}%>
+  <%= t.check_box :confirmed, type: 'submit' %>
+  <%= label_tag(:confirmed, "Booked?") %>
+<% end %>
+
+
+Booked? <%= @accomodation.confirmed %>

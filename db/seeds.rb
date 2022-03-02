@@ -8,11 +8,15 @@
 
 require 'faker'
 
-
-# Transportation.destroy_all
-# Participant.destroy_all
-# Trip.destroy_all
-# User.destroy_all
+Expense.destroy_all
+EventParticipant.destroy_all
+Event.destroy_all
+AccomodationVote.destroy_all
+Accomodation.destroy_all
+Transportation.destroy_all
+Participant.destroy_all
+Trip.destroy_all
+User.destroy_all
 
 loulou = User.create(email: "loulou@gmail.com", password: "123456", first_name: "Louise", last_name: "Ouldhaddi", username: "loulou")
 pcoppy = User.create(email: "pcoppy@gmail.com", password: "123456", first_name: "Pierre", last_name: "Coppy", username: "pcoppy")
@@ -60,10 +64,13 @@ end
 
 Trip.all.each do |trip|
   accomodation = Accomodation.new
+  accomodation.title = Faker::Lorem.sentence(word_count: 3, supplemental: true)
+  accomodation.description = Faker::Lorem.paragraph(sentence_count: 5, supplemental: true)
   accomodation.confirmed = false
   accomodation.url = "https://www.airbnb.fr/rooms/38378203?federated_search_id=411e7581-c232-44ee-b60e-46f2ae587aa3&source_impression_id=p3_1646215378_deB%2FC7FDvpGB8Bh%2F"
   accomodation.picked = false
   accomodation.trip = trip
+  accomodation.price = rand(50..100)
   accomodation.save
 end
 
