@@ -8,7 +8,7 @@ class Accomodation < ApplicationRecord
   has_many :accomodation_votes
   validates :url, presence: true
 
-  after_validation :scrap_appartment, if: :will_save_change_url?
+  after_validation :scrap_appartment, if: :will_save_change_to_url?
 
   def set_defaults
     self.confirmed ||= false
