@@ -12,10 +12,10 @@ Participant.destroy_all
 Trip.destroy_all
 User.destroy_all
 
-loulou = User.create(email: "loulou@gmail.com", password: "123456" first_name: "Louise", last_name: "Ouldhaddi", username: "loulou")
-pcoppy = User.create(email: "pcoppy@gmail.com", password: "123456" first_name: "Pierre", last_name: "Coppy", username: "pcoppy")
-tomtom = User.create(email: "tomtom@gmail.com", password: "123456" first_name: "Tom", last_name: "Voisin", username: "tomtom")
-mymy = User.create(email: "mymy@gmail.com", password: "123456" first_name: "Myriam", last_name: "Delbreil", username: "mymy")
+loulou = User.create(email: "loulou@gmail.com", password: "123456", first_name: "Louise", last_name: "Ouldhaddi", username: "loulou")
+pcoppy = User.create(email: "pcoppy@gmail.com", password: "123456", first_name: "Pierre", last_name: "Coppy", username: "pcoppy")
+tomtom = User.create(email: "tomtom@gmail.com", password: "123456", first_name: "Tom", last_name: "Voisin", username: "tomtom")
+mymy = User.create(email: "mymy@gmail.com", password: "123456", first_name: "Myriam", last_name: "Delbreil", username: "mymy")
 
 
 first_name = ""
