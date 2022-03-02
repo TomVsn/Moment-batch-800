@@ -6,6 +6,8 @@ class AccomodationsController < ApplicationController
 
   def show
     @accomodation = Accomodation.find(params[:id])
+    @duration = (@accomodation.trip.end_date - @accomodation.trip.start_date)/86400
+    @trip =  @accomodation.trip
   end
 
   def new
@@ -43,6 +45,6 @@ class AccomodationsController < ApplicationController
   private
 
   def accomodations_params
-    params.require(:accomodation).permit(:confirmed, :address, :url, :picked)
+    params.require(:accomodation).permit(:confirmed, :address, :url, :picked, :trip_id)
   end
 end

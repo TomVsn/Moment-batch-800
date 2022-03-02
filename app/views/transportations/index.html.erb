@@ -1,10 +1,14 @@
 <h1>This is the index of Transportation</h1>
 
-
 <% @transportations.each do |transportation|%>
-  <ul>
-    <li> <%= transportation.price %></li>
-    <li> <%= transportation.origin %></li>
-    <li> <%= transportation.mean %></li>
-    <li> <%= transportation.destination %></li>
-  </ul>
+    <ul>
+      <li> id: <%= transportation.participant.trip.id %></li>
+      <li> price is <%= transportation.price %></li>
+      <li> from <%= transportation.origin %></li>
+      <li> to <%= transportation.destination %></li>
+      <li> by <%= transportation.mean %></li>
+      <li> taken by <%= transportation.participant.user.username %></li>
+      <li> <%= link_to "more info", transportation_path(transportation) %></li>
+    </ul>
+<%end %>
+  <%= link_to "Add a journey", new_participant_transportation_path(@participant) %>

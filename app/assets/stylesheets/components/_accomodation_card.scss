@@ -1,0 +1,47 @@
+.accomodation-card {
+  background-color: #DCF2E9;
+  border: rgb(194, 191, 191) 1px solid;
+  border-radius: 8px;
+  box-shadow: 2px 2px 3px gray;
+  text-align: center;
+  position: relative;
+
+  img {
+    width: 100px;
+  }
+
+  .title {
+    text-align: left;
+  }
+
+  .price {
+    text-align: right;
+  }
+
+  .likes {
+    text-align: right;
+  }
+
+  .cross {
+    position: absolute;
+    top: 3px;
+    right: 8px;
+  }
+
+  .form-check {
+    text-align: left;
+  }
+
+}
+
+.accomodation-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+  margin: 1em 0;
+}
+
+.index-img {
+  width: 150px;
+
+}
