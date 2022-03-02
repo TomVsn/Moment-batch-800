@@ -12,7 +12,11 @@ class TripsController < ApplicationController
     @transportations = @trip.transportations
     @messages = @trip.messages
     @events = @trip.events
+    # @event_id = Event.find(params[:id])
+    @event_participant = EventParticipant.new
+    @event = Event.new
     @participants = @trip.participants
+    @participant = @participants.find_by(user: current_user)
     authorize @trip
   end
 

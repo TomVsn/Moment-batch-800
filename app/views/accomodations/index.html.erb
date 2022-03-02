@@ -24,11 +24,11 @@
           <%end%>
 
            <div class="accomodation-card">
-            <%=image_tag Accomodation.first.img %>
+            <%=image_tag Accomodation.last.img, class:"index-img"%>
             <p class="cross d-inline">X</p>
            <div class="d-flex justify-content-between">
-            <p class="title d-inline"> <%= Accomodation.first.title %> </p>
-            <p class="price d-inline"><%= Accomodation.first.price %>/ night</p>
+            <p class="title d-inline"> <%= Accomodation.last.title %> </p>
+            <p class="price d-inline"><%= Accomodation.last.price %>/ night</p>
            </div>
           <div class="d-flex justify-content-between">
           <div class="form-check">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_02_140658) do
+ActiveRecord::Schema.define(version: 2022_03_02_161601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2022_03_02_140658) do
     t.string "title"
     t.text "description"
     t.float "price"
+    t.string "img"
     t.index ["trip_id"], name: "index_accomodations_on_trip_id"
   end
 

@@ -7,4 +7,8 @@ class Participant < ApplicationRecord
   has_many :transportations
   has_many :events
   has_many :messages
+
+  def participates?(event)
+    event_participants.find_by(event: event).present?
+  end
 end
