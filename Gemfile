@@ -28,6 +28,11 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+gem 'open-uri'
+gem 'nokogiri', '~> 1.13', '>= 1.13.3'
+gem 'watir', '~> 6.16', '>= 6.16.5'
+gem 'headless', '~> 2.2', '>= 2.2.3'
+
 gem 'devise'
 gem 'pundit'
 
