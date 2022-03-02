@@ -75,3 +75,13 @@ Accomodation.all.each do |accomodation|
     accomodation_vote.save
   end
 end
+
+
+Participant.all.each do |participant|
+  expense = Expense.new
+  expense.participant = participant
+  expense.amount = rand(1..20)
+  expense.title = Faker::Lorem.sentence(word_count: 3, supplemental: true)
+  expense.mutual = [true, false].sample
+  expense.save
+end
