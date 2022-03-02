@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :accomodations, only: [:show, :edit, :update]
   resources :transportations, only: [:show, :edit, :update, :index]
   resources :expenses, only: [:index, :edit, :update, :show, :destroy]
-  resources :events, only: [:index, :create, :edit, :update, :show, :destroy] do
+  resources :events, only: [:index, :edit, :update, :show, :destroy] do
     resources :event_participants, only: [:new, :create, :destroy]
   end
   resources :participants, only: [] do
