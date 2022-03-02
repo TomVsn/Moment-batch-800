@@ -1,7 +1,5 @@
 class AccomodationsController < ApplicationController
 
-  require Time
-
   def index
     @accomodations = Accomodation.all
   end
