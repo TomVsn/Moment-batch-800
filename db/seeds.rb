@@ -8,10 +8,11 @@
 
 require 'faker'
 
-Transportation.destroy_all
-Participant.destroy_all
-Trip.destroy_all
-User.destroy_all
+
+# Transportation.destroy_all
+# Participant.destroy_all
+# Trip.destroy_all
+# User.destroy_all
 
 loulou = User.create(email: "loulou@gmail.com", password: "123456", first_name: "Louise", last_name: "Ouldhaddi", username: "loulou")
 pcoppy = User.create(email: "pcoppy@gmail.com", password: "123456", first_name: "Pierre", last_name: "Coppy", username: "pcoppy")
@@ -84,4 +85,24 @@ Participant.all.each do |participant|
   expense.title = Faker::Lorem.sentence(word_count: 3, supplemental: true)
   expense.mutual = [true, false].sample
   expense.save
+end
+
+Participant.all.each do |participant|
+  start_trip = participant.trip.start_date
+  end_trip = participant.trip.end_date
+  event_start = Faker::Time.between_dates(from: start_trip, to: end_trip, period: :morning)
+  event = Event.new
+  event.participant = participant
+  event.trip = participant.trip
+  event.description = Faker::Lorem.sentence(word_count: 3, supplemental: true)
+  event.start_date = event_start
+  event.end_date = Faker::Time.between_dates(from: event_start, to: event_start, period: :afternoon)
+  event.save
+end
+
+Event.all.each do |event|
+  event_participant = EventParticipant.new
+  event_participant.event = event
+  event_participant.participant = event.participant
+  event_participant.save
 end
