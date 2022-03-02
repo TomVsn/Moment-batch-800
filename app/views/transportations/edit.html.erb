@@ -1,0 +1,12 @@
+<div class="container container-form">
+  <h1 style="text-align:center">Make your changes</h1>
+  <%= simple_form_for @transportation do |f| %>
+    <%= f.input :origin, placeholder: "Paris" %>
+    <%= f.input :destination, placeholder: "New York"%>
+    <%= f.input :mean, as: :select, collection: Transportation::CATEGORIES%>
+    <%= f.input :departure_date%>
+    <%= f.input :arrival_date%>
+    <%= f.input :price %>
+    <%= f.submit %>
+    <% end %>
+</div>
