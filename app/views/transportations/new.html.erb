@@ -1,0 +1,12 @@
+<div class="container container-form">
+  <h1 style="text-align:center">How will you travel?</h1>
+  <%= simple_form_for [@participant, @transportation], url: participant_transportations_path, method: :post do |f| %>
+    <%= f.input :origin, placeholder: "Paris" %>
+    <%= f.input :destination, placeholder: "New York"%>
+    <%= f.input :mean, as: :select, collection: Transportation::CATEGORIES%>
+    <%= f.input :departure_date%>
+    <%= f.input :arrival_date%>
+    <%= f.input :price %>
+    <%= f.submit %>
+    <% end %>
+</div>

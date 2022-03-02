@@ -1,1 +1,10 @@
 <h1>This is the show of Transportation</h1>
+<h2>Your coming trip to <%= @transportation.destination %> is soon <%= @transportation.participant.user.username %></h2>
+
+<h3>Here is some more info just for you</h3>
+<ul>
+  <li>You will take a <%= @transportation.mean %></li>
+  <li> It has cost you <%= @transportation.price %>€</li>
+</ul>
+
+<%= link_to "change reservation", edit_transportation_path %>
