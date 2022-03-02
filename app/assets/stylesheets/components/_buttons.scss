@@ -1,0 +1,15 @@
+.btn-banner {
+  color: black;
+  padding: 8px 24px;
+  border-radius: 30px;
+  background: #A6DADE;
+  transition: all 0.3s;
+  margin-top: 15px;
+  width: 180px;
+
+  &:hover {
+    background: #7eacaf;
+    font-weight: bold;
+    color: black;
+  }
+}
