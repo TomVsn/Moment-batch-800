@@ -5,3 +5,17 @@
   border-radius: 4px;
   font-size: 20px;
 }
+
+.btn-banner {
+  color: black;
+  padding: 8px 24px;
+  border-radius: 30px;
+  background: #A6DADE;
+  margin-top: 15px;
+  width: 180px;
+
+  &:hover {
+    font-weight: bold;
+    color: black;
+  }
+}
