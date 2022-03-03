@@ -1,10 +1,12 @@
 class TripsController < ApplicationController
   # def index
-  #   @trips = policy_scope(Trip).order(created_at: :desc)
   # end
 
   def index
-    @trips = Trip.all
+    # @trips = Trip.all
+    @trips = policy_scope(Trip).order(created_at: :desc)
+    @user = current_user
+    @trip = Trip.new
   end
 
   def show
@@ -26,13 +28,14 @@ class TripsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @trip = Trip.new(trip_params)
     authorize @trip
-    if @trip.save
-      @participant = Participant.new(user: current_user, trip: @trip)
+    if @trip.save!
+      @participant = Participant.new(user: @user, trip: @trip)
       redirect_to trip_path(@trip)
     else
-      render :new
+      render "trips/index"
     end
   end
 
@@ -58,6 +61,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:start_date, :end_date, :title, :description, :city, :participants, :transportations, :messages, :events)
+    params.require(:trip).permit(:start_date, :end_date, :title, :description, :city, :participants, :transportations, :messages, :events, :user, :user_id)
   end
 end
