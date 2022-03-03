@@ -1,9 +1,9 @@
 class TripsController < ApplicationController
   # def index
-  #   @trips = policy_scope(Trip).order(created_at: :desc)
   # end
 
   def index
+    @participant = Participant.new
     @trips = policy_scope(Trip)
   end
 
