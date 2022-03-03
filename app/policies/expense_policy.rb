@@ -7,18 +7,18 @@ class ExpensePolicy < ApplicationPolicy
   end
 
   def show?
-    record.participant.trip.participants.exists?(user: user)
+    true
   end
 
   def create?
-    record.participant.trip.participants.exists?(user: user)
+    record.participant.user = user
   end
 
   def update?
-    record.participant.trip.participants.exists?(user: user)
+    record.participant.user = user
   end
 
   def destroy?
-    record.participant.trip.participants.exists?(user: user)
+    record.participant.user = user
   end
 end
