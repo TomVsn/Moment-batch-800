@@ -5,7 +5,7 @@ class TransportationsController < ApplicationController
       participant.transportations
     end
     @transportations = first_step.flatten
-    @participant = Participant.where(user_id: current_user.id, trip_id:@trip.id).first
+    @participant = Participant.where(user_id: current_user.id, trip_id: @trip.id).first
   end
 
   def show
