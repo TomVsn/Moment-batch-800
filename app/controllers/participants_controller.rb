@@ -8,10 +8,9 @@ class ParticipantsController < ApplicationController
   def create
     @trip = Trip.find(params[:trip_id])
     @participant = Participant.new(participant_params)
-    @participant.save
     authorize @participant
-    if @partcipant.save
-      redirect_to trip_path
+    if @participant.save
+      redirect_to trip_path(@trip)
     else
       render :new
     end
