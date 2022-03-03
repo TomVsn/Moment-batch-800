@@ -22,7 +22,6 @@ Transportation.destroy_all
 p "tr"
 Participant.destroy_all
 p "par"
-
 Trip.destroy_all
 p "trip"
 User.destroy_all
@@ -33,13 +32,10 @@ pcoppy = User.create(email: "pcoppy@gmail.com", password: "123456", first_name: 
 tomtom = User.create(email: "tomtom@gmail.com", password: "123456", first_name: "Tom", last_name: "Voisin", username: "tomtom")
 mymy = User.create(email: "mymy@gmail.com", password: "123456", first_name: "Myriam", last_name: "Delbreil", username: "mymy")
 
-
-
 first_name = ""
 last_name = ""
 username = ""
 CATEGORIES = ['bus', 'train', 'plane', 'car', 'various', 'other']
-
 
 10.times do
   first_name = Faker::Name.first_name
@@ -53,9 +49,9 @@ end
   Trip.create(start_date: start_date, end_date: start_date + rand(1..10).days, title: Faker::Lorem.word.capitalize, description: Faker::Lorem.paragraph_by_chars, city: Faker::Address.city, user_id: User.ids.sample)
 end
 
-10.times do
+User.all.each do |user|
   participant = Participant.new
-  participant.user = User.all.sample
+  participant.user = user
   participant.trip = Trip.all.sample
   participant.save
 end
