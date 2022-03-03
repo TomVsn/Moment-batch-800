@@ -30,45 +30,23 @@
         </div>
         <div class="trip-card-right">
           <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
-          <p class="dates">Du 18/03 au 20/03 </p>
-          <p class="location"><%= trip.city %></p>
+          <p class="dates">Du <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> au <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%> </p>
+          <p class="location">
+            <% if trip.city != nil %>
+              <%= trip.city %>
+            <% end %>
+          </p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">
+            edit
+          </button>
+          <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <i class="fas fa-trash-alt" style="font-size:30px; color:#d39487"></i>
+          <% end %>
+
         </div>
       </div>
-        <!-- Modal add a participant-->
-        <div class="modal fade" id="participantCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Invite your friend</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <% @users.each do |user| %>
-                  <ul>
-                    <% unless user.participates?(trip) %>
-                      <li>
-                        <%= user.username %>
-                        <%= simple_form_for [trip, @participant] do |f|%> <!-- Ce code fonctionnera lorsqu'il sera intégré dans les cartes de la show des trips (il pourra identifer le trip)-->
-                          <%= f.input :user_id, as: :hidden, input_html: {value: user.id}%>
-                          <%= f.input :trip_id, as: :hidden, input_html: {value: trip.id} %>
-                          <%= f.submit%>
-                        <% end %>
-                      </li>
-                    <% end %>
-                  </ul>
-                <% end %>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End of Modal-->
     <% end %>
   </div>
+</div>
 
    <%= render 'trip_index_details/trip' %>
-
-
-</div>
