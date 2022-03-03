@@ -25,15 +25,13 @@
       <div class="trip-card">
         <div class="trip-card-left">
           <h4> <%= trip.title %></h4>
+          <i class="fas fa-user-plus" data-bs-toggle="modal" data-bs-target="#participantCreate"></i>
           <p class="trip-card-description"><%= trip.description%></p>
         </div>
         <div class="trip-card-right">
           <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
           <p class="dates">Du 18/03 au 20/03 </p>
           <p class="location"><%= trip.city %></p>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#participantCreate">
-              +
-          </button>
         </div>
       </div>
         <!-- Modal add a participant-->
