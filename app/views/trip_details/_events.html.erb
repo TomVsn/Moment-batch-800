@@ -2,7 +2,7 @@
   <% @trip.events.each do |event| %>
       <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
       <br>
-      <div class="row" style="height:60px margin-bottom:10px">
+      <div class="row event-info" style="height:60px margin-bottom:10px">
         <div class="col col-4">
           <div class="event-icon">
             <%= link_to event_path(event), method: :delete, data: { confirm: "Are you sure?" } do %>
