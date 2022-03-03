@@ -1,10 +1,10 @@
 class TripsController < ApplicationController
   # def index
-  #   @trips = policy_scope(Trip).order(created_at: :desc)
   # end
 
   def index
     @trips = Trip.all
+    @trips = policy_scope(Trip).order(created_at: :desc)
   end
 
   def show
