@@ -19,6 +19,6 @@ class ExpensePolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.participant.trip.participants.exists?(user: user)
+    record.participant.user = user
   end
 end

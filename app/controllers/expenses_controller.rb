@@ -60,8 +60,10 @@ class ExpensesController < ApplicationController
 
   def destroy
     @expense = Expense.find(params[:id])
+    @participant = @expense.participant
     @expense.destroy
-    redirect_to expenses_path
+    authorize @expense
+    redirect_to trip_path(@participant.trip)
   end
 
   private

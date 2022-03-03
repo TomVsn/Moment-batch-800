@@ -50,6 +50,9 @@
                 edit expense
               </button>
              <!-- button delete expense -->
+             <%= link_to expense_path(expense), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fas fa-trash-alt" style="font-size:30px; color:#d39487"></i>
+            <% end %>
         <% end %>
       </div>
       <div class="modal-footer">
