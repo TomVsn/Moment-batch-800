@@ -32,9 +32,10 @@ class TripsController < ApplicationController
   def create
     @user = current_user
     @trip = Trip.new(trip_params)
+    @trip.user = @user
     authorize @trip
-    if @trip.save!
-      @participant = Participant.new(user: @user, trip: @trip)
+    if @trip.save
+      @participant = Participant.create!(user: @user, trip: @trip)
       redirect_to trip_path(@trip)
     else
       render "trips/index"
