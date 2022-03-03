@@ -15,6 +15,7 @@
       <div class="row row-left" style="margin-top:30px">
         <div class="col col-5 card-dashboard-left">
           <p>Accomodation</p>
+          <%= render 'trip_details/accomodations' %>
         </div>
         <div class="col col-5 card-dashboard-left">
           <p>People</p>
@@ -26,6 +27,7 @@
         </div>
         <div class="col col-5 card-dashboard-left">
           <p>Expenses</p>
+          <%= render 'trip_details/expenses' %>
         </div>
       </div>
     </div>
@@ -44,8 +46,7 @@
 </div>
 
 
-<%= render 'trip_details/events' %>
-<%= render 'trip_details/accomodations' %>
+<%# <%= render 'trip_details/events' %> %>
 
 
 <%= render 'trip_details/transportations' %>
