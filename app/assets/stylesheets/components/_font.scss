@@ -1,0 +1,10 @@
+li {
+  list-style-type: none;
+}
+
+.event-description {
+  font-weight:bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
