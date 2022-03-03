@@ -16,15 +16,15 @@ class AccomodationPolicy < ApplicationPolicy
   end
 
   def create?
-    record.trip.user == user
+    record.trip.participants.user == user
   end
 
   def update?
-    record.trip.user == user
+    record.trip.participants.user == user
   end
 
   def destroy?
-    record.trip.user == user
+    record.trip.participants.user == user
   end
 end
 
