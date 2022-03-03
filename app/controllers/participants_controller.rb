@@ -1,5 +1,6 @@
 class ParticipantsController < ApplicationController
   def new
+    @trip = Trip.find(params[:id])
     @participant = Participant.new
     authorize @participant
   end

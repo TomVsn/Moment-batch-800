@@ -35,13 +35,25 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    @event.update(event_params)
+    @participant = @event.participant
+    # @event.update(event_params)
     # redirect_to events_path
+    authorize @event
+    if @event.save
+      @event.update(event_params)
+      redirect_to trip_path(@participant.trip)
+    else
+      @trip = @participant.trip
+      render "trips/show"
+    end
   end
 
   def destroy
     @event = Event.find(params[:id])
+    @participant = @event.participant
+    authorize @event
     @event.destroy
+    redirect_to trip_path(@participant.trip)
     # redirect_to trip_path
   end
 

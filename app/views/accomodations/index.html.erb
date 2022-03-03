@@ -23,30 +23,32 @@
         </div>
           <%end%>
 
-           <div class="accomodation-card">
-            <%=image_tag Accomodation.last.img, class:"index-img"%>
+          <div class="accomodation-card">
+            <% @accomodations.each do |accomodation|%>
+            <%=image_tag accomodation.img, class:"index-img"%>
             <p class="cross d-inline">X</p>
-           <div class="d-flex justify-content-between">
-            <p class="title d-inline"> <%= Accomodation.last.title %> </p>
-            <p class="price d-inline"><%= Accomodation.last.price %>/ night</p>
-           </div>
           <div class="d-flex justify-content-between">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="booked" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-            Booked ?
-            </label>
+            <p class="title d-inline"> <%= accomodation.title %> </p>
+            <p class="price d-inline"><%= accomodation.price %>/ night</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="booked" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+              Booked ?
+              </label>
             </div>
             <p class="likes d-inline"> 4 likes </p>
           </div>
-     </div>
-
-      <%@accomodations.each do |accomodation|%>
-      <%= accomodation.trip.id %>
-      <%end%>
-
-<p>Not interested in any of our suggestions ?</p>
- <a class="btn btn-banner" href="#">Add your own suggestion</a>
+          <%end%>
+      </div>
+      <div>
+        <p>Not interested in any of our suggestions ?</p>
+          <div class="btn btn-outline-warning" style="margin-top: auto">
+        <%= link_to "Add your own suggestion", new_trip_accomodation_path%>
+      </div>
+    </div>
+ <%# <a class="btn btn-banner" href="#">Add your own suggestion</a> %>
 
 
 </div>
