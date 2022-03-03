@@ -2,7 +2,7 @@
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted">Transports</h6>
-       <h6>Your trip to <%= @transportations.first.destination %> is in </h6>
+       <h6>Your trip to <%= @transportations.first.destination %> is in <%= ((@participant.transportations.first.departure_date - Time.now)/86400).to_i %> days</h6>
     </div>
   </div>
 </div>
