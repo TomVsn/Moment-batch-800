@@ -50,7 +50,10 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+    @participant = @event.participant
+    authorize @event
     @event.destroy
+    redirect_to trip_path(@participant.trip)
     # redirect_to trip_path
   end
 

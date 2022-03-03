@@ -11,6 +11,10 @@
         <ul class="list-group list-group-flush">
           <% @trip.events.each do |event| %>
             <li class="list-group-item">
+              <%= link_to event_path(event), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fas fa-times"></i>
+              <% end %>
+
               <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
               <br>
               <%= event.start_date.hour %>:<%= event.start_date.min %>
@@ -19,7 +23,12 @@
               <%= event.participant.user.username %>
               <ul>
                 <% event.event_participants.each do |event_participant|%>
-                    <li><%= event_participant.participant.user.username %></li>
+                    <li>
+                      <%= event_participant.participant.user.username %>
+                       <%= link_to event_participant_path(event_participant), method: :delete, data: { confirm: "Are you sure?" } do %>
+                          <i class="fas fa-times"></i>
+                        <% end %>
+                    </li>
                 <% end %>
               </ul>
                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editEventModal-<%= event.id %>">
