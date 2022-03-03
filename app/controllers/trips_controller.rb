@@ -21,6 +21,15 @@ class TripsController < ApplicationController
     @event = Event.new
     @participants = @trip.participants
     @participant = @participants.find_by(user: current_user)
+    @new_expense = Expense.new
+    @sum_of_expenses = Expense.includes(participant: :trip)
+                       .references(:trip)
+                       .where(trips: { id: @participant.trip }, mutual: true).sum(:amount)
+    @details_expenses = Expense.includes(participant: :trip)
+                       .references(:trip)
+                       .where(trips: { id: @participant.trip }, mutual: true)
+    @participants_expenses = Participant.where(trip: @participant.trip)
+    @total_per_participant = @sum_of_expenses / @participants_expenses.count
     authorize @trip
   end
 

@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-muted">Expenses</h6>
+        <p>total mutual expenses:</p>
+        <%= @sum_of_expenses%>
+        <br>
+        <p>total expenses per participant:</p>
+        <%= @total_per_participant %>
+        <!-- Button trigger modal Show expenses -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalExpensesDetails">
+          Details
+        </button>
+
+        <!-- Button trigger modal Create expenses -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalExpensesCreate">
+          Launch demo modal
+        </button>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- Modal Show Expenses -->
+<div class="modal fade" id="ModalExpensesDetails" tabindex="-1" aria-labelledby="ModalExpensesDetailsLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalExpensesDetailsLabel">Expenses</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <h2><%= @total_per_participant %></h2>
+        <% @details_expenses.each do |expense| %>
+            <p>titre</p>
+            <%= expense.title %>
+            <p>prix</p>
+            <%= expense.amount %>
+            <p>prix par personne</p>
+             <%= expense.amount / @participants_expenses.count %>
+             <p>qui a payé</p>
+            <%= expense.participant.user.username %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal Create expenses -->
+<div class="modal fade" id="ModalExpensesCreate" tabindex="-1" aria-labelledby="ModalExpensesCreateLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalExpensesCreateLabel">Add an expense</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@participant, @new_expense] do |f| %>
+          <%= f.input :title %>
+          <%= f.input :amount %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
