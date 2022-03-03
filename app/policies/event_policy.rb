@@ -16,7 +16,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def create?
-    record.event_participants.exists? { |event_participant| event_participant.participant.user == user }
+    record.trip.participants.exists? { |participant| participant.user == user }
   end
 
   def update?
