@@ -47,8 +47,15 @@ class ExpensesController < ApplicationController
 
   def update
     @expense = Expense.find(params[:id])
-    @expense = Expense.update(expenses_params)
-    redirect_to expense_path
+    @participant = @expense.participant
+    authorize @expense
+    if @expense.save
+      @expense.update(expenses_params)
+      redirect_to trip_path(@participant.trip)
+    else
+      @trip = @participant.trip
+      render "trips/show"
+    end
   end
 
   def destroy
