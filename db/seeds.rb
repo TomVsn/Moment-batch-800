@@ -46,7 +46,9 @@ end
 
 3.times do
   start_date = Faker::Time.between_dates(from: '2022-03-11', to: '2022-09-30', period: :morning)
-  Trip.create(start_date: start_date, end_date: start_date + rand(1..10).days, title: Faker::Lorem.word.capitalize, description: Faker::Lorem.paragraph_by_chars, city: Faker::Address.city, user_id: User.ids.sample)
+  user_id = User.ids.sample
+  trip = Trip.create!(start_date: start_date, end_date: start_date + rand(1..10).days, title: Faker::Lorem.word.capitalize, description: Faker::Lorem.paragraph_by_chars, city: Faker::Address.city, user_id: user_id)
+  Participant.create!(user_id: user_id, trip: trip)
 end
 
 User.all.each do |user|
