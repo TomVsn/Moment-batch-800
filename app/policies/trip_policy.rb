@@ -2,28 +2,27 @@ class TripPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.where(user: user)
+      Participant.where(user: user).map(&:trip)
     end
   end
 
-  # def index?
-  #   record.user == user
-  # end
-
   def show?
-    # record.user == user
-    true
+    # n'importe quel participant
+    record.participants.exists? { |participant| participant.user == user }
   end
 
   def create?
+    # que le propriétaire
     record.user == user
   end
 
   def update?
+    # que le propriétaire
     record.user == user
   end
 
   def destroy?
+    # que le propriétaire
     record.user == user
   end
 end
