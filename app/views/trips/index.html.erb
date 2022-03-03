@@ -39,8 +39,10 @@
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">
             edit
           </button>
-          <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <i class="fas fa-trash-alt" style="font-size:30px; color:#d39487"></i>
+          <% unless trip.user != current_user %>
+            <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fas fa-trash-alt" style="font-size:30px; color:#d39487"></i>
+            <% end %>
           <% end %>
         </div>
       </div>
