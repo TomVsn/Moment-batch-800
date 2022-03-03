@@ -37,6 +37,7 @@ class TripsController < ApplicationController
                        .where(trips: { id: @participant.trip }, mutual: true)
     @participants_expenses = Participant.where(trip: @participant.trip)
     @total_per_participant = @sum_of_expenses / @participants_expenses.count
+
     authorize @trip
   end
 
