@@ -20,85 +20,53 @@
   <div class="tab-pane fade show active" id="nav-coming-trips" role="tabpanel" aria-labelledby="nav-coming-trips-tab">...</div>
   <div class="tab-pane fade" id="nav-previous-trips" role="tabpanel" aria-labelledby="nav-previous-trips-tab">...</div>
 </div>
-
   <div class="trip-card-grid mt-4">
-
-    <div class="trip-card">
-      <div class="trip-card-left">
-        <h4>Tom's birthday azd azd azd a</h4>
-        <p>Une semaine à la plage avec les copains au bord de la mer zad azda zd a</p>
+    <% @trips.each do |trip| %>
+      <div class="trip-card">
+        <div class="trip-card-left">
+          <h4> <%= trip.title %></h4>
+          <p class="trip-card-description"><%= trip.description%></p>
+        </div>
+        <div class="trip-card-right">
+          <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
+          <p class="dates">Du 18/03 au 20/03 </p>
+          <p class="location"><%= trip.city %></p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#participantCreate">
+              +
+          </button>
+        </div>
       </div>
-      <div class="trip-card-right">
-        <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
-        <p class="dates">Du 18/03 au 20/03 </p>
-        <p class="location">Ibiza azd azd azd</p>
-      </div>
-    </div>
-
-   <div class="trip-card">
-      <div class="trip-card-left">
-        <h4>Tom's birthday</h4>
-        <p>Une semaine à la plage avec les copains au bord de la mer</p>
-      </div>
-      <div class="trip-card-right">
-        <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
-        <p class="dates">Du 18/03 au 20/03 </p>
-        <p class="location">Ibiza</p>
-      </div>
-    </div>
-
-    <div class="trip-card">
-      <div class="trip-card-left">
-        <h4>Tom's birthday</h4>
-        <p>Une semaine à la plage avec les copains au bord de la mer</p>
-      </div>
-      <div class="trip-card-right">
-        <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
-        <p class="dates">Du 18/03 au 20/03 </p>
-        <p class="location">Ibiza</p>
-      </div>
-    </div>
-
-<div class="trip-card">
-      <div class="trip-card-left">
-        <h4>Tom's birthday</h4>
-        <p>Une semaine à la plage avec les copains au bord de la mer</p>
-      </div>
-      <div class="trip-card-right">
-        <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
-        <p class="dates">Du 18/03 au 20/03 </p>
-        <p class="location">Ibiza</p>
-      </div>
-    </div>
-
-   <div class="trip-card">
-      <div class="trip-card-left">
-        <h4>Tom's birthday</h4>
-        <p>Une semaine à la plage avec les copains au bord de la mer</p>
-      </div>
-      <div class="trip-card-right">
-        <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
-        <p class="dates">Du 18/03 au 20/03 </p>
-        <p class="location">Ibiza</p>
-      </div>
-    </div>
-
-    <div class="trip-card">
-      <div class="trip-card-left">
-        <h4>Tom's birthday</h4>
-        <p>Une semaine à la plage avec les copains au bord de la mer</p>
-      </div>
-      <div class="trip-card-right">
-        <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
-        <p class="dates">Du 18/03 au 20/03 </p>
-        <p class="location">Ibiza</p>
-      </div>
-    </div>
-
-   </div>
-
+        <!-- Modal add a participant-->
+        <div class="modal fade" id="participantCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Invite your friend</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <% @users.each do |user| %>
+                  <ul>
+                    <% unless user.participates?(trip) %>
+                      <li>
+                        <%= user.username %>
+                        <%= simple_form_for [trip, @participant] do |f|%> <!-- Ce code fonctionnera lorsqu'il sera intégré dans les cartes de la show des trips (il pourra identifer le trip)-->
+                          <%= f.input :user_id, as: :hidden, input_html: {value: user.id}%>
+                          <%= f.input :trip_id, as: :hidden, input_html: {value: trip.id} %>
+                          <%= f.submit%>
+                        <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Modal-->
+    <% end %>
+  </div>
 </div>
-
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#participantCreate">
-      +
-  </button>

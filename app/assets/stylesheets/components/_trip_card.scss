@@ -23,7 +23,9 @@ box-shadow: 2px 2px 3px gray;
 .trip-card-left {
   width: 61%;
   p {
+    height: 67%;
     padding: 0px 10px;
+    overflow: hidden;
   }
 
   h4 {
