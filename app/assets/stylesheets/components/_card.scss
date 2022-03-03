@@ -61,3 +61,57 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+.card-dashboard-description {
+  background-color: white;
+  height: 230px;
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 15px;
+  box-shadow: 0 0 1px rgba(0,0,0,0.4);
+}
+
+.card-dashboard-left {
+  background-color: white;
+  height: 150px;
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 15px;
+  box-shadow: 0 0 1px rgba(0,0,0,0.4);
+  width: 45%;
+  margin: 10px;
+}
+
+.card-activities {
+  background-color: white;
+  height: 320px;
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 15px;
+  box-shadow: 0 0 1px rgba(0,0,0,0.4);
+  margin: 10px;
+  overflow: scroll;
+    p {
+      color: rgba($color: #000000, $alpha: 0.4);
+    }
+}
+
+.card-photo-carousel {
+  background-color: white;
+  height: 260px;
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 15px;
+  box-shadow: 0 0 1px rgba(0,0,0,0.4);
+  margin: 10px;
+}
+
+.card-messages {
+  background-color: white;
+  height: 97%;
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 15px;
+  margin: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 20.31%);
+}
