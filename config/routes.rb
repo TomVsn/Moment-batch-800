@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :transportations, only: [:show, :edit, :update, :index]
   resources :expenses, only: [:index, :edit, :update, :show, :destroy]
   resources :events, only: [:index, :edit, :update, :show, :destroy] do
-    resources :event_participants, only: [:new, :create, :destroy]
+    resources :event_participants, only: [:new, :create]
   end
   resources :participants, only: [] do
     resources :transportations, only: [:new, :create]
@@ -23,4 +23,5 @@ Rails.application.routes.draw do
       resources :accomodation_votes, only: [:new, :create]
     end
   end
+  resources :event_participants, only: [:destroy]
 end

@@ -6,10 +6,15 @@
       +
     </button>
 
+
     <div class="card overflow-scroll border-rounded" style="max-width: 18rem; max-height: 18rem;">
         <ul class="list-group list-group-flush">
           <% @trip.events.each do |event| %>
             <li class="list-group-item">
+              <%= link_to event_path(event), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fas fa-times"></i>
+              <% end %>
+
               <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
               <br>
               <%= event.start_date.hour %>:<%= event.start_date.min %>
@@ -18,10 +23,17 @@
               <%= event.participant.user.username %>
               <ul>
                 <% event.event_participants.each do |event_participant|%>
-                    <li><%= event_participant.participant.user.username %></li>
+                    <li>
+                      <%= event_participant.participant.user.username %>
+                       <%= link_to event_participant_path(event_participant), method: :delete, data: { confirm: "Are you sure?" } do %>
+                          <i class="fas fa-times"></i>
+                        <% end %>
+                    </li>
                 <% end %>
               </ul>
-              <%= link_to "edit", edit_event_path(event)  %>
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editEventModal-<%= event.id %>">
+                edit
+               </button>
               <% unless @participant.participates?(event) %>
                 <%= simple_form_for [event, @event_participant] do |f|%>
                   <%= f.submit %>
@@ -36,12 +48,12 @@
 
 
 
-<!-- Modal -->
+<!-- Modal create an event -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">New Event</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -59,3 +71,29 @@
     </div>
   </div>
 </div>
+
+<% @trip.events.each do |event| %>
+<!-- Modal edit an event -->
+<div class="modal fade" id="editEventModal-<%= event.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editEventModalLabel">Edit</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <%= simple_form_for(event) do |f| %>
+            <%= f.input :description %>
+            <%= f.input :start_date %>
+            <%= f.input :end_date %>
+            <%= f.submit %>
+          <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
