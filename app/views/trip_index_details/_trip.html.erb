@@ -3,10 +3,8 @@
       +
     </button>
 
-  <!-- Button trigger modal new -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal-edit-trip" data-bs-target="#staticBackdrop">
-      edit
-    </button>
+<!-- Button trigger modal new -->
+
 
 <!-- Modal new-->
 
@@ -29,35 +27,67 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Modal edit-->
-
-<%# <div class="modal-edit-trip fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Edit a trip</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for [@user, @trip], url: trip_path, method: :patch do |f| %>
-          <%# <%= f.input :start_date %>
-          <%# <%= f.input :end_date %> %>
-          <%# <%= f.input :title %> %>
-          <%# <%= f.input :description %> %>
-          <%# <%= f.input :city %> %>
-          <%# <%= f.submit %> %>
-        <%# <% end %> %> %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+<% @trips.each do |trip| %>
+  <div class="modal fade" id="editTripModal-<%= trip.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editEventModalLabel">Edit</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for(trip) do |f| %>
+              <%= f.input :description %>
+              <%= f.input :start_date %>
+              <%= f.input :end_date %>
+              <%= f.submit %>
+            <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
       </div>
     </div>
   </div>
-</div> %>
+<%end %>
+
+<!-- Modal add a participant-->
+<% @trips.each do |trip|  %>
+  <div class="modal fade" id="participantCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Invite your friend</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <% @users.each do |user| %>
+            <ul>
+              <% unless user.participates?(trip) %>
+                <li>
+                  <%= user.username %>
+                  <%= simple_form_for [trip, @participant] do |f|%> <!-- Ce code fonctionnera lorsqu'il sera intégré dans les cartes de la show des trips (il pourra identifer le trip)-->
+                    <%= f.input :user_id, as: :hidden, input_html: {value: user.id}%>
+                    <%= f.input :trip_id, as: :hidden, input_html: {value: trip.id} %>
+                    <%= f.submit%>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<!-- End of Modal-->

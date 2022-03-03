@@ -13,9 +13,16 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    # Info to display all transportations related to this trip
     @transportations = @trip.transportations
+    # Info to display all messages related to this trip
     @messages = @trip.messages
+    # Info to display all events related to this trip
     @events = @trip.events
+    # Info for creating new participant
+    @users = User.all
+    @new_participant = Participant.new
+
     # @event_id = Event.find(params[:id])
     @event_participant = EventParticipant.new
     @event = Event.new
@@ -23,6 +30,15 @@ class TripsController < ApplicationController
     @participant = @participants.find_by(user: current_user)
     @accomodations = @trip.accomodations
     @new_accomodation = Accomodation.new
+    @new_expense = Expense.new
+    @sum_of_expenses = Expense.includes(participant: :trip)
+                       .references(:trip)
+                       .where(trips: { id: @participant.trip }, mutual: true).sum(:amount)
+    @details_expenses = Expense.includes(participant: :trip)
+                       .references(:trip)
+                       .where(trips: { id: @participant.trip }, mutual: true)
+    @participants_expenses = Participant.where(trip: @participant.trip)
+    @total_per_participant = @sum_of_expenses / @participants_expenses.count
     authorize @trip
   end
 
@@ -66,6 +82,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:start_date, :end_date, :title, :description, :city, :participants, :transportations, :messages, :events, :user, :user_id)
+    params.require(:trip).permit(:start_date, :end_date, :title, :description, :city, :participants, :transportations, :messages, :events, :user, :user_id, :id)
   end
 end

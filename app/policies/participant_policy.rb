@@ -1,4 +1,4 @@
-class ExpensePolicy < ApplicationPolicy
+class ParticipantPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -11,14 +11,14 @@ class ExpensePolicy < ApplicationPolicy
   end
 
   def create?
-    record.participant.user = user
+    true
   end
 
   def update?
-    record.participant.user = user
+    true
   end
 
   def destroy?
-    record.participant.user = user
+    true
   end
 end
