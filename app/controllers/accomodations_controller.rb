@@ -1,26 +1,29 @@
 class AccomodationsController < ApplicationController
 
   def index
-    @accomodations = Accomodation.all
+    @trip = Trip.find(params[:trip_id])
+    @accomodations = policy_scope(@trip.accomodations)
   end
 
   def show
     @accomodation = Accomodation.find(params[:id])
     @duration = (@accomodation.trip.end_date - @accomodation.trip.start_date)/86400
-    @trip =  @accomodation.trip
+    @trip = @accomodation.trip
   end
 
   def new
-    @accomodation = Accomodation.new
     @trip = Trip.find(params[:trip_id])
+    @accomodation = Accomodation.new
+    authorize @accomodation
   end
 
   def create
-    @accomodation = Accomodation.new(accomodations_params)
-    @trip = Trup.find(params[:trip_id])
-    @accomodation.trip = @trip
-    if @accomodation.save
-      redirect_to accomodations_path
+    @trip = Trip.find(params[:trip_id])
+    @new_accomodation = Accomodation.new(accomodations_params)
+    authorize @new_accomodation
+    @new_accomodation.trip = @trip
+    if @new_accomodation.save!
+      redirect_to trip_accomodations_path
     else
       render :new
     end
@@ -38,13 +41,16 @@ class AccomodationsController < ApplicationController
 
   def destroy
     @accomodation = Accomodation.find(params[:id])
+    authorize @accomodation
+    @trip = @accomodation.trip
+    @accomodation.accomodation_votes.destroy_all
     @accomodation.destroy
-    redirect_to accomodations_path
+    redirect_to trip_accomodations_path
   end
 
   private
 
   def accomodations_params
-    params.require(:accomodation).permit(:confirmed, :address, :url, :picked, :trip_id)
+    params.require(:accomodation).permit(:confirmed, :address, :url, :picked, :trip_id, :id)
   end
 end

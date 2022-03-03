@@ -2,13 +2,9 @@ class AccomodationPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.where(user: user)
+      scope.all
     end
   end
-
-  # def index?
-  #   record.user == user
-  # end
 
   def show?
     # record.user == user
@@ -16,7 +12,7 @@ class AccomodationPolicy < ApplicationPolicy
   end
 
   def create?
-    record.trip.participants.user == user
+    true
   end
 
   def update?
@@ -24,7 +20,7 @@ class AccomodationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.trip.participants.user == user
+    true
   end
 end
 

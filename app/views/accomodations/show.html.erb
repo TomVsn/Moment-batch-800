@@ -1,21 +1,23 @@
-<%= @accomodation.title %><br>
-<%= @accomodation.description %><br>
-<%= @accomodation.url %><br>
-<%= @accomodation.confirmed %><br>
-<%= @accomodation.price %>€/price
-<%= (@accomodation.trip.end_date - @accomodation.trip.start_date)/86400 %>/night<br>
-Total price : <%= @accomodation.price * @duration %>€
+<div class="container">
+  <%= @accomodation.title %><br>
+  <%= @accomodation.description %><br>
+  <%= @accomodation.url %><br>
+  <%= @accomodation.confirmed %><br>
+  <%= @accomodation.price %>€/price
+  <%= (@accomodation.trip.end_date - @accomodation.trip.start_date)/86400 %>/night<br>
+  Total price : <%= @accomodation.price * @duration %>€
 
-<%= link_to "Back to all your suggestion", trip_accomodations_path(@trip)  %>
-<%= link_to "find out more", @accomodation.url, target: :_blank %>
+  <%= link_to "Back to all your suggestion", trip_accomodations_path(@trip)  %>
+  <%= link_to "find out more", @accomodation.url, target: :_blank %>
 
-<div data-controller="accomodation-booked">
-  <%= simple_form_for @accomodation do |t| %>
-    <%= t.input :status, as: :hidden, input_html: {value: true}%>
-    <div data-accomodation-booked-target="checkbox"><%= t.check_box :confirmed, type: 'submit', data_action:"click->accomodation-booked#updateBooked" %></div>
-    <%= label_tag(:confirmed, "Booked?") %>
-  <% end %>
+  <div data-controller="accomodation-booked">
+    <%= simple_form_for @accomodation do |t| %>
+      <%= t.input :status, as: :hidden, input_html: {value: true}%>
+      <div data-accomodation-booked-target="checkbox"><%= t.check_box :confirmed, type: 'submit', data_action:"click->accomodation-booked#updateBooked" %></div>
+      <%= label_tag(:confirmed, "Booked?") %>
+    <% end %>
+  </div>
+
+
+  Booked? <%= @accomodation.confirmed %>
 </div>
-
-
-Booked? <%= @accomodation.confirmed %>

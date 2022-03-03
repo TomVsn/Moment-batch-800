@@ -28,6 +28,8 @@ class TripsController < ApplicationController
     @event = Event.new
     @participants = @trip.participants
     @participant = @participants.find_by(user: current_user)
+    @accomodations = @trip.accomodations
+    @new_accomodation = Accomodation.new
     @new_expense = Expense.new
     @sum_of_expenses = Expense.includes(participant: :trip)
                        .references(:trip)
