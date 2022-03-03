@@ -26,11 +26,8 @@ class Accomodation < ApplicationRecord
     self.img = img_element[0]["src"]
     price_element = doc.search(".rental-price__amount")
     pr = price_element[0].text.strip
-    pr = pr.split(',')
-    pr[1] = pr[1].split(' ')
-    pr[1] = pr[1][0]
-    pr = pr.join('.')
-    self.price = pr.to_f
+    pr = pr.gsub(/[ €]/, '').gsub(',', '.').to_f #ce n'est pas un espace c'est normal!!
+    self.price = pr
     # self.price = price_element[0].text.strip
     address_element = doc.search(".Description--location")
     self.address = address_element[0].text.strip

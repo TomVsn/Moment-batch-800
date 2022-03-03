@@ -68,19 +68,19 @@ Participant.all.each do |participant|
   transportation.save
 end
 
-# Trip.all.each do |trip|
-#   accomodation = Accomodation.new
-#   # accomodation.title = Faker::Lorem.sentence(word_count: 3, supplemental: true)
-#   # accomodation.description = Faker::Lorem.paragraph(sentence_count: 5, supplemental: true)
-#   # accomodation.confirmed = false
-#   # accomodation.url = "https://www.airbnb.fr/rooms/38378203?federated_search_id=411e7581-c232-44ee-b60e-46f2ae587aa3&source_impression_id=p3_1646215378_deB%2FC7FDvpGB8Bh%2F"
-#   # accomodation.picked = false
-#   # accomodation.trip = trip
-#   # accomodation.price = rand(50..100)
-#   # accomodation.img = nil
-#   accomodation.url = "https://www.abritel.fr/location-vacances/p10743622a?adultsCount=2&arrival=2022-03-03&departure=2022-03-13&uni_id=5773849"
-#   accomodation.save
-# end
+Trip.all.each do |trip|
+  accomodation = Accomodation.new
+  # accomodation.title = Faker::Lorem.sentence(word_count: 3, supplemental: true)
+  # accomodation.description = Faker::Lorem.paragraph(sentence_count: 5, supplemental: true)
+  # accomodation.confirmed = false
+  # accomodation.url = "https://www.airbnb.fr/rooms/38378203?federated_search_id=411e7581-c232-44ee-b60e-46f2ae587aa3&source_impression_id=p3_1646215378_deB%2FC7FDvpGB8Bh%2F"
+  # accomodation.picked = false
+  accomodation.trip = trip
+  # accomodation.price = rand(50..100)
+  # accomodation.img = nil
+  accomodation.url = "https://www.abritel.fr/location-vacances/p10743622a?adultsCount=2&arrival=2022-03-03&departure=2022-03-13&uni_id=5773849"
+  accomodation.save!
+end
 
 
 Accomodation.all.each do |accomodation|
