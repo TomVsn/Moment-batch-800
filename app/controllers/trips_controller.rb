@@ -13,9 +13,16 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    # Info to display all transportations related to this trip
     @transportations = @trip.transportations
+    # Info to display all messages related to this trip
     @messages = @trip.messages
+    # Info to display all events related to this trip
     @events = @trip.events
+    # Info for creating new participant
+    @users = User.all
+    @new_participant = Participant.new
+
     # @event_id = Event.find(params[:id])
     @event_participant = EventParticipant.new
     @event = Event.new
