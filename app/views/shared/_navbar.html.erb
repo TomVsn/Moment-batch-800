@@ -1,6 +1,12 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <%= link_to "Momento", root_path, class: "btn btn-light" %>
-    <%= link_to "Sign in", new_user_session_path, class: "btn btn-light" %>
+    <div class=“dropdown-menu dropdown-menu-end dropdown-menu-dark” aria-labelledby=“navbarDropdown”>
+      <% unless user_signed_in? %>
+        <%= link_to "Sign in", new_user_session_path, class:"dropdown-item"%>
+      <% else %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+      <% end%>
+    </div>
   </div>
 </nav>

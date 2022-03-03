@@ -1,5 +1,6 @@
 class Transportation < ApplicationRecord
   belongs_to :participant
+  has_one :trip, through: :participant
 
   CATEGORIES = ['bus', 'train', 'plane', 'car', 'various', 'other']
 

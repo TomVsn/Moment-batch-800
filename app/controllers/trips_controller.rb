@@ -3,9 +3,8 @@ class TripsController < ApplicationController
   # end
 
   def index
-    @users = User.all
     @participant = Participant.new
-    @trips = policy_scope(Trip).order(created_at: :desc)
+    @trips = policy_scope(Trip)
   end
 
   def show

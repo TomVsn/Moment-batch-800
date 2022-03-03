@@ -8,28 +8,34 @@
 
 require 'faker'
 
-# Expense.destroy_all
-# EventParticipant.destroy_all
-# Event.destroy_all
-# AccomodationVote.destroy_all
-# Accomodation.destroy_all
-# Transportation.destroy_all
-# Trip.destroy_all
-# Participant.destroy_all
-# User.destroy_all
+Expense.destroy_all
+p "expense delete"
+EventParticipant.destroy_all
+p "EP delete"
+Event.destroy_all
+p "Event delete"
+AccomodationVote.destroy_all
+p 'AV delete'
+Accomodation.destroy_all
+p "acc delete"
+Transportation.destroy_all
+p "tr"
+Participant.destroy_all
+p "par"
+Trip.destroy_all
+p "trip"
+User.destroy_all
+p "user"
 
 loulou = User.create(email: "loulou@gmail.com", password: "123456", first_name: "Louise", last_name: "Ouldhaddi", username: "loulou")
 pcoppy = User.create(email: "pcoppy@gmail.com", password: "123456", first_name: "Pierre", last_name: "Coppy", username: "pcoppy")
 tomtom = User.create(email: "tomtom@gmail.com", password: "123456", first_name: "Tom", last_name: "Voisin", username: "tomtom")
 mymy = User.create(email: "mymy@gmail.com", password: "123456", first_name: "Myriam", last_name: "Delbreil", username: "mymy")
 
-
-
 first_name = ""
 last_name = ""
 username = ""
 CATEGORIES = ['bus', 'train', 'plane', 'car', 'various', 'other']
-
 
 10.times do
   first_name = Faker::Name.first_name
@@ -43,9 +49,9 @@ end
   Trip.create(start_date: start_date, end_date: start_date + rand(1..10).days, title: Faker::Lorem.word.capitalize, description: Faker::Lorem.paragraph_by_chars, city: Faker::Address.city, user_id: User.ids.sample)
 end
 
-10.times do
+User.all.each do |user|
   participant = Participant.new
-  participant.user = User.all.sample
+  participant.user = user
   participant.trip = Trip.all.sample
   participant.save
 end
@@ -62,19 +68,19 @@ Participant.all.each do |participant|
   transportation.save
 end
 
-# Trip.all.each do |trip|
-#   accomodation = Accomodation.new
-#   # accomodation.title = Faker::Lorem.sentence(word_count: 3, supplemental: true)
-#   # accomodation.description = Faker::Lorem.paragraph(sentence_count: 5, supplemental: true)
-#   # accomodation.confirmed = false
-#   # accomodation.url = "https://www.airbnb.fr/rooms/38378203?federated_search_id=411e7581-c232-44ee-b60e-46f2ae587aa3&source_impression_id=p3_1646215378_deB%2FC7FDvpGB8Bh%2F"
-#   # accomodation.picked = false
-#   # accomodation.trip = trip
-#   # accomodation.price = rand(50..100)
-#   # accomodation.img = nil
-#   accomodation.url = "https://www.abritel.fr/location-vacances/p10743622a?adultsCount=2&arrival=2022-03-03&departure=2022-03-13&uni_id=5773849"
-#   accomodation.save
-# end
+Trip.all.each do |trip|
+  accomodation = Accomodation.new
+  # accomodation.title = Faker::Lorem.sentence(word_count: 3, supplemental: true)
+  # accomodation.description = Faker::Lorem.paragraph(sentence_count: 5, supplemental: true)
+  # accomodation.confirmed = false
+  # accomodation.url = "https://www.airbnb.fr/rooms/38378203?federated_search_id=411e7581-c232-44ee-b60e-46f2ae587aa3&source_impression_id=p3_1646215378_deB%2FC7FDvpGB8Bh%2F"
+  # accomodation.picked = false
+  accomodation.trip = trip
+  # accomodation.price = rand(50..100)
+  # accomodation.img = nil
+  accomodation.url = "https://www.abritel.fr/location-vacances/p10743622a?adultsCount=2&arrival=2022-03-03&departure=2022-03-13&uni_id=5773849"
+  accomodation.save!
+end
 
 
 Accomodation.all.each do |accomodation|
