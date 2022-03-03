@@ -16,17 +16,14 @@ class EventPolicy < ApplicationPolicy
   end
 
   def create?
-    record.participant.user == user
+    record.event_participants.exists? { |event_participant| event_participant.participant.user == user }
   end
 
   def update?
-    # record.user == user
-    record.participant.user == user
+    record.event_participants.exists? { |event_participant| event_participant.participant.user == user }
   end
 
   def destroy?
-    # record.user == user
-    true
-    # record.participant.user == user
+    record.event_participants.exists? { |event_participant| event_participant.participant.user == user }
   end
 end
