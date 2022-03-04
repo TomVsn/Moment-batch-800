@@ -1,53 +1,54 @@
-<div class="container">
-  <div class="row justify-content-between">
-    <div class="col col-6 m-1">
-      <div class="card-dashboard-description">
-        <div class="d-flex justify-content-between" style="width: 50%">
-          <p><%= "#{@trip.start_date.day}/#{@trip.start_date.month}/#{@trip.start_date.year}"%></p>
-          <p><%= "#{@trip.end_date.day}/#{@trip.end_date.month}/#{@trip.end_date.year}"%></p>
+<div style="background-color:#F2FAEF">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col col-6 m-1">
+        <div class="card-dashboard-description">
+          <div class="d-flex justify-content-between" style="width: 50%">
+            <p><%= "#{@trip.start_date.day}/#{@trip.start_date.month}/#{@trip.start_date.year}"%></p>
+            <p><%= "#{@trip.end_date.day}/#{@trip.end_date.month}/#{@trip.end_date.year}"%></p>
+          </div>
+          <div class="d-flex">
+            <h1><%= @trip.title %></h1>
+          </div>
+          <%= @trip.description %>
         </div>
-        <div class="d-flex">
-          <h1><%= @trip.title %></h1>
-        </div>
-        <%= @trip.description %>
-      </div>
-      <div class="row row-left" style="margin-top:30px">
-        <div class="col col-5 card-dashboard-left">
-          <p>Accomodation</p>
-          <%= render 'trip_details/accomodations' %>
-        </div>
-        <div class="col col-5 card-dashboard-left">
-          <p>People <%= render 'trip_details/participant' %></p>
+        <div class="row row-left" style="margin-top:30px">
+          <div class="col col-5 card-dashboard-left">
+            <p>Accomodation</p>
+            <%= render 'trip_details/accomodations' %>
+          </div>
+          <div class="col col-5 card-dashboard-left">
+            <p>People <%= render 'trip_details/participant' %></p>
 
+          </div>
         </div>
-      </div>
-      <div class="row row-left">
-        <div class="col col-5 card-dashboard-left">
-          <p>Transports</p>
-          <%= render 'trip_details/transportations' %>
-        </div>
-        <div class="col col-5 card-dashboard-left">
-          <div class="card-expenses">
-            <p>Expenses</p>
-            <%= render 'trip_details/expenses' %>
+        <div class="row row-left">
+          <div class="col col-5 card-dashboard-left">
+            <p>Transports</p>
+            <%= render 'trip_details/transportations' %>
+          </div>
+          <div class="col col-5 card-dashboard-left">
+            <div class="card-expenses">
+              <p>Expenses</p>
+              <%= render 'trip_details/expenses' %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col m-1">
-      <div class="card-activities">
-        <p style="margin-left:15px">Activities</p>
-        <%= render 'trip_details/events' %>
+      <div class="col m-1">
+        <div class="card-activities">
+          <p style="margin-left:15px">Activities</p>
+          <%= render 'trip_details/events' %>
+        </div>
+        <div class="card-photo-carousel">
+        </div>
       </div>
-      <div class="card-photo-carousel">
+      <div class="col m-1">
+        <div class="card-messages"></div>
       </div>
-    </div>
-    <div class="col m-1">
-      <div class="card-messages"></div>
     </div>
   </div>
 </div>
 
 
 <%# <%= render 'trip_details/events' %>
-
