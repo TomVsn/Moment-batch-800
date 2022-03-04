@@ -1,8 +1,25 @@
+
+<%# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#TransportModal">
+  My transportation
+</button>
+
+
+<div class="modal fade" id="TransportModal" tabindex="-1" aria-labelledby="TransportModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TransportModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div> %>
+
+
 <!-- Aller du trip of the participant -->
-<div class="container">
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted">Transports</h6>
       <h6>Your trip to <%= @transportations.first.destination %> is in
       <% remaining_days = ((@participant.transportations.first.departure_date - Time.now)/86400).to_i %>
       <%= remaining_days %> days,
@@ -13,9 +30,6 @@
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
         See more
       </button>
-    </div>
-  </div>
-</div>
 
 <!-- Modal voir l'aller retour-->
 <div class="modal fade" id="ShowTransportationModal" tabindex="-1" aria-labelledby="ShowTransportationModalLabel" aria-hidden="true">

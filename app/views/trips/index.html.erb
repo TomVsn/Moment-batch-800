@@ -6,45 +6,49 @@
       <a class="btn btn-banner" href="#">Let's travel</a>
     </div>
   </div>
-<br>
-<br>
+  <br>
+  <br>
 
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
-    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
-    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-coming-trips" role="tabpanel" aria-labelledby="nav-coming-trips-tab">...</div>
-  <div class="tab-pane fade" id="nav-previous-trips" role="tabpanel" aria-labelledby="nav-previous-trips-tab">...</div>
-</div>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Futur Trips</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Past Trips</button>
+    </div>
+  </nav>
+
+
   <div class="trip-card-grid mt-4">
-    <% @trips.each do |trip| %>
-      <div class="trip-card">
-        <div class="trip-card-left">
-          <h4> <%= trip.title %></h4>
-          <i class="fas fa-user-plus" data-bs-toggle="modal" data-bs-target="#participantCreate"></i>
-          <p class="trip-card-description"><%= trip.description%></p>
-        </div>
-        <div class="trip-card-right">
-          <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
-          <p class="dates">Du <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> au <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%> </p>
-          <p class="location">
-            <% if trip.city != nil %>
-              <%= trip.city %>
-            <% end %>
-          </p>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">
-            edit
-          </button>
-          <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <i class="fas fa-trash-alt" style="font-size:30px; color:#d39487"></i>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+
+      <% @trips.each do |trip| %>
+
+          <div class="trip-card">
+            <div class="trip-card-left">
+              <%= link_to trip_path(trip) do %>
+                <h4> <%= trip.title %></h4>
+              <% end %>
+              <i class="fas fa-user-plus" data-bs-toggle="modal" data-bs-target="#participantCreate"></i>
+              <p class="trip-card-description"><%= trip.description %></p>
+            </div>
+            <div class="trip-card-right">
+              <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
+              <p class="dates">Du <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> au <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%> </p>
+              <p class="location">
+                <% if trip.city != nil %>
+                  <%= trip.city %>
+                <% end %>
+              </p>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">
+                edit
+              </button>
+              <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fas fa-trash-alt" style="font-size:30px; color:#d39487"></i>
+              <% end %>
+            </div>
+          </div>
+
+      <% end %>
+
+
   </div>
 </div>
 

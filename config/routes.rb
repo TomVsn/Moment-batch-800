@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :trips do
     resources :accomodations, only: [:index, :new, :create, :destroy]
-    resources :participants, only: [:new, :create, :destroy]
+    resources :participants, only: [:new, :create]
     resources :transportations, only: [:index]
   end
   resources :accomodation_votes, only: [:destroy]
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :edit, :update, :show, :destroy] do
     resources :event_participants, only: [:new, :create]
   end
-  resources :participants, only: [] do
+  resources :participants, only: [:destroy] do
     resources :transportations, only: [:new, :create]
     resources :expenses, only: [:index, :new, :create]
     resources :events, only: [:new, :create]
