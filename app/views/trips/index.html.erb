@@ -1,15 +1,19 @@
 <br>
 <div class="container">
-  <div class="small-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg);">
-    <div class="container text-center">
-      <h1> It's time <strong>to plan</strong> your <strong>get away</strong>!</h1>
-      <button type="button" class="btn btn-banner" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Create your new trip
-      </button>
+  <div class="small-banner d-flex align-items-center justify-content-center mb-5 mt-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn.pixabay.com/photo/2020/02/16/07/55/beach-4852830_1280.jpg);">
+    <div class="text-center ">
+    <div class="column">
+      <div class="row d-flex justify-content-center">
+        <h1> It's time <strong>to plan</strong> your <strong>get away</strong>!</h1>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <button type="button" class="btn btn-banner" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          Create your new trip
+        </button>
+      </div>
+    </div>
     </div>
   </div>
-  <br>
-  <br>
 
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -20,21 +24,25 @@
 
 
   <div class="trip-card-grid mt-4">
-
       <% @trips.each do |trip| %>
-
           <div class="trip-card">
             <div class="trip-card-left">
-              <%= link_to trip_path(trip) do %>
-                <h4> <%= trip.title %></h4>
-              <% end %>
-              <i class="fas fa-user-plus" data-bs-toggle="modal" data-bs-target="#participantCreate"></i>
-              <p class="trip-card-description"><%= trip.description %></p>
+              <div class="col d-flex justify-content-between">
+                <div class="row">
+                  <%= link_to trip_path(trip) do %>
+                    <h4> <%= trip.title %></h4>
+                  <% end %>
+                </div>
+                <div class="row">
+                  <i class="fas fa-user-plus mt-3 mx-2" data-bs-toggle="modal" data-bs-target="#participantCreate"></i>
+                </div>
+              </div>
+                <p class="trip-card-description"><%= trip.description %></p>
             </div>
             <div class="trip-card-right">
-              <%=image_tag "https://thumbs.dreamstime.com/b/vue-a%C3%A9rienne-d-une-fille-sur-la-plage-et-eau-turquoise-du-haut-depuis-le-drone-%C3%A0-mer-bleue-de-relaxation-voyage-d%C3%A9tente-image-160354216.jpg" %>
+              <%=image_tag "https://cdn.pixabay.com/photo/2020/01/16/10/13/mountain-and-sea-4770131_1280.jpg" %>
               <p class="dates">Du <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> au <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%> </p>
-              <p class="location">
+              <p class="location mt-2">
                 <% if trip.city != nil %>
                   <%= trip.city %>
                 <% end %>
