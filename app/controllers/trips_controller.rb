@@ -41,7 +41,7 @@ class TripsController < ApplicationController
     @total_per_participant = @sum_of_expenses / @participants_expenses.count
     # first_step = @trip.participants.map { |participant| participant.transportations}
     # @transportations = first_step.flatten
-
+    @new_transportation = Transportation.new
     authorize @trip
   end
 
