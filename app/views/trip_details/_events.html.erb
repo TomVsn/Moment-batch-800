@@ -7,8 +7,9 @@
           <div class="event-icon">
             <%= link_to event_path(event), method: :delete, data: { confirm: "Are you sure?" } do %>
               <i class="fas fa-times delete-event"></i>
-              <i class="fas fa-edit edit-event" data-bs-toggle="modal" data-bs-target="#editEventModal-<%= event.id %>"></i>
             <% end %>
+            <i class="fas fa-edit edit-event" data-bs-toggle="modal" data-bs-target="#editEventModal-<%= event.id %>"></i>
+
           </div>
         </div>
         <div class="col col-8">
@@ -82,10 +83,6 @@
             <%= f.input :end_date %>
             <%= f.submit %>
           <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
       </div>
     </div>
   </div>

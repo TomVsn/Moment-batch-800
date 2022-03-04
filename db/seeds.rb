@@ -8,6 +8,8 @@
 
 require 'faker'
 
+CITIES = ["Rome", "Pekin", "Sao Paulo", "Venise", "Berlin", "London", "Madrid", "Séville", "Rio", "Milan", "Marseille", "Stockholm", "Lyon", "Lille"]
+
 Expense.destroy_all
 p "expense delete"
 EventParticipant.destroy_all
@@ -58,16 +60,29 @@ User.all.each do |user|
   participant.save
 end
 
+i = 0
 Participant.all.each do |participant|
+  # créer l'aller
   transportation = Transportation.new
   transportation.participant = participant
   transportation.price = rand(1..100)
   transportation.destination = participant.trip.city
-  transportation.origin = Faker::Address.city
+  transportation.origin = CITIES[i]
   transportation.mean = CATEGORIES.sample
   transportation.departure_date = participant.trip.start_date
   transportation.arrival_date = participant.trip.start_date + 1
   transportation.save
+  # créer le retour
+  transportation = Transportation.new
+  transportation.participant = participant
+  transportation.price = rand(1..100)
+  transportation.destination = CITIES[i]
+  transportation.origin = participant.trip.city
+  transportation.mean = CATEGORIES.sample
+  transportation.departure_date = participant.trip.end_date
+  transportation.arrival_date = participant.trip.end_date + 1
+  transportation.save
+  i += 1
 end
 
 Trip.all.each do |trip|
