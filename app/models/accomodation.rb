@@ -17,6 +17,7 @@ class Accomodation < ApplicationRecord
 
   def scrap_appartment
     browser = Watir::Browser.new :chrome, headless: true
+    # chrome_options.add_argument('--disable-dev-shm-usage')
     browser.goto self.url
     sleep 5
     doc = Nokogiri::HTML(browser.html)
