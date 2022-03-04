@@ -25,25 +25,38 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        <h2><%= @total_per_participant %></h2>
-          <% @details_expenses.each do |expense| %>
-              <p>titre</p>
-              <%= expense.title %>
-              <p>prix</p>
-              <%= expense.amount %>
-              <p>prix par personne</p>
-              <%= expense.amount / @participants_expenses.count %>
-              <p>qui a payé</p>
-              <%= expense.participant.user.username %>
-              <!-- Button trigger edit expense -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalExpensesEdit-<%= expense.id %>">
-                  edit expense
-                </button>
-              <!-- button delete expense -->
-              <%= link_to expense_path(expense), method: :delete, data: { confirm: "Are you sure?" } do %>
-                <i class="fas fa-trash-alt" style="font-size:30px; color:#d39487"></i>
+          <h2 class="title mb-3"><%= @total_per_participant %> / participant</h2>
+
+          <div class="card">
+            <ul class="list-group list-group-flush">
+              <% @details_expenses.each do |expense| %>
+                <li class="list-group-item py-4">
+                  <div class="container">
+                    <div class="d-flex justify-content-between">
+                      <h6><%= expense.title %></h6>
+                      <h6 class="ms-5"><%= expense.amount %>€</h6>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p><%= expense.participant.user.username %> paid</p>
+                      <p><%= expense.amount / @participants_expenses.count %> / participant</p>
+                    </div>
+
+                    <div>
+                      <!-- Button trigger edit expense -->
+                        <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#ModalExpensesEdit-<%= expense.id %>">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                      <!-- button delete expense -->
+                      <%= link_to expense_path(expense), method: :delete, data: { confirm: "Are you sure?" } do %>
+                        <i class="fas fa-times"></i>
+                      <% end %>
+                    </div>
+
+                  </div>
+                </li>
               <% end %>
-          <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
