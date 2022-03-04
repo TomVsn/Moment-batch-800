@@ -17,13 +17,12 @@
 
   <nav class="d-inline-flex w-100">
     <div class="nav nav-tabs w-100" id="nav-tab" role="tablist">
-      <button class="nav-link active w-50" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Coming Trips</button>
-      <button class="nav-link w-50" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Past Trips</button>
+      <button class="nav-link active w-50" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" style="background-color:#FCEFD6">Your coming trips</button>
+      <button class="nav-link w-50" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Your past trips</button>
     </div>
   </nav>
 
-
-  <div class="trip-card-grid mt-4">
+  <div class="trip-card-grid pt-4" style="background-color:#FCEFD6">
       <% @trips.each do |trip| %>
           <div class="trip-card">
             <div class="trip-card-left">
@@ -48,7 +47,9 @@
             </div>
             <div class="trip-card-right d-flex align-items-end justify-content-end">
               <%=image_tag "https://cdn.pixabay.com/photo/2020/01/16/10/13/mountain-and-sea-4770131_1280.jpg" %>
-              <p class="dates">Du <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> au <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%> </p>
+              <p class="dates" style="text-align: right;">
+              From <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%><br>
+              To: <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%> </p>
               <p class="location mt-2">
                 <% if trip.city != nil %>
                   <%= trip.city %>
