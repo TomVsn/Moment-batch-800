@@ -13,34 +13,63 @@
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
         See more
       </button>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
+        Add a new journey
+      </button>
     </div>
   </div>
 </div>
 
 <!-- Modal voir l'aller retour-->
-<div class="modal fade" id="ShowTransportationModal" tabindex="-1" aria-labelledby="ShowTransportationModalLabel" aria-hidden="true">
+
+  <div class="modal fade" id="ShowTransportationModal" tabindex="-1" aria-labelledby="ShowTransportationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ShowTransportationModalLabel">Details of your journeys</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <% @participant.transportations.each_with_index do |transportation, index|  %>
+        <div class="modal-body">
+          Etape <%=  index + 1 %> : <br>
+          departure : <%= transportation.departure_date.strftime("%A") %>, <%= transportation.departure_date.month %>, <%= transportation.departure_date.day %>, <%= transportation.departure_date.year %><br>
+          From : <%= transportation.origin %>
+          To: <%= transportation.destination %><br>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditTransportationModal">
+          Edit
+        </button>
+          <%# <%= je suis pas sure pour le retour, à valider sur un vrai truc qu'on aura rentré %>
+        </div>
+        <% end %>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal add a journey-->
+<div class="modal fade" id="AddTransportationModal" tabindex="-1" aria-labelledby="AddTransportationModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="ShowTransportationModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="AddTransportationModalLabel">Edit title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Aller : <br>
-        departure : <%= @transportations.first.departure_date.strftime("%A") %>, <%= @transportations.first.departure_date.month %>, <%= @transportations.first.departure_date.day %>, <%= @transportations.first.departure_date.year %><br>
-        From : <%= @transportations.first.origin %>
-        To: <%= @transportations.first.destination %><br>
-        Retour: <br>
-        departure : <%= @transportations[1].departure_date.strftime("%A") %>, <%= @transportations[1].departure_date.month %>, <%= @transportations[1].departure_date.day %>, <%= @transportations[1].departure_date.year %><br>
-        From : <%= @transportations[1].origin %>
-        To: <%= @transportations[1].destination %>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditTransportationModal">
-        Edit
-      </button>
-        <%# <%= je suis pas sure pour le retour, à valider sur un vrai truc qu'on aura rentré %>
+        <%= simple_form_for [@participant, @new_transportation] do |f|%>
+          <%= f.input :price %>
+          <%= f.input :origin %>
+          <%= f.input :destination %>
+          <%= f.input :mean, as: :select, collection: Transportation::CATEGORIES %>
+          <%= f.input :departure_date %>
+          <%= f.input :arrival_date %>
+          <%= f.submit %>
+        <%end%>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -53,10 +82,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="EditTransportationModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="EditTransportationModalLabel">Edit title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <%= simple_form_for(transportation) do |f|%>
+          <%= f.input :price %>
+          <%= f.input :origin %>
+          <%= f.input :destination %>
+          <%= f.input :departure_date %>
+          <%= f.input :arrival_date %>
+          <%= f.submit %>
+        <%end%>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -4,7 +4,7 @@ class TransportationsController < ApplicationController
     first_step = @trip.participants.map do |participant|
       participant.transportations
     end
-    @transportations = first_step.flatten
+    # @transportations = first_step.flatten
     @participant = Participant.where(user_id: current_user.id, trip_id: @trip.id).first
     @time_remaining = @participant.transportations.first.departure_date - Time.now
   end
@@ -21,15 +21,16 @@ class TransportationsController < ApplicationController
   end
 
   def create
-    @transportation = Transportation.new(transportations_params)
     @participant = Participant.find(params[:participant_id])
+    @new_transportation = Transportation.new(transportations_params)
     # @participant = Participant.where(user_id: current_user.id, trip_id:@trip.id).first
-    @transportation.participant = @participant
-    if @transportation.save
-      redirect_to transportation_path(@transportation)
+    @new_transportation.participant = @participant
+    if @new_transportation.save!
+      redirect_to trip_path(@participant.trip)
     else
-      render :new
+      redirect_to trip_path(@participant.trip)
     end
+    authorize @new_transportation
   end
 
   def edit
@@ -40,7 +41,8 @@ class TransportationsController < ApplicationController
   def update
     @transportation = Transportation.find(params[:id])
     @transportation.update(transportations_params)
-    redirect_to transportations_params
+    authorize @transportation
+    redirect_to trip_path(@transportation.participant.trip)
   end
 
 
