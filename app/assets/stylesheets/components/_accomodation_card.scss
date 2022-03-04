@@ -4,7 +4,11 @@
   border-radius: 8px;
   box-shadow: 2px 2px 3px gray;
   text-align: center;
+  display: flex;
   position: relative;
+  width: 200px;
+  align-items: end;
+  justify-content: space-between;
 
   img {
     width: 100px;
@@ -30,8 +34,15 @@
 
   .form-check {
     text-align: left;
+    font-size: 12px;
   }
 
+  .label {
+    font-size: 12px;
+  }
+  p {
+    margin-bottom: 0!important;
+  }
 }
 
 .accomodation-card-grid {
@@ -39,9 +50,9 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1em;
   margin: 1em 0;
+  height: 130px;
 }
 
 .index-img {
   width: 150px;
-
 }
