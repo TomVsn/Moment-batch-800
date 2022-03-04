@@ -4,11 +4,8 @@
   border-radius: 8px;
   box-shadow: 2px 2px 3px gray;
   text-align: center;
-  display: flex;
   position: relative;
   width: 200px;
-  align-items: end;
-  justify-content: space-between;
 
   img {
     width: 100px;
@@ -50,9 +47,36 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1em;
   margin: 1em 0;
-  height: 130px;
+  overflow: scroll;
+  height: 150px;
 }
 
+.accomodation-card-photo {
+  display: flex;
+}
 .index-img {
-  width: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.accomodation-card-top {
+  justify-content: center;
+}
+
+.accomodation-card-center {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 6px;
+}
+
+.accomodation-card-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.accomodation-card-description {
+  font-size: 12px;
+  overflow: scroll;
+  word-wrap: break-word;
 }

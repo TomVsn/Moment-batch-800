@@ -18,24 +18,34 @@
           <div class="accomodation-card-grid">
             <% @accomodations.each do |accomodation|%>
               <div class="accomodation-card">
-                <p class="title d-inline"> <%= accomodation.title %> </p>
+                <div class="accomodation-card-top">
+                  <p class="title d-inline"> <%= accomodation.title %> </p>
+                </div>
                 <%= link_to "X", trip_accomodation_path(accomodation.trip, accomodation), method: :delete, data: { confirm: "Are you sure?" }, class:"cross d-inline" %>
                 <%# <%= link_to "X", trip_accomodation_path, class:"cross d-inline"%>
-                <% if accomodation.img.present? %>
-                  <%=image_tag accomodation.img, class:"index-img" %>
-                <%end %>
-
-                <div class="d-flex justify-content-between">
-                  <p class="price d-inline"><%= accomodation.price %> €</p>
+                <div class="accomodation-card-center">
+                  <div class="col col-5 accomodation-card-photo">
+                    <%if accomodation.img.present?%>
+                      <%=image_tag accomodation.img, class:"index-img" %>
+                    <%end %>
+                  </div>
+                  <div class="col col-5 accomodation-card-description" style="font-size: 12px">
+                    <%= accomodation.description %>
+                  </div>
                 </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="booked" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                  Booked?
-                  </label>
-                </div>
-                <div>
-                  <i class="fas fa-heart"></i>
+                <div class="accomodation-card-bottom">
+                  <div class="d-flex justify-content-between">
+                    <p class="price d-inline"><%= accomodation.price %> €</p>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="booked" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    Booked?
+                    </label>
+                  </div>
+                  <div>
+                    <i class="fas fa-heart"></i>
+                  </div>
                 </div>
               </div>
             <%end%>
