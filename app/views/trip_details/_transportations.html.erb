@@ -55,20 +55,19 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <% @participant.transportations.each_with_index do |transportation, index|  %>
-        <div class="modal-body">
-          Etape <%=  index + 1 %> : <br>
-          departure : <%= transportation.departure_date.strftime("%A") %>, <%= transportation.departure_date.month %>, <%= transportation.departure_date.day %>, <%= transportation.departure_date.year %><br>
-          From : <%= transportation.origin %>
-          To: <%= transportation.destination %><br>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditTransportationModal">
-          Edit
-        </button>
+        <div class="modal-body d-flex justify-content-between">
+          <div>
+            Etape <%=  index + 1 %> : <br>
+            departure : <%= transportation.departure_date.strftime("%A") %>, <%= transportation.departure_date.month %>, <%= transportation.departure_date.day %>, <%= transportation.departure_date.year %><br>
+            From : <%= transportation.origin %>
+            To: <%= transportation.destination %><br>
+          </div>
+          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#EditTransportationModal">
+            <i class="fas fa-edit"></i>
+          </button>
           <%# <%= je suis pas sure pour le retour, à valider sur un vrai truc qu'on aura rentré %>
         </div>
         <% end %>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
       </div>
     </div>
   </div>
