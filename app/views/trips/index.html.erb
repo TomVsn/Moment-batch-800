@@ -7,7 +7,7 @@
         <h1> It's time <strong>to plan</strong> your <strong>get away</strong>!</h1>
       </div>
       <div class="row d-flex justify-content-center">
-        <button type="button" class="btn btn-banner" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <button type="button" class="btn btn-banner" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width:20rem">
           Create your new trip
         </button>
       </div>
@@ -34,12 +34,19 @@
                   <% end %>
                 </div>
                 <div class="row">
-                  <i class="fas fa-user-plus mt-3 mx-2" data-bs-toggle="modal" data-bs-target="#participantCreate"></i>
+                  <i class="fas fa-user-plus mt-3 mx-2" data-bs-toggle="modal" data-bs-target="#participantCreate" style="color:white"></i>
                 </div>
               </div>
-                <p class="trip-card-description"><%= trip.description %></p>
+              <div class="trip-card-description container">
+                <%= trip.description %><br>
+                <div class="">
+                  <button class="btn btn-banner" style="background-color:#3A405A; color:white">
+                    <%= link_to "Discover", trip_path(trip)%>
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class="trip-card-right">
+            <div class="trip-card-right d-flex align-items-end justify-content-end">
               <%=image_tag "https://cdn.pixabay.com/photo/2020/01/16/10/13/mountain-and-sea-4770131_1280.jpg" %>
               <p class="dates">Du <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> au <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%> </p>
               <p class="location mt-2">
@@ -48,13 +55,19 @@
                 <% end %>
               </p>
               <% unless trip.user != current_user %>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">
-                edit
-              </button>
-              <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
-                <i class="fas fa-trash-alt" style="font-size:30px; color:#d39487"></i>
-                <% end %>
-              <% end %>
+                <div class="row d-flex justify-content-end" style="margin-right: 5px;margin-bottom: 10Px;">
+                  <div class="column col-6">
+                    <button type="button" class="btn btn-light p-0" style="background-color:#F79F79; border:#DCF2E8" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">
+                      <i class="fas fa-edit" aria-hidden="true" style="font-size:20px; color:#F7D08A"></i>
+                    </button>
+                  </div>
+                  <div class="column col-6">
+                    <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <i class="fas fa-trash-alt" style="font-size:20px; color:#3A405A"></i>
+                    <% end %>
+                  </div>
+                </div>
+            <% end %>
             </div>
           </div>
 
