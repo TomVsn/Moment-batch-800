@@ -3,19 +3,25 @@
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted">Transports</h6>
-      <h6>Your trip to <%= @transportations.first.destination %> is in
-      <% remaining_days = ((@participant.transportations.first.departure_date - Time.now)/86400).to_i %>
-      <%= remaining_days %> days,
-      <%= (((@participant.transportations.first.departure_date - Time.now) % 86400)/3600).to_i %> hours,
-      <%= ((((@participant.transportations.first.departure_date - Time.now) % 86400) % 3600)/60).to_i%> minutes
-      <%= ((((@participant.transportations.first.departure_date - Time.now) % 86400) % 3600) % 60).to_i %> seconds
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
-        See more
-      </button>
+      <% if @participant.transportations.exists? == false %>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
         Add a new journey
       </button>
+      <% else %>
+        <h6>Your trip to <%= @participant.transportations.first.destination %> is in
+        <% remaining_days = ((@participant.transportations.first.departure_date - Time.now)/86400).to_i %>
+        <%= remaining_days %> days,
+        <%= (((@participant.transportations.first.departure_date - Time.now) % 86400)/3600).to_i %> hours,
+        <%= ((((@participant.transportations.first.departure_date - Time.now) % 86400) % 3600)/60).to_i%> minutes
+        <%= ((((@participant.transportations.first.departure_date - Time.now) % 86400) % 3600) % 60).to_i %> seconds
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
+          See more
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
+          Add a new journey
+        </button>
+      <% end %>
     </div>
   </div>
 </div>

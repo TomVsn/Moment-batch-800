@@ -23,7 +23,7 @@ class AccomodationsController < ApplicationController
     authorize @new_accomodation
     @new_accomodation.trip = @trip
     if @new_accomodation.save!
-      redirect_to trip_accomodations_path
+      redirect_to trip_path(@trip)
     else
       render :new
     end
@@ -45,7 +45,7 @@ class AccomodationsController < ApplicationController
     @trip = @accomodation.trip
     @accomodation.accomodation_votes.destroy_all
     @accomodation.destroy
-    redirect_to trip_accomodations_path
+    redirect_to trip_path(@trip)
   end
 
   private

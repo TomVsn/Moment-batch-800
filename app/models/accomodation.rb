@@ -6,7 +6,7 @@ require "headless"
 class Accomodation < ApplicationRecord
   belongs_to :trip
   has_many :accomodation_votes
-  validates :url, presence: true
+  # validates :url, presence: true
 
   after_validation :scrap_appartment, if: :will_save_change_to_url?
 
