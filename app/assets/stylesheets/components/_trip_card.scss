@@ -1,5 +1,5 @@
 .trip-card {
-  background-color: #DCF2E9;
+  background-color: #F79F79;
   border: rgb(194, 191, 191) 1px solid;
   border-radius: 8px;
   position: relative;
@@ -33,9 +33,22 @@
   h4 {
     padding: 10px 10px;
     font-size: 22px;
-    height: 47px;
     overflow: hidden;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
+  }
+
+  a{
+    text-decoration: none;
+    color:#3A405A
+
+  }
+
+  a :hover{
+    color:white
+  }
+
+  .btn-banner > a{
+    color:white
   }
 }
 
@@ -60,6 +73,17 @@ position: relative;
     position: absolute;
     top: -10px;
     right: -10px;
+  }
+
+  .edit-button-trip{
+    border: none;
+  }
+
+  a{
+    color:white
+  };
+  a :hover{
+    color: white
   }
 
 }
