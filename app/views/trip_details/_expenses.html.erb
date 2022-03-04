@@ -25,24 +25,25 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        <h2><%= @total_per_participant %></h2>
+        <h2><%= @total_per_participant %> / participant</h2>
           <% @details_expenses.each do |expense| %>
-              <p>titre</p>
-              <%= expense.title %>
-              <p>prix</p>
-              <%= expense.amount %>
-              <p>prix par personne</p>
-              <%= expense.amount / @participants_expenses.count %>
-              <p>qui a payé</p>
-              <%= expense.participant.user.username %>
-              <!-- Button trigger edit expense -->
+            <div class="d-flex">
+              <h6><%= expense.title %></h6>
+              <div>
+                <p><%= expense.amount %>€</p>
+                <p><%= expense.amount / @participants_expenses.count %> / participant</p>
+              </div>
+            </div>
+            <%= expense.participant.user.username %>
+            <div><!-- Button trigger edit expense -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalExpensesEdit-<%= expense.id %>">
-                  edit expense
+                  <i class="fas fa-edit"></i>
                 </button>
               <!-- button delete expense -->
               <%= link_to expense_path(expense), method: :delete, data: { confirm: "Are you sure?" } do %>
-                <i class="fas fa-trash-alt" style="font-size:30px; color:#d39487"></i>
-              <% end %>
+                <i class="fas fa-times"></i>
+              <% end %></div>
+
           <% end %>
         </div>
       </div>
