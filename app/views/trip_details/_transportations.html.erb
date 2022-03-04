@@ -34,6 +34,9 @@
         departure : <%= @transportations[1].departure_date.strftime("%A") %>, <%= @transportations[1].departure_date.month %>, <%= @transportations[1].departure_date.day %>, <%= @transportations[1].departure_date.year %><br>
         From : <%= @transportations[1].origin %>
         To: <%= @transportations[1].destination %>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditTransportationModal">
+        Edit
+      </button>
         <%# <%= je suis pas sure pour le retour, à valider sur un vrai truc qu'on aura rentré %>
       </div>
       <div class="modal-footer">
@@ -44,7 +47,7 @@
 </div>
 
 
-<!-- Modal -->
+<!-- Modal Edit -->
 <% @transportations.each do |transportation|  %>
 <div class="modal fade" id="EditTransportationModal" tabindex="-1" aria-labelledby="EditTransportationModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -54,7 +57,6 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
