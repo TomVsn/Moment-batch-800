@@ -88,7 +88,7 @@
           <%= f.input :mean, as: :select, collection: Transportation::CATEGORIES %>
           <%= f.input :departure_date %>
           <%= f.input :arrival_date %>
-          <%= f.submit %>
+          <%= f.submit "add transportation", class: "btn btn-primary" %>
         <%end%>
       </div>
     </div>
