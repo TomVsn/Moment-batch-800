@@ -8,7 +8,6 @@
         </div>
         <div class="d-flex">
           <h1><%= @trip.title %></h1>
-          <%= render 'trip_details/participant' %>
         </div>
         <%= @trip.description %>
       </div>
@@ -18,18 +17,20 @@
           <%= render 'trip_details/accomodations' %>
         </div>
         <div class="col col-5 card-dashboard-left">
-          <p>People</p>
+          <p>People <%= render 'trip_details/participant' %></p>
+
         </div>
       </div>
       <div class="row row-left">
         <div class="col col-5 card-dashboard-left">
-          <p>Trip</p>
+          <p>Transports</p>
           <%= render 'trip_details/transportations' %>
-
         </div>
         <div class="col col-5 card-dashboard-left">
-          <p>Expenses</p>
-          <%= render 'trip_details/expenses' %>
+          <div class="card-expenses">
+            <p>Expenses</p>
+            <%= render 'trip_details/expenses' %>
+          </div>
         </div>
       </div>
     </div>
@@ -48,4 +49,5 @@
 </div>
 
 
-<%# <%= render 'trip_details/events' %> %>
+<%# <%= render 'trip_details/events' %>
+

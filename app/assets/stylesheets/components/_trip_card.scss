@@ -1,23 +1,23 @@
 .trip-card {
-background-color: #DCF2E9;
-border: rgb(194, 191, 191) 1px solid;
-border-radius: 8px;
-position: relative;
-display: flex;
-height: 180px;
-box-shadow: 2px 2px 3px gray;
+  background-color: #DCF2E9;
+  border: rgb(194, 191, 191) 1px solid;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  height: 180px;
+  box-shadow: 2px 2px 3px gray;
 
-  p {
-    font-size: 16px;
-  }
+    p {
+      font-size: 16px;
+    }
 
-  img {
-    width: 110px;
-    border-radius: 8px;
-    position: absolute;
-    right: 8px;
-    top: 8px;
-  }
+    img {
+      width: 110px;
+      border-radius: 8px;
+      position: absolute;
+      right: 8px;
+      top: 8px;
+    }
 }
 
 .trip-card-left {

@@ -1,10 +1,39 @@
 
 
-
 <i class="fas fa-user-plus" data-bs-toggle="modal" data-bs-target="#participantCreate"></i>
+<h3><%= @participants.count %> friends invited</h3>
 
 
-<!--Modal-->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showParticipantsModal">
+  View all
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="showParticipantsModal" tabindex="-1" aria-labelledby="showParticipantsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="showParticipantsModalLabel">Friends Invited</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <% @participants.each do |participant| %>
+            <li>
+            <%= participant.user.username %>
+            <%= link_to participant_path(participant), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fas fa-times"></i>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Add a participant-->
 <div class="modal fade" id="participantCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">

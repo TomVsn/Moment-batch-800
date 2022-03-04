@@ -1,4 +1,14 @@
 class ParticipantsController < ApplicationController
+
+  def index
+    @trip = Trip.find(params[:trip_id])
+    @participants = policy_scope(@trip.participants)
+  end
+
+  def show
+    @participant = Participant.find(params[:id])
+  end
+
   def new
     @trip = Trip.find(params[:id])
     @participant = Participant.new
@@ -17,9 +27,12 @@ class ParticipantsController < ApplicationController
   end
 
   def destroy
+    # @trip = Trip.find(params[:trip_id])
     @participant = Participant.find(params[:id])
+    @trip = @participant.trip
     @participant.destroy
     authorize @participant
+    redirect_to trip_path(@participant.trip)
   end
 
   private
