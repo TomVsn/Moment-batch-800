@@ -1,23 +1,19 @@
 
+
 <div class="container" style="overflow: scroll; height: 80px">
 
-  <p>total mutual expenses:</p>
-    <%= @sum_of_expenses%>
-  <br>
-  <p>total expenses per participant:</p>
-    <%= @total_per_participant %>
-  <!-- Button trigger modal Show expenses -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalExpensesDetails">
-    Details
-  </button>
-
-  <!-- Button trigger modal Create expenses -->
-  <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#ModalExpensesCreate">
-    +
-  </button>
-
-
-
+  <div class="d-flex">
+    <h3 class="me-3"> <%= @sum_of_expenses%> €</h3>
+    <!-- Button trigger modal Create expenses -->
+    <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#ModalExpensesCreate">
+      +
+    </button>
+    <!-- Button trigger modal Show expenses -->
+    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#ModalExpensesDetails">
+      Details
+    </button>
+  </div>
+  <p><%= @total_per_participant %> / participant</p>
 
 
   <!-- Modal Show Expenses -->
@@ -49,9 +45,6 @@
               <% end %>
           <% end %>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
       </div>
     </div>
   </div>
@@ -74,10 +67,6 @@
             <%= f.submit %>
           <% end %>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
       </div>
     </div>
   </div>
@@ -97,10 +86,6 @@
             <%= f.input :amount %>
             <%= f.submit %>
           <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
