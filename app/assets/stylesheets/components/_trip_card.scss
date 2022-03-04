@@ -24,7 +24,7 @@
 .trip-card-left {
   width: 61%;
   p {
-    height: 67%;
+    height: 100%;
     padding: 0px 10px;
     overflow: hidden;
     font-size: 13px;
@@ -35,6 +35,7 @@
     font-size: 22px;
     overflow: hidden;
     text-overflow: ellipsis;
+    height: 80px;
   }
 
   a{
@@ -52,6 +53,11 @@
   }
 }
 
+.trip-card-description {
+
+  height: 100px;
+  overflow: scroll;
+}
 .trip-card-right {
 padding: 6px;
 border-left: 1px solid black;
