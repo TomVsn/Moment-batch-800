@@ -20,10 +20,6 @@
 
 
 <!-- Aller du trip of the participant -->
-<div class="container">
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted">Transports</h6>
       <% if @participant.transportations.exists? == false %>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
         Add a new journey
@@ -43,9 +39,7 @@
           Add a new journey
         </button>
       <% end %>
-    </div>
-  </div>
-</div>
+
 
 <!-- Modal voir l'aller retour-->
 
