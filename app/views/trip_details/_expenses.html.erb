@@ -77,7 +77,7 @@
           <%= simple_form_for [@participant, @new_expense] do |f| %>
             <%= f.input :title %>
             <%= f.input :amount %>
-            <%= f.submit %>
+            <%= f.submit "Add", class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>
