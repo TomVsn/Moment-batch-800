@@ -1,14 +1,16 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#IndexAccomodationModal">
-  Access accomodation index
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#IndexAccomodationModal">
+  See details
 </button>
+
+
 
 <!-- Modal index accomodations  -->
 <div class="modal fade" id="IndexAccomodationModal" tabindex="-1" aria-labelledby="IndexAccomodationModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="IndexAccomodationModalLabel">IndexAccomodation</h5>
+        <h5 class="modal-title" id="IndexAccomodationModalLabel">Accomodations</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -50,9 +52,6 @@
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
     </div>
   </div>
 </div>
@@ -62,7 +61,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="CreateAccomodationModalLabel">CreateAccomodation</h5>
+        <h5 class="modal-title" id="CreateAccomodationModalLabel">Add an accomodation</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -76,8 +75,11 @@
           <% end %>
           <p>If you found it otherwise : Adress</p>
           <%= simple_form_for [@trip, @new_accomodation] do |f| %>
+            <%= f.input :title %>
             <%= f.input :address %>
             <%= f.input :description %>
+            <%= f.input :price %>
+            <%= f.input :img %>
             <%= f.submit %>
           <% end %>
           <div class="form-check">
