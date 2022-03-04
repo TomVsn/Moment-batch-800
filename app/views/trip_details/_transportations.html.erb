@@ -31,13 +31,17 @@
         <%= (((@participant.transportations.first.departure_date - Time.now) % 86400)/3600).to_i %> hours,
         <%= ((((@participant.transportations.first.departure_date - Time.now) % 86400) % 3600)/60).to_i%> minutes
         <%= ((((@participant.transportations.first.departure_date - Time.now) % 86400) % 3600) % 60).to_i %> seconds
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
-          See more
-        </button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
-          Add a new journey
-        </button>
+
+        <div class="d-flex">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
+            See more
+          </button>
+          <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
+            +
+          </button>
+        </div>
+
       <% end %>
 
 
