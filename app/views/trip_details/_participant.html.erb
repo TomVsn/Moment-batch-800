@@ -5,7 +5,7 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showParticipantsModal">
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#showParticipantsModal">
   View all
 </button>
 
@@ -21,10 +21,10 @@
         <ul>
           <% @participants.each do |participant| %>
             <li>
-            <%= participant.user.username %>
             <%= link_to participant_path(participant), method: :delete, data: { confirm: "Are you sure?" } do %>
               <i class="fas fa-times"></i>
             <% end %>
+            <%= participant.user.username %>
             </li>
           <% end %>
         </ul>
