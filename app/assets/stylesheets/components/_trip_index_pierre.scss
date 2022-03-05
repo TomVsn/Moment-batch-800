@@ -1,0 +1,73 @@
+.card-test {
+  border-radius: 18px;
+  background   : #def5f7;
+  box-shadow   : 4px 4px 25px rgba(0, 0, 0, 0.4);
+  overflow     : hidden;
+  cursor       : pointer;
+  transition   : transform 0.4s;
+  height: 230px;
+}
+.card-list {
+  width                : 100%;
+  display              : grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-gap             : 4em;
+  background-color: #FCEFD6;
+  padding: 20px;
+  padding-left: auto;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+.card-test:hover {
+  transform : scale(1.05);
+  transform: translateY(-20px);
+  .card-test-title {
+    display: none;
+  }
+  .card-test-details {
+    display: block;
+  }
+}
+.card-test-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  text-align: center;
+}
+
+.card-test-details {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+.card-test-details-dates {
+  margin-bottom: 20px;
+}
+
+.card-test-details-title {
+  height: 25%;
+  overflow: hidden;
+}
+.card-test-details-decription {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  height: 26%;
+  text-overflow: ellipsis;
+}
+
+.card-test-details-options {
+  position: absolute;
+  top: 3px;
+  right: 8px;
+  :hover {
+     cursor: pointer;
+  }
+}

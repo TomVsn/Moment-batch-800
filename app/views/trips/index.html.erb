@@ -22,60 +22,32 @@
     </div>
   </nav>
 
-  <div class="trip-card-grid pt-4" style="background-color:#FCEFD6">
+
+    <div class="card-list">
       <% @trips.each do |trip| %>
-          <div class="trip-card">
-            <div class="trip-card-left">
-              <div class="col d-flex justify-content-between">
-                <div class="row">
-                  <%= link_to trip_path(trip) do %>
-                    <h4> <%= trip.title %></h4>
-                  <% end %>
-                </div>
-                <div class="row">
-                  <i class="fas fa-user-plus mt-3 mx-2" data-bs-toggle="modal" data-bs-target="#participantCreate" style="color:white"></i>
-                </div>
-              </div>
-              <div class="trip-card-description container">
-                <p><%= trip.description %></p><br>
-              </div>
-                <div class="d-flex justify-content-center">
-                  <button class="btn btn-banner" style="background-color:#3A405A; color:white">
-                    <%= link_to "Discover", trip_path(trip)%>
-                  </button>
-                </div>
+        <%= link_to trip_path(trip) do %>
+          <div class="card-test">
+            <div class="card-test-title">
+              <h1><%= trip.title %></h1>
             </div>
-            <div class="trip-card-right d-flex align-items-end justify-content-end">
-              <%=image_tag "https://cdn.pixabay.com/photo/2020/01/16/10/13/mountain-and-sea-4770131_1280.jpg" %>
-              <p class="dates" style="text-align: right;">
-              From <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%><br>
-              To: <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%> </p>
-              <p class="location mt-2">
-                <% if trip.city != nil %>
-                  <%= trip.city %>
-                <% end %>
-              </p>
-              <% unless trip.user != current_user %>
-                <div class="row d-flex justify-content-end" style="margin-right: 5px;margin-bottom: 10Px;">
-                  <div class="column col-6">
-                    <button type="button" class="btn btn-light p-0" style="background-color:#F79F79; border:#DCF2E8" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">
-                      <i class="fas fa-edit" aria-hidden="true" style="font-size:20px; color:#F7D08A"></i>
-                    </button>
-                  </div>
-                  <div class="column col-6">
-                    <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
-                      <i class="fas fa-trash-alt" style="font-size:20px; color:#3A405A"></i>
-                    <% end %>
-                  </div>
-                </div>
-            <% end %>
+            <div class="card-test-details">
+              <div class="card-test-details-dates">
+                <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> -
+                <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%>
+              </div>
+              <div class="card-test-details-title">
+                <h1><%= trip.title %></h1>
+              </div>
+              <div class="card-test-details-city">
+                <h4><%= trip.city %></h4>
+              </div>
+              <div class="card-test-details-decription">
+                <p><%= trip.description %></p>
+              </div>
             </div>
           </div>
-
+        <% end %>
       <% end %>
-
-
-  </div>
+    </div>
 </div>
-
-   <%= render 'trip_index_details/trip' %>
+<%= render 'trip_index_details/trip' %>
