@@ -44,7 +44,20 @@
                     </label>
                   </div>
                   <div>
-                    <i class="fas fa-heart"></i>
+                    <% unless @participant.votes?(accomodation) %>
+                      <%= simple_form_for [@participant, accomodation, @new_accomodation_vote] do |f|%>
+                        <%= button_tag type: 'submit', style:"background: none; border: none; color: #004E00;" do %>
+                          <i class="far fa-heart"></i>
+                        <% end %>
+                      <% end %>
+                      <%= accomodation.accomodation_votes.size%> likes(s)
+                    <% else %>
+                      <% accomodation_vote = AccomodationVote.find_by(participant_id: @participant.id, accomodation_id: accomodation.id) %>
+                      <%= link_to accomodation_accomodation_vote_path(accomodation_vote), method: :delete, data: { confirm: "Are you sure?" } do %>
+                        <i class="fas fa-heart"></i>
+                      <% end%>
+                      <%= accomodation.accomodation_votes.size%> likes(s)
+                    <% end %>
                   </div>
                 </div>
               </div>

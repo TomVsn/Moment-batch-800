@@ -9,6 +9,8 @@ class TripsController < ApplicationController
     @users = User.all
     @participant = Participant.new
     @trips = policy_scope(Trip)
+    @coming_trips = @trips.select {|trip| trip.start_date > Time.now}
+    @past_trips = @trips.select {|trip| trip.start_date < Time.now}
   end
 
   def show
@@ -42,6 +44,7 @@ class TripsController < ApplicationController
     # first_step = @trip.participants.map { |participant| participant.transportations}
     # @transportations = first_step.flatten
     @new_transportation = Transportation.new
+    @new_accomodation_vote = AccomodationVote.new
     authorize @trip
   end
 

@@ -11,4 +11,8 @@ class Participant < ApplicationRecord
   def participates?(event)
     event_participants.find_by(event: event).present?
   end
+
+  def votes?(accomodation)
+    accomodation_votes.find_by(accomodation: accomodation).present?
+  end
 end
