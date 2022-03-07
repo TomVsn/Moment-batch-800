@@ -4,18 +4,18 @@ class ExpensesController < ApplicationController
     @trip = @participant.trip
     # @expenses = Expense.where(participant: @participant)
     # Pour avoir toutes les dépenses mutuelles de ce trip || rajouter .sum(:amount) à la fin pour somme
-    @sum_of_expenses = Expense.includes(participant: :trip)
-                       .references(:trip)
-                       .where(trips: { id: @participant.trip }, mutual: true).sum(:amount)
-
+    @sum_of_mutual_expenses = Expense.includes(participant: :trip)
+                              .references(:trip)
+                              .where(trips: { id: @participant.trip }, mutual: true).sum(:amount)
+    @non_mutual_expenses = Expense.where(participant: @participant, mutual: false).references(:trip).sum(:amount)
     @details_expenses = Expense.includes(participant: :trip)
                         .references(:trip)
-                        .where(trips: { id: @participant.trip }, mutual: true)
+                        .where(trips: { id: @participant.trip })
     # A VOIR
-    ## My non mutual expenses => Expense.where(participant: @participant, mutual: false).sum(:amount)
+    @non_mutual_expenses = Expense.where(participant: @participant, mutual: false).references(:trip).sum(:amount)
     ## Avoir tous les participants d'un trip => Participant.where(trip: @participant.trip)
     @participants_expenses = Participant.where(trip: @participant.trip)
-    @total_per_participant = @sum_of_expenses / @participants_expenses.count
+    @total_per_participant = (@sum_of_mutual_expenses / @participants_expenses.count) + @non_mutual_expenses
   end
 
   def show
@@ -34,10 +34,10 @@ class ExpensesController < ApplicationController
     @new_expense = Expense.new(expenses_params)
     @new_expense.participant = @participant
     authorize @new_expense
-    if @new_expense.save
+    if @new_expense.save!
       redirect_to trip_path(@participant.trip)
     else
-      render :new
+      redirect_to trip_path(@participant.trip)
     end
   end
 

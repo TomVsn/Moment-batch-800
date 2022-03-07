@@ -35,6 +35,7 @@ gem 'headless', '~> 2.2', '>= 2.2.3'
 
 gem 'devise'
 gem 'pundit'
+gem "geocoder"
 
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.16.0'

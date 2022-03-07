@@ -1,6 +1,13 @@
 <div class="container" style="overflow: scroll; height: 80%">
-  <% @trip.events.each do |event| %>
-
+  <% if @trip.events == [] %>
+    <div class="container">
+      <p style="color:black">Plan an event</p>
+      <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        +
+      </button>
+    </div>
+  <% else %>
+    <% @trip.events.each do |event| %>
     <div class="activity-grid">
       <div class="activity-time">
         <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
@@ -51,14 +58,16 @@
         <% end %>
       </div>
     </div>
+    <% end %>
+    <div class="container">
+      <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        +
+      </button>
+    </div>
   <% end %>
   <!-- Button trigger modal -->
 </div>
-<div class="container">
-  <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    +
-  </button>
-</div>
+
 
 
 
@@ -90,15 +99,17 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editEventModalLabel">Edit</h5>
+        <h5 class="modal-title" id="editEventModalLabel">Change your plan</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
          <%= simple_form_for(event) do |f| %>
-            <%= f.input :description %>
-            <%= f.input :start_date %>
-            <%= f.input :end_date %>
-            <%= f.submit %>
+          <%= f.input :description, label:"What are you planning?", placeholder: "Bowling, Boat party, Dinner at La Pergola,.." %>
+          <div class="event-dates">
+            <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          </div>
+          <%= f.submit "Change!", class: "btn btn-primary" %>
           <% end %>
       </div>
     </div>

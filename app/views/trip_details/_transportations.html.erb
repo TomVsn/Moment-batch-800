@@ -18,44 +18,61 @@
   </div>
 </div> %>
 
-
 <!-- Aller du trip of the participant -->
-      <% if @participant.transportations.exists? == false %>
-      <p style="color:black">Add your bus, plane or anything ticket !</p>
-      <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
-        Add your ticket
-      </button>
-      <% else %>
-        <% coming_transportation = @participant.transportations.order('departure_date ASC').select{|transportation| transportation.departure_date > Time.now}.first  %>
-        <h6>Your trip to <%= coming_transportation.destination %> is in
-        <% remaining_days = ((coming_transportation.departure_date - Time.now)/86400).to_i %>
-        <%= remaining_days %> days,
-        <%= (((coming_transportation.departure_date - Time.now) % 86400)/3600).to_i %> hours,
-        <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600)/60).to_i%> minutes
-        <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600) % 60).to_i %> seconds
+<% if @participant.transportations.exists? == false %>
+<p style="color:black">Add your bus, plane or anything ticket !</p>
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
+  Add your ticket
+</button>
+<% else %>
+  <% coming_transportation = @participant.transportations.order('departure_date ASC').select{|transportation| transportation.departure_date > Time.now}.first  %>
+  <h6>Your trip to <%= coming_transportation.destination %> is in
+  <% remaining_days = ((coming_transportation.departure_date - Time.now)/86400).to_i %>
+  <%= remaining_days %> days,
+  <%= (((coming_transportation.departure_date - Time.now) % 86400)/3600).to_i %> hours,
+  <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600)/60).to_i%> minutes
+  <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600) % 60).to_i %> seconds
 
-        <div class="d-flex">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
-            See more
-          </button>
-          <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
-            +
-          </button>
-        </div>
-
-      <% end %>
-
+  <div class="d-flex">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
+      See more
+    </button>
+    <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
+      +
+    </button>
+  </div>
+<% end %>
 
 <!-- Modal voir l'aller retour-->
 
-  <div class="modal fade" id="ShowTransportationModal" tabindex="-1" aria-labelledby="ShowTransportationModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ShowTransportationModalLabel">Details of your journeys</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+<div class="modal fade" id="ShowTransportationModal" tabindex="-1" aria-labelledby="ShowTransportationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ShowTransportationModalLabel">Details of your journeys</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <% if @participant.transportations.size == 1 %>
+        <div class="modal-body d-flex justify-content-between">
+          <div>
+            Etape <%=  1 %> : <br>
+            departure : <%= @participant.transportations.first.departure_date.strftime("%A") %>, <%= @participant.transportations.first.departure_date.month %>, <%= @participant.transportations.first.departure_date.day %>, <%= @participant.transportations.first.departure_date.year %><br>
+            From : <%= @participant.transportations.first.origin %>
+            To: <%= @participant.transportations.first.destination %><br>
+            At : <%= @participant.transportations.first.departure_date.hour %> :
+            <% if @participant.transportations.first.departure_date.min == 0 %>
+              00
+            <% else %>
+              <%= @participant.transportations.departure_date.min %>
+            <% end %>
+          </div>
+          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#EditTransportationModal">
+            <i class="fas fa-edit"></i>
+          </button>
+        <%# <%= je suis pas sure pour le retour, à valider sur un vrai truc qu'on aura rentré %>
+      </div>
+      <% else %>
         <% @participant.transportations.order('departure_date ASC').each_with_index do |transportation, index|  %>
         <div class="modal-body d-flex justify-content-between">
           <div>
@@ -75,10 +92,11 @@
           </button>
           <%# <%= je suis pas sure pour le retour, à valider sur un vrai truc qu'on aura rentré %>
         </div>
-        <% end %>
-      </div>
+      <% end %>
+      <% end %>
     </div>
   </div>
+</div>
 
 <!-- Modal add a journey-->
 <div class="modal fade" id="AddTransportationModal" tabindex="-1" aria-labelledby="AddTransportationModalLabel" aria-hidden="true">
@@ -108,7 +126,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- Modal Edit -->
 <% @transportations.each do |transportation|  %>

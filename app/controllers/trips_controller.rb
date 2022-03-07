@@ -34,14 +34,16 @@ class TripsController < ApplicationController
     @new_accomodation = Accomodation.new
     @new_expense = Expense.new
     if @participant != nil
-      @sum_of_expenses = Expense.includes(participant: :trip)
-                        .references(:trip)
-                        .where(trips: { id: @participant.trip }, mutual: true).sum(:amount)
+      @sum_of_mutual_expenses = Expense.includes(participant: :trip)
+                                .references(:trip)
+                                .where(trips: { id: @participant.trip }, mutual: true).sum(:amount)
+      @non_mutual_expenses = Expense.where(participant: @participant, mutual: false).references(:trip).sum(:amount)
       @details_expenses = Expense.includes(participant: :trip)
                         .references(:trip)
-                        .where(trips: { id: @participant.trip }, mutual: true)
+                        .where(trips: { id: @participant.trip })
+
       @participants_expenses = Participant.where(trip: @participant.trip)
-      @total_per_participant = @sum_of_expenses / @participants_expenses.count
+      @total_per_participant = ((@sum_of_mutual_expenses / @participants_expenses.count) + @non_mutual_expenses).round(2)
     end
     # first_step = @trip.participants.map { |participant| participant.transportations}
     # @transportations = first_step.flatten
@@ -92,6 +94,12 @@ class TripsController < ApplicationController
     @trip.destroy
     redirect_to trips_path
   end
+
+  # def delete_image_attachment
+  #   @image = ActiveStorage::Blob.find_signed(params[:id])
+  #   @image.purge
+  #   redirect_to trip_path(@trip)
+  # end
 
   private
 
