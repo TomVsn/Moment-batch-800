@@ -95,6 +95,12 @@ class TripsController < ApplicationController
     redirect_to trips_path
   end
 
+  # def delete_image_attachment
+  #   @image = ActiveStorage::Blob.find_signed(params[:id])
+  #   @image.purge
+  #   redirect_to trip_path(@trip)
+  # end
+
   private
 
   def trip_params
