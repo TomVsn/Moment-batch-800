@@ -1,9 +1,9 @@
 class TransportationsController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
-    first_step = @trip.participants.map do |participant|
-      participant.transportations
-    end
+    # first_step = @trip.participants.map do |participant|
+    #   participant.transportations
+    # end
     # @transportations = first_step.flatten
     @participant = Participant.where(user_id: current_user.id, trip_id: @trip.id).first
     @time_remaining = @participant.transportations.first.departure_date - Time.now
