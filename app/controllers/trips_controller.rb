@@ -47,6 +47,7 @@ class TripsController < ApplicationController
     # @transportations = first_step.flatten
     @new_transportation = Transportation.new
     @new_accomodation_vote = AccomodationVote.new
+    @new_message = Message.new
     authorize @trip
   end
 
@@ -75,8 +76,13 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
-    @trip.update(trip_params)
     authorize @trip
+    @trip.update(trip_params)
+    if params[:trip][:photos].present?
+      params[:trip][:photos].each do |photo|
+        @trip.photos.attach(io: photo.tempfile, filename: photo.original_filename, content_type: photo.content_type)
+      end
+    end
     redirect_to trip_path
   end
 

@@ -1,0 +1,12 @@
+.chatroom {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .title-trip-chat, .form-trip-messages {
+    flex: 0 0 auto;
+  }
+  .trip-messages {
+    flex: 1;
+    overflow: scroll;
+  }
+}
