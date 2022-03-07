@@ -25,7 +25,7 @@ class TransportationsController < ApplicationController
     @new_transportation = Transportation.new(transportations_params)
     # @participant = Participant.where(user_id: current_user.id, trip_id:@trip.id).first
     @new_transportation.participant = @participant
-    if @new_transportation.save!
+    if @new_transportation.save
       redirect_to trip_path(@participant.trip)
     else
       redirect_to trip_path(@participant.trip)

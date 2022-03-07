@@ -9,6 +9,8 @@ class TripsController < ApplicationController
     @users = User.all
     @participant = Participant.new
     @trips = policy_scope(Trip)
+    @coming_trips = @trips.select {|trip| trip.start_date > Time.now}
+    @past_trips = @trips.select {|trip| trip.start_date < Time.now}
   end
 
   def show
@@ -31,17 +33,20 @@ class TripsController < ApplicationController
     @accomodations = @trip.accomodations
     @new_accomodation = Accomodation.new
     @new_expense = Expense.new
-    @sum_of_expenses = Expense.includes(participant: :trip)
-                       .references(:trip)
-                       .where(trips: { id: @participant.trip }, mutual: true).sum(:amount)
-    @details_expenses = Expense.includes(participant: :trip)
-                       .references(:trip)
-                       .where(trips: { id: @participant.trip }, mutual: true)
-    @participants_expenses = Participant.where(trip: @participant.trip)
-    @total_per_participant = @sum_of_expenses / @participants_expenses.count
+    if @participant != nil
+      @sum_of_expenses = Expense.includes(participant: :trip)
+                        .references(:trip)
+                        .where(trips: { id: @participant.trip }, mutual: true).sum(:amount)
+      @details_expenses = Expense.includes(participant: :trip)
+                        .references(:trip)
+                        .where(trips: { id: @participant.trip }, mutual: true)
+      @participants_expenses = Participant.where(trip: @participant.trip)
+      @total_per_participant = @sum_of_expenses / @participants_expenses.count
+    end
     # first_step = @trip.participants.map { |participant| participant.transportations}
     # @transportations = first_step.flatten
     @new_transportation = Transportation.new
+    @new_accomodation_vote = AccomodationVote.new
     authorize @trip
   end
 

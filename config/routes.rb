@@ -7,8 +7,10 @@ Rails.application.routes.draw do
     resources :participants, only: [:new, :create]
     resources :transportations, only: [:index]
   end
-  resources :accomodation_votes, only: [:destroy]
-  resources :accomodations, only: [:show, :edit, :update]
+  # resources :accomodation_votes, only: [:destroy]
+  resources :accomodations, only: [:show, :edit, :update] do
+      resources :accomodation_votes, only: [:destroy]
+  end
 
   resources :transportations, only: [:show, :edit, :update, :index]
   resources :expenses, only: [:index, :edit, :update, :show, :destroy]

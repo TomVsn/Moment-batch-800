@@ -23,6 +23,7 @@ class AccomodationsController < ApplicationController
     authorize @new_accomodation
     @new_accomodation.trip = @trip
     if @new_accomodation.save!
+      AccomodationVote.create(accomodation: @new_accomodation, participant: @participant)
       redirect_to trip_path(@trip)
     else
       render :new
