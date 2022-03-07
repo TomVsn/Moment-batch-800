@@ -25,28 +25,38 @@
 
     <div class="card-list">
       <% @trips.each do |trip| %>
-        <%= link_to trip_path(trip) do %>
-          <div class="card-test">
-            <div class="card-test-title">
+        <div class="card-trip_index">
+          <%= link_to trip_path(trip) do %>
+            <div class="card-trip_index-title">
               <h1><%= trip.title %></h1>
             </div>
-            <div class="card-test-details">
-              <div class="card-test-details-dates">
+            <div class="card-trip_index-details">
+              <div class="card-trip_index-details-dates">
                 <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> -
                 <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%>
               </div>
-              <div class="card-test-details-title">
+              <div class="card-trip_index-details-title">
                 <h1><%= trip.title %></h1>
               </div>
-              <div class="card-test-details-city">
+              <div class="card-trip_index-details-city">
                 <h4><%= trip.city %></h4>
               </div>
-              <div class="card-test-details-decription">
+              <div class="card-trip_index-details-decription">
                 <p><%= trip.description %></p>
               </div>
             </div>
+          <% end %>
+          <div class="dropdown-box">
+            <i class="fas fa-ellipsis-h" type="button" id="indexActions" data-bs-toggle="dropdown" aria-expanded="false"></i>
+              <ul class="dropdown-menu" aria-labelledby="indexActions">
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#participantCreate">Invite a friend...</a></li>
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">Modify trip...</a></li>
+                <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <li><p class="dropdown-item delete-action" >Delete</p></li>
+                <% end %>
+              </ul>
           </div>
-        <% end %>
+        </div>
       <% end %>
     </div>
 </div>
