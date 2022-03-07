@@ -7,7 +7,7 @@
 
 <!-- Modal index accomodations  -->
 <div class="modal fade" id="IndexAccomodationModal" tabindex="-1" aria-labelledby="IndexAccomodationModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="IndexAccomodationModalLabel">Accomodations</h5>
@@ -65,6 +65,53 @@
           </div>
           <br>
           <br>
+
+          <% @accomodations.each do |accomodation|%>
+          <div class="card-index-accomodation">
+            <%= link_to trip_accomodation_path(accomodation.trip, accomodation), method: :delete, data: { confirm: "Are you sure?" }, class:"cross d-inline" do %>
+              <i class="fas fa-times"></i>
+            <% end %>
+            <%if accomodation.img.present?%>
+              <%=image_tag accomodation.img, class:"index-img" %>
+            <%end %>
+            <div class="card-index-accomodation-infos">
+              <div>
+                <%= accomodation.title %>
+                <br>
+                <%= accomodation.description %>
+                  <input class="form-check-input" type="checkbox" value="booked" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Booked?
+                  </label>
+              </div>
+              <h2 class="card-index-accomodation-pricing"><%= accomodation.price %> €</h2>
+              <div class="card-index-accomodation-user avatar-bordered">
+                <% unless @participant.votes?(accomodation) %>
+                  <%= simple_form_for [@participant, accomodation, @new_accomodation_vote] do |f|%>
+                    <%= button_tag type: 'submit' do %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
+                  <% end %>
+                  <%= accomodation.accomodation_votes.size%> like(s)
+                <% else %>
+                  <% accomodation_vote = AccomodationVote.find_by(participant_id: @participant.id, accomodation_id: accomodation.id) %>
+                  <%= link_to accomodation_accomodation_vote_path(accomodation_vote), method: :delete, data: { confirm: "Are you sure?" } do %>
+                    <i class="fas fa-heart"></i>
+                  <% end%>
+                  <%= accomodation.accomodation_votes.size%> like(s)
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+
+
+
+
+
+
+
+
           <div class="text-center">
             <p>Not interested in any of our suggestions ?</p>
             <%# bouton modale create %>
