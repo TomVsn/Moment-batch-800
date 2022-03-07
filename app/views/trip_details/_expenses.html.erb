@@ -39,7 +39,7 @@
                     <% if expense.mutual == true %>
                       <div class="d-flex justify-content-between">
                         <p><%= expense.participant.user.username %> paid</p>
-                        <p><%= expense.amount / @participants_expenses.count %>€ / participant</p>
+                        <p><%= (expense.amount / @participants_expenses.count).round(2) %>€ / participant</p>
                       </div>
                     <% elsif expense.mutual == false %>
                       <p><%= expense.amount %>€</p>
