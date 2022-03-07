@@ -75,15 +75,20 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="ModalExpensesCreateLabel">Add an expense</h5>
+          <h5 class="modal-title" id="ModalExpensesCreateLabel">New expense</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <%= simple_form_for [@participant, @new_expense] do |f| %>
-            <%= f.input :title %>
-            <%= f.input :amount %>
-            <%= f.input :mutual, as: :boolean, input_html: { class: "toggle", value: true }, label:"Did you pay for everyone?" %>
-            <%= f.submit "Add", class: "btn btn-primary" %>
+            <div class="expense-form">
+              <div class="input-expenses d-flex justify-content-around">
+                <%= f.input :title, label:"What?", placeholder:"Dinner, Drinks, Hat,..." %>
+                <%= f.input :amount, label: "Amount", placeholder:"50€" %>
+              </div>
+            <div class="end-expense-form d-flex justify-content-between">
+              <%= f.input :mutual, as: :boolean, input_html: { class: "toggle", value: true }, label:"Did you pay for everyone?" %>
+              <%= f.submit "Save", class: "btn btn-primary" %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -96,16 +101,19 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="ModalExpensesEditLabel">Edit expense</h5>
+          <h5 class="modal-title" id="ModalExpensesEditLabel">Edit your expense</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <%= simple_form_for(expense) do |f| %>
-            <%= f.input :title %>
-            <%= f.input :amount %>
+            <div class="input-expenses d-flex justify-content-center">
+              <%= f.input :title, label:"What?", placeholder:"Dinner, Drinks, Hat,..." %>
+              <%= f.input :amount, label: "Amount", placeholder:"50€" %>
+            </div>
             <%= f.input :mutual, as: :boolean, input_html: { class: "toggle", value: true }, label:"Did you pay for everyone?" %>
             <%= f.submit %>
           <% end %>
+          </div>
         </div>
       </div>
     </div>
