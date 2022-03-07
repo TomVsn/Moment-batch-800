@@ -1,7 +1,23 @@
+// CREATE EXPENSE
 
+.btnAddExpense:hover {
+  background-color: #F8B293;
+  color: black;
+  border-color: #F8B293;
+}
 // CREATE ACCOMODATION
 .btnAddUrl {
   height: 39px;
+}
+.btnAddUrl:hover {
+ background-color: #F8B293;
+ color: black;
+ border-color: #F8B293;
+}
+.btnAddAccomodation:hover {
+  background-color: #F8B293;
+  color: black;
+  border-color: #F8B293;
 }
 
 .inputUrlAccomodation {
@@ -111,8 +127,8 @@ textarea::placeholder {
   border-bottom: 1.5px solid #000000;
   background-color: transparent;
   border-radius: 0px;
+}
 
 .inline-question {
   width: 45%;
-
 }
