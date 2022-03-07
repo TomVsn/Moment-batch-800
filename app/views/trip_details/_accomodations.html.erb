@@ -19,10 +19,10 @@
           <div class="d-flex m-4">
             <div style="width: 60%;">
               <%if @accomodations.find_by(confirmed: true).img.present?%>
-              <%=image_tag @accomodations.find_by(confirmed: true).img, class:"index-img" %>
+                <%=image_tag @accomodations.find_by(confirmed: true).img, class:"index-img" %>
               <%end %>
             </div>
-            <div style="width: 40%;">
+            <div class="d-flex align-items-center m-3" style="width: 40%;">
               <div class="container">
                 <h1 class="title"><%= @accomodations.find_by(confirmed: true).title %></h1>
                 <h6 class="text-break card-text"><%= @accomodations.find_by(confirmed: true).address %></h6>
@@ -31,13 +31,13 @@
                   <div>
                   <i class="far fa-heart"></i> <%= @accomodations.find_by(confirmed: true).accomodation_votes.size%>
                   </div>
-                  <h6><%= @accomodations.find_by(confirmed: true).price %> €</h6>
+                  <h5><%= @accomodations.find_by(confirmed: true).price %> €</h5>
                 </div>
                 <%= link_to "You're not going here anymore?", confirm_accomodation_accomodation_path(@accomodations.find_by(confirmed: true)) %>
               </div>
             </div>
           </div>
-          <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 3px; right: 8px;"></button>
+          <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 8px; right: 8px;"></button>
 
         </div>
         <div class="modal-body w-100 d-flex align-items-center justify-content-evenly flex-wrap">
@@ -57,19 +57,22 @@
                   <%= link_to "booked", confirm_accomodation_accomodation_path(accomodation) %>
                 </div>
                 <h2 class="card-index-accomodation-pricing position-absolute" style="bottom: 7px; right: 20px"><%= accomodation.price %> €</h2>
-                <div class="card-index-accomodation-user">
+                <div class="card-index-accomodation-user ">
                 <%# pas liké %>
                   <% unless @participant.votes?(accomodation) %>
-                      <%= link_to participant_accomodation_accomodation_votes_path(@participant, accomodation, @new_accomodation_vote), method: :post do %>
-                        <i class="far fa-heart"></i>
-                      <% end%>
-                      <%= accomodation.accomodation_votes.size%>
+                      <div>
+                        <%= link_to participant_accomodation_accomodation_votes_path(@participant, accomodation, @new_accomodation_vote), method: :post do %>
+                          <%= accomodation.accomodation_votes.size%> <i class="far fa-heart"></i>
+                        <% end%>
+                      </div>
+                <%# liké %>
                   <% else %>
-                      <% accomodation_vote = AccomodationVote.find_by(participant_id: @participant.id, accomodation_id: accomodation.id) %>
-                      <%= link_to accomodation_accomodation_vote_path(accomodation_vote), method: :delete, data: { confirm: "Are you sure?" } do %>
-                        <i class="fas fa-heart"></i>
-                      <% end%>
-                      <%= accomodation.accomodation_votes.size%>
+                      <div>
+                        <% accomodation_vote = AccomodationVote.find_by(participant_id: @participant.id, accomodation_id: accomodation.id) %>
+                        <%= link_to accomodation_accomodation_vote_path(accomodation_vote), method: :delete, data: { confirm: "Are you sure?" } do %>
+                          <%= accomodation.accomodation_votes.size%> <i class="fas fa-heart"></i>
+                        <% end%>
+                      </div>
                   <% end %>
                 </div>
               </div>
@@ -85,7 +88,7 @@
         </div>
         <div class="modal-body w-100 d-flex align-items-center justify-content-evenly flex-wrap">
             <% @accomodations.each do |accomodation|%>
-            <div class="card-index-accomodation position-relative" style="width: 32%;">
+            <div class="card-index-accomodation position-relative mb-3" style="width: 32%;">
               <%= link_to trip_accomodation_path(accomodation.trip, accomodation), method: :delete, data: { confirm: "Are you sure?" }, class:"cross d-inline position-absolute", style:"top: 3px; right: 8px;" do %>
                 <i class="fas fa-times"></i>
               <% end %>
@@ -101,19 +104,26 @@
                 </div>
                 <h2 class="card-index-accomodation-pricing position-absolute" style="bottom: 7px; right: 20px"><%= accomodation.price %> €</h2>
                 <div class="card-index-accomodation-user">
+                <%# pas liké %>
                   <% unless @participant.votes?(accomodation) %>
                     <%= simple_form_for [@participant, accomodation, @new_accomodation_vote] do |f|%>
-                      <%= button_tag type: 'submit', class: "btn" do %>
-                        <i class="far fa-heart"></i>
-                      <% end %>
+                    <div>
+                       <%= button_tag type: 'submit', class: "btn" do %>
+                         <i class="far fa-heart"></i>
+                        <span >
+                          <%= accomodation.accomodation_votes.size%>
+                        </span>
+                       <% end %>
+                    </div>
                     <% end %>
-                    <%= accomodation.accomodation_votes.size%>
+                    <%# liké %>
                   <% else %>
-                    <% accomodation_vote = AccomodationVote.find_by(participant_id: @participant.id, accomodation_id: accomodation.id) %>
+                  <div>
+                   <% accomodation_vote = AccomodationVote.find_by(participant_id: @participant.id, accomodation_id: accomodation.id) %>
                     <%= link_to accomodation_accomodation_vote_path(accomodation_vote), method: :delete, data: { confirm: "Are you sure?" } do %>
-                      <i class="fas fa-heart"></i>
-                    <% end%>
-                    <%= accomodation.accomodation_votes.size%>
+                     <%= accomodation.accomodation_votes.size%> <i class="fas fa-heart"></i>
+                    <% end %>
+                  </div>
                   <% end %>
                 </div>
               </div>
@@ -151,7 +161,7 @@
             <p class="mt-3">If you found it on a website : Url</p>
             <%= simple_form_for [@trip, @new_accomodation] do |f| %>
               <div class="d-flex inputUrlAccomodation">
-                <%= f.input :url, class: "inputUrlAccomodation" %>
+                <%= f.input :url, placeholder: "url", class: "inputUrlAccomodation" %>
                 <%= f.submit "Add", class: "btn btn-primary btnAddUrl" %>
               </div>
             <% end %>
@@ -160,23 +170,23 @@
           <p class="mt-3">If you found it otherwise : Address</p>
           <%= simple_form_for [@trip, @new_accomodation] do |f| %>
             <div class="d-flex justify-content-between">
-              <%= f.input :title %>
-              <%= f.input :address %>
-              <%= f.input :price %>
+              <%= f.input :title, placeholder: "title" %>
+              <%= f.input :address, placeholder: "address" %>
+              <%= f.input :price, placeholder: "price" %>
             </div>
 
-              <%= f.input :img %>
+              <%= f.input :img, placeholder:"image address" %>
 
-            <%= f.input :description %>
-            <div class="text-center">
+            <%= f.input :description, placeholder: "description" %>
+            <div class="text-center mt-3">
              <%= f.submit "Add", class: "btn btn-primary gap-2 col-6" %>
             </div>
           <% end %>
           <div class="form-check mt-4">
-            <input class="form-check-input" type="checkbox" value="booked" id="flexCheckDefault">
+            <%# <input class="form-check-input" type="checkbox" value="booked" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
             This will be the place we go
-            </label>
+            </label> %>
           </div>
         </div>
       </div>
