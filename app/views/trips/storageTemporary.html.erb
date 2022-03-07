@@ -69,3 +69,16 @@
         <p class="location">Ibiza</p>
       </div>
     </div>
+
+<!--Previous decent looking card-->
+        <div class="card">
+            <div class="card-body">
+                <span class="date">
+                  From <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%>
+                  <br>To: <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%>
+                </span>
+                <h2><%=trip.title%></h2>
+                <h3><%= trip.city %></h3>
+                <p><%= trip.description %></p>
+            </div>
+        </div>
