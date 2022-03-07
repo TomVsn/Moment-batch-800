@@ -9,4 +9,5 @@ class Trip < ApplicationRecord
   validates :start_date, :end_date, :title, presence: true
   has_many :transportations, through: :participants
   has_many_attached :photos
+  validates :title, length: { maximum: 25 }
 end

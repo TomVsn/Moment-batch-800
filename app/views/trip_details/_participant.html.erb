@@ -18,10 +18,14 @@
         <ul>
           <% @participants.each do |participant| %>
             <li>
-            <%= link_to participant_path(participant), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fas fa-times"></i>
-            <% end %>
-            <%= participant.user.username %>
+              <div class="row justify-content-start">
+                <div class="col">
+                  <%= link_to participant_path(participant), method: :delete, data: { confirm: "Are you sure?" } do %>
+                    <i class="fas fa-user-alt-slash"></i>
+                  <% end %>
+                  <%= participant.user.username %>
+                </div>
+              </div>
             </li>
           <% end %>
         </ul>
@@ -43,12 +47,20 @@
           <ul>
             <% unless user.participates?(@trip) %>
               <li>
-                <%= user.username %>
-                <%= simple_form_for [@trip, @new_participant] do |f|%>
-                  <%= f.input :user_id, as: :hidden, input_html: {value: user.id}%>
-                  <%= f.input :trip_id, as: :hidden, input_html: {value: @trip.id} %>
-                  <%= f.submit%>
-                <% end %>
+                <div class="row align-items-center">
+                  <div class="col justify-content-center">
+                    <%= user.username %>
+                  </div>
+                  <div class="col">
+                    <%= simple_form_for [@trip, @new_participant] do |f|%>
+                      <%= f.input :user_id, as: :hidden, input_html: {value: user.id}%>
+                      <%= f.input :trip_id, as: :hidden, input_html: {value: @trip.id} %>
+                      <%= button_tag type: 'submit', style:"border:none", class:"bg-white" do %>
+                        <i class="fas fa-user-plus"></i>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
               </li>
             <% end %>
           </ul>

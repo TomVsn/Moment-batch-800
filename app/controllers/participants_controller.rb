@@ -32,7 +32,7 @@ class ParticipantsController < ApplicationController
     @trip = @participant.trip
     @participant.destroy
     authorize @participant
-    redirect_to trips_path
+    redirect_to trip_path(@trip)
   end
 
   private
