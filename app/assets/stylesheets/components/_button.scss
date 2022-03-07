@@ -63,6 +63,7 @@
   background-color: #d3e9ce;
   border-radius: 8px;
 
+
 .fav-button {
   color: black;
   text-decoration: none;
@@ -72,6 +73,7 @@
 
 .fav-button:hover {
   color: red !important;
+}
 
 .btn-index {
   background-color: rgba($color: #1E3658, $alpha: 1);
@@ -84,4 +86,5 @@
 
 .btn-index:hover {
   transform: scale(1.07);
+}
 }
