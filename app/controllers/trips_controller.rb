@@ -47,6 +47,7 @@ class TripsController < ApplicationController
     # @transportations = first_step.flatten
     @new_transportation = Transportation.new
     @new_accomodation_vote = AccomodationVote.new
+    @new_message = Message.new
     authorize @trip
   end
 

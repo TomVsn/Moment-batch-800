@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :event_participants, only: [:new, :create]
   end
   resources :participants, only: [:destroy] do
+    resources :messages, only: [:show, :new, :create]
     resources :transportations, only: [:new, :create]
     resources :expenses, only: [:index, :new, :create]
     resources :events, only: [:new, :create]
