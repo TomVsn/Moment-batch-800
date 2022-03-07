@@ -102,13 +102,14 @@
 
 .card-messages {
   background-color: white;
-  height: 97%;
+  height: 100vh;
   border-radius: 20px;
   margin-top: 10px;
   padding: 15px;
   margin: 10px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 20.31%);
-}
+  // max-height: 100vh;
+  }
 
 
 .card-expenses {

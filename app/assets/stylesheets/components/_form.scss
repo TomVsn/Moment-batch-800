@@ -1,3 +1,4 @@
+
 // CREATE ACCOMODATION
 .btnAddUrl {
   height: 39px;
@@ -7,4 +8,16 @@
 .inputUrlAccomodation {
   width: 100%;
   flex-grow:1 !important;
+}
+.transportation-form{
+  .origin-destination, .transportation-dates{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.event-dates{
+  display: flex;
+  justify-content: space-between;
+
 }
