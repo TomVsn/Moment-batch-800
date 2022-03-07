@@ -19,10 +19,10 @@
               <%= f.input :title %>
             </div>
             <div class="inline-question">
-              <%= f.input :description %>
+              <%= f.input :city %>
             </div>
           </div>
-          <%= f.input :city %>
+          <%= f.input :description %>
           <div class="d-flex justify-content-between">
             <div class="inline-question">
               <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
@@ -31,7 +31,9 @@
               <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
             </div>
           </div>
-          <%= f.submit %>
+          <div class="d-flex form-actions justify-content-center">
+              <%= f.submit "Add your trip", class:"btn-index"%>
+          </div>
         <% end %>
       </div>
     </div>
@@ -66,7 +68,9 @@
                 <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
               </div>
               </div>
-              <%= f.submit %>
+              <div class="d-flex form-actions justify-content-center">
+                <%= f.submit "Save changes", class:"btn-index"%>
+              </div>
             <% end %>
         </div>
       </div>
