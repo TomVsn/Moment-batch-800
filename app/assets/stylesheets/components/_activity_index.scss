@@ -1,0 +1,60 @@
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 26.6px) repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  height: 80px;
+}
+.activity-time {
+  grid-column-start: 1;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.activity-title {
+  grid-column-start: 3;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 10px;
+}
+
+.activity-icon {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  background-color: #A8DADC;
+  position: relative;
+  border-radius: 10px;
+}
+.activity-avatar-first {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  margin-left: 10px;
+}
+.activity-avatar-second {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+.activity-avatar-rest {
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  margin-left: 10px;
+}
+.activity-participate-button {
+  grid-column-start: 6;
+  grid-column-end: 8;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  margin-left: 10px;
+}
