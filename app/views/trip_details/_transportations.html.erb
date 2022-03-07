@@ -19,20 +19,19 @@
 </div> %>
 
 <!-- Aller du trip of the participant -->
-<% if @participant.transportations.exists? == false %>
-<p style="color:black">Add your bus, plane or anything ticket !</p>
-<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
-  Add your ticket
-</button>
-<% else %>
-  <% coming_transportation = @participant.transportations.order('departure_date ASC').select{|transportation| transportation.departure_date > Time.now}.first  %>
+<% coming_transportation = @participant.transportations.order('departure_date ASC').select{|transportation| transportation.departure_date > Time.now}.first  %>
+<% if @participant.transportations == [] %>
+  <p style="color:black">Add your bus, plane or anything ticket !</p>
+  <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
+    Add your ticket
+  </button>
+<% elsif coming_transportation != nil && coming_transportation.departure_date > Time.now%>
   <h6>Your trip to <%= coming_transportation.destination %> is in
   <% remaining_days = ((coming_transportation.departure_date - Time.now)/86400).to_i %>
   <%= remaining_days %> days,
   <%= (((coming_transportation.departure_date - Time.now) % 86400)/3600).to_i %> hours,
   <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600)/60).to_i%> minutes
   <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600) % 60).to_i %> seconds
-
   <div class="d-flex">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
@@ -42,6 +41,14 @@
       +
     </button>
   </div>
+<% elsif @participant.transportations.each {|transportation| transportation.departure_date < Time.now} %>
+  You have no ticket coming soon
+    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
+      See your previous tickets
+    </button>
+    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
+      Add your next ticket
+    </button>
 <% end %>
 
 <!-- Modal voir l'aller retour-->
@@ -53,7 +60,7 @@
         <h5 class="modal-title" id="ShowTransportationModalLabel">Details of your journeys</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <% if @participant.transportations.size == 1 %>
+      <% if @participant.transportations.size == 1 && @participant.transportations.first.departure_date > Time.now%>
         <div class="modal-body d-flex justify-content-between">
           <div>
             Etape <%=  1 %> : <br>
