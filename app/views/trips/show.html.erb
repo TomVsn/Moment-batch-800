@@ -24,6 +24,9 @@
     <div class="dashboard-box dashboard-expenses">
       <p>Expenses</p>
       <%= render 'trip_details/expenses' %>
+      <div class="pie-chart">
+      <%= pie_chart [["Individual", @non_mutual_expenses], ["Mutual", (@sum_of_mutual_expenses / @participants_expenses.count)]], width: "100%", height: "10rem", round: 0, colors: ["#3A405A", "#6A74A0"], legend: "bottom" %>
+      </div>
     </div>
     <div class="dashboard-box dashboard-activities">
       <p>Activities</p>
