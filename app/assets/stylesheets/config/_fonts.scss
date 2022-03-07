@@ -17,3 +17,21 @@ $fredoka: 'Fredoka', sans-serif;
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+.highlight-title {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+}
+
+.highlight-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: .5em;
+  z-index: -1;
+  background: #F79F79;
+  opacity: 0.8;
+  width: 80%;
+}

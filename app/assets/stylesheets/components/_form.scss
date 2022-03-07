@@ -2,7 +2,6 @@
 // CREATE ACCOMODATION
 .btnAddUrl {
   height: 39px;
-  margin-top: 31px;
 }
 
 .inputUrlAccomodation {
@@ -27,6 +26,93 @@
   justify-content: space-between;
 }
 
+input::placeholder {
+  font-size: 16px;
+  text-indent: -10px;
+  text-transform: none;
+}
+
+input[type="text"]::placeholder {
+  margin-left: -10px;
+  text-transform: none;
+}
+
+input[type="url"]::placeholder {
+  margin-left: -10px;
+  text-transform: none;
+}
+
+input[type="number"]::placeholder {
+  margin-left: -10px;
+  text-transform: none;
+}
+
+input[type="submit"] {
+  height: 57.5px;
+  color: white;
+}
+
+textarea::-webkit-input-placeholder {
+  font-size: 16px;
+  text-indent: -10px;
+  text-transform: none;
+}
+
+textarea:-moz-placeholder { /* Firefox 18- */
+  font-size: 16px;
+  text-indent: -10px;
+  text-transform: none;
+}
+
+textarea::-moz-placeholder {  /* Firefox 19+ */
+  font-size: 16px;
+  text-indent: -10px;
+  text-transform: none;
+}
+
+textarea:-ms-input-placeholder {
+  font-size: 16px;
+  text-indent: -10px;
+  text-transform: none;
+}
+
+textarea::placeholder {
+  font-size: 16px;
+  text-indent: -10px;
+  text-transform: none;
+}
+
+.accomodation_title {
+  flex-grow: 1;
+  padding-right: 5px;
+}
+
+.accomodation_address {
+  flex-grow: 1;
+  padding-right: 5px;
+}
+
+.accomodation_price {
+  flex-grow: 1;
+}
+
+.accomodation_url {
+  flex-grow: 1;
+}
+
+
+.form-control {
+  padding: 1rem 3.125rem 1rem 0rem;
+  color: #0E0000;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  // border-bottom: 1.5px solid #000;
+  border-bottom: 1.5px solid #000000;
+  background-color: transparent;
+  border-radius: 0px;
+
 .inline-question {
   width: 45%;
+
 }
