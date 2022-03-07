@@ -42,7 +42,8 @@
                         <p><%= expense.amount / @participants_expenses.count %>€ / participant</p>
                       </div>
                     <% elsif expense.mutual == false %>
-                      <%= expense.amount %>€
+                      <p><%= expense.amount %>€</p>
+                      <p><%= expense.participant.user.username %> paid (individual expense)</p>
                     <% end %>
 
 
