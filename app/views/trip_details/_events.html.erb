@@ -1,6 +1,5 @@
 <div class="container" style="overflow: scroll; height: 80%">
   <% @trip.events.each do |event| %>
-
     <div class="activity-grid">
       <div class="activity-time">
         <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
@@ -59,8 +58,6 @@
     +
   </button>
 </div>
-
-
 
 <!-- Modal create an event -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
