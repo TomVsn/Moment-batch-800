@@ -116,6 +116,11 @@
 }
 
 // CARDS ACCOMODATIONS INDEX
+
+#IndexAccomodationModal .modal-header {
+  border-bottom: none;
+}
+
 .card-index-accomodation {
   overflow: hidden;
   background: white;

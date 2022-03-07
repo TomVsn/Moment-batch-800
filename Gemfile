@@ -35,6 +35,7 @@ gem 'headless', '~> 2.2', '>= 2.2.3'
 
 gem 'devise'
 gem 'pundit'
+gem "geocoder"
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
