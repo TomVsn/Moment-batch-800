@@ -4,7 +4,7 @@
     <div class="text-center ">
     <div class="column">
       <div class="row d-flex justify-content-center">
-        <h1> It's time <strong>to plan</strong> your <strong>get away</strong>!</h1>
+        <h1> It's time <strong>to plan</strong> your <strong>getaway</strong>!</h1>
       </div>
       <div class="row d-flex justify-content-center">
         <button type="button" class="btn btn-banner" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width:20rem">
@@ -17,47 +17,87 @@
 
   <nav class="d-inline-flex w-100">
     <div class="nav nav-tabs w-100" id="nav-tab" role="tablist">
-      <button class="nav-link active w-50" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Your coming trips</button>
-      <button class="nav-link w-50" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Your past trips</button>
+      <button class="nav-link active w-50" id="coming-tab" data-bs-toggle="tab" data-bs-target="#coming" type="button" role="tab" aria-controls="coming" aria-selected="true">Your coming trips</button>
+      <button class="nav-link w-50" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">Your past trips</button>
     </div>
   </nav>
-
-
-    <div class="card-list">
-      <% @coming_trips.each do |trip| %>
-        <div class="card-trip_index">
-          <%= link_to trip_path(trip) do %>
-            <div class="card-trip_index-title">
-              <h1><%= trip.title %></h1>
-            </div>
-            <div class="card-trip_index-details">
-              <div class="card-trip_index-details-dates">
-                <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> -
-                <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%>
-              </div>
-              <div class="card-trip_index-details-title">
+  <div id="nav-tab" class="tab-content">
+    <div class="tab-pane fade show active" id="coming" role="tabpanel" aria-labelledby="coming-tab">
+      <div class="card-list">
+        <% @coming_trips.each do |trip| %>
+          <div class="card-trip_index">
+            <%= link_to trip_path(trip) do %>
+              <div class="card-trip_index-title">
                 <h1><%= trip.title %></h1>
               </div>
-              <div class="card-trip_index-details-city">
-                <h4><%= trip.city %></h4>
+              <div class="card-trip_index-details">
+                <div class="card-trip_index-details-dates">
+                  <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> -
+                  <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%>
+                </div>
+                <div class="card-trip_index-details-title">
+                  <h1><%= trip.title %></h1>
+                </div>
+                <div class="card-trip_index-details-city">
+                  <h4><%= trip.city %></h4>
+                </div>
+                <div class="card-trip_index-details-decription">
+                  <p><%= trip.description %></p>
+                </div>
               </div>
-              <div class="card-trip_index-details-decription">
-                <p><%= trip.description %></p>
-              </div>
+            <% end %>
+            <div class="dropdown-box">
+              <i class="fas fa-ellipsis-h" type="button" id="indexActions" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu" aria-labelledby="indexActions">
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#participantCreate">Invite a friend...</a></li>
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">Modify trip...</a></li>
+                  <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
+                    <li><p class="dropdown-item delete-action" >Delete</p></li>
+                  <% end %>
+                </ul>
             </div>
-          <% end %>
-          <div class="dropdown-box">
-            <i class="fas fa-ellipsis-h" type="button" id="indexActions" data-bs-toggle="dropdown" aria-expanded="false"></i>
-              <ul class="dropdown-menu" aria-labelledby="indexActions">
-                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#participantCreate">Invite a friend...</a></li>
-                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">Modify trip...</a></li>
-                <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
-                  <li><p class="dropdown-item delete-action" >Delete</p></li>
-                <% end %>
-              </ul>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
+    <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
+      <div class="card-list">
+        <% @past_trips.each do |trip| %>
+          <div class="card-trip_index">
+            <%= link_to trip_path(trip) do %>
+              <div class="card-trip_index-title">
+                <h1><%= trip.title %></h1>
+              </div>
+              <div class="card-trip_index-details">
+                <div class="card-trip_index-details-dates">
+                  <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> -
+                  <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%>
+                </div>
+                <div class="card-trip_index-details-title">
+                  <h1><%= trip.title %></h1>
+                </div>
+                <div class="card-trip_index-details-city">
+                  <h4><%= trip.city %></h4>
+                </div>
+                <div class="card-trip_index-details-decription">
+                  <p><%= trip.description %></p>
+                </div>
+              </div>
+            <% end %>
+            <div class="dropdown-box">
+              <i class="fas fa-ellipsis-h" type="button" id="indexActions" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu" aria-labelledby="indexActions">
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#participantCreate">Invite a friend...</a></li>
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">Modify trip...</a></li>
+                  <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
+                    <li><p class="dropdown-item delete-action" >Delete</p></li>
+                  <% end %>
+                </ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 <%= render 'trip_index_details/trip' %>
