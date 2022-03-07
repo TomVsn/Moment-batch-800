@@ -55,7 +55,7 @@
           <h5 class="modal-title" id="ShowTransportationModalLabel">Details of your journeys</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <% @participant.transportations.each_with_index do |transportation, index|  %>
+        <% @participant.transportations.order('departure_date ASC').each_with_index do |transportation, index|  %>
         <div class="modal-body d-flex justify-content-between">
           <div>
             Etape <%=  index + 1 %> : <br>
