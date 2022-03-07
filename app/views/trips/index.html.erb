@@ -25,8 +25,8 @@
 
     <div class="card-list">
       <% @trips.each do |trip| %>
-        <%= link_to trip_path(trip) do %>
-          <div class="card-trip_index">
+        <div class="card-trip_index">
+          <%= link_to trip_path(trip) do %>
             <div class="card-trip_index-title">
               <h1><%= trip.title %></h1>
             </div>
@@ -45,8 +45,18 @@
                 <p><%= trip.description %></p>
               </div>
             </div>
+          <% end %>
+          <div class="dropdown-box">
+            <i class="fas fa-ellipsis-h" type="button" id="indexActions" data-bs-toggle="dropdown" aria-expanded="false"></i>
+              <ul class="dropdown-menu" aria-labelledby="indexActions">
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#participantCreate">Invite a friend...</a></li>
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editTripModal-<%= trip.id %>">Modify trip...</a></li>
+                <%= link_to trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <li><p class="dropdown-item delete-action" >Delete</p></li>
+                <% end %>
+              </ul>
           </div>
-        <% end %>
+        </div>
       <% end %>
     </div>
 </div>
