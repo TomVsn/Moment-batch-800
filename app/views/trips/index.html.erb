@@ -26,22 +26,22 @@
     <div class="card-list">
       <% @trips.each do |trip| %>
         <%= link_to trip_path(trip) do %>
-          <div class="card-test">
-            <div class="card-test-title">
+          <div class="card-trip_index">
+            <div class="card-trip_index-title">
               <h1><%= trip.title %></h1>
             </div>
-            <div class="card-test-details">
-              <div class="card-test-details-dates">
+            <div class="card-trip_index-details">
+              <div class="card-trip_index-details-dates">
                 <%= trip.start_date.day%>/<%= trip.start_date.month%>/<%= trip.start_date.year%> -
                 <%= trip.end_date.day%>/<%= trip.end_date.month%>/<%= trip.end_date.year%>
               </div>
-              <div class="card-test-details-title">
+              <div class="card-trip_index-details-title">
                 <h1><%= trip.title %></h1>
               </div>
-              <div class="card-test-details-city">
+              <div class="card-trip_index-details-city">
                 <h4><%= trip.city %></h4>
               </div>
-              <div class="card-test-details-decription">
+              <div class="card-trip_index-details-decription">
                 <p><%= trip.description %></p>
               </div>
             </div>

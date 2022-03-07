@@ -1,4 +1,4 @@
-.card-test {
+.card-trip_index {
   border-radius: 18px;
   background   : #def5f7;
   box-shadow   : 4px 4px 25px rgba(0, 0, 0, 0.4);
@@ -20,17 +20,17 @@
     color: black;
   }
 }
-.card-test:hover {
+.card-trip_index:hover {
   transform : scale(1.05);
   transform: translateY(-20px);
-  .card-test-title {
+  .card-trip_index-title {
     display: none;
   }
-  .card-test-details {
+  .card-trip_index-details {
     display: block;
   }
 }
-.card-test-title {
+.card-trip_index-title {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -38,7 +38,7 @@
   text-align: center;
 }
 
-.card-test-details {
+.card-trip_index-details {
   display: none;
   background-color: rgba(0, 0, 0, 0.4);
   height: 100%;
@@ -47,15 +47,15 @@
   text-align: center;
   position: relative;
 }
-.card-test-details-dates {
+.card-trip_index-details-dates {
   margin-bottom: 20px;
 }
 
-.card-test-details-title {
+.card-trip_index-details-title {
   height: 25%;
   overflow: hidden;
 }
-.card-test-details-decription {
+.card-trip_index-details-decription {
   overflow: hidden;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -63,7 +63,7 @@
   text-overflow: ellipsis;
 }
 
-.card-test-details-options {
+.card-trip_index-details-options {
   position: absolute;
   top: 3px;
   right: 8px;
