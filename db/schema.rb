@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(version: 2022_03_07_084203) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.bigint "trip_id", null: false
+    t.bigint "participant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["participant_id"], name: "index_chatrooms_on_participant_id"
+    t.index ["trip_id"], name: "index_chatrooms_on_trip_id"
+  end
+
   create_table "event_participants", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "participant_id", null: false
@@ -163,6 +173,8 @@ ActiveRecord::Schema.define(version: 2022_03_07_084203) do
   add_foreign_key "accomodations", "trips"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "participants"
+  add_foreign_key "chatrooms", "trips"
   add_foreign_key "event_participants", "events"
   add_foreign_key "event_participants", "participants"
   add_foreign_key "events", "participants"
