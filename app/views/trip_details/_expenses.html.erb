@@ -1,7 +1,4 @@
-
-
 <div class="container" style="overflow: scroll; height: 80px">
-
   <div class="d-flex">
     <h3 class="me-3"> <%= @total_per_participant%> €</h3>
     <!-- Button trigger modal Create expenses -->
@@ -14,7 +11,6 @@
     </button>
   </div>
   <p><%= @total_per_participant %>€ / participant</p>
-
 
   <!-- Modal Show Expenses -->
   <div class="modal fade" id="ModalExpensesDetails" tabindex="-1" aria-labelledby="ModalExpensesDetailsLabel" aria-hidden="true">
@@ -46,7 +42,6 @@
                       <p><%= expense.participant.user.username %> paid (individual expense)</p>
                     <% end %>
 
-
                     <div>
                       <!-- Button trigger edit expense -->
                         <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#ModalExpensesEdit-<%= expense.id %>">
@@ -57,7 +52,6 @@
                         <i class="fas fa-times"></i>
                       <% end %>
                     </div>
-
                   </div>
                 </li>
               <% end %>
@@ -67,9 +61,6 @@
       </div>
     </div>
   </div>
-
-
-
 
   <!-- Modal Create expenses -->
   <div class="modal fade" id="ModalExpensesCreate" tabindex="-1" aria-labelledby="ModalExpensesCreateLabel" aria-hidden="true">
@@ -86,9 +77,10 @@
                 <%= f.input :title, label:"What?", placeholder:"Dinner, Drinks, Hat,..." %>
                 <%= f.input :amount, label: "Amount", placeholder:"50€" %>
               </div>
-            <div class="end-expense-form d-flex justify-content-between">
-              <%= f.input :mutual, as: :boolean, input_html: { class: "toggle", value: true }, label:"Did you pay for everyone?" %>
-              <%= f.submit "Save", class: "btn btn-primary" %>
+              <div class="end-expense-form d-flex justify-content-between">
+                <%= f.input :mutual, as: :boolean, input_html: { class: "toggle", value: true }, label:"Did you pay for everyone?" %>
+                <%= f.submit "Save", class: "btn btn-primary" %>
+              </div>
             </div>
           <% end %>
         </div>
@@ -114,7 +106,6 @@
             <%= f.input :mutual, as: :boolean, input_html: { class: "toggle", value: true }, label:"Did you pay for everyone?" %>
             <%= f.submit %>
           <% end %>
-          </div>
         </div>
       </div>
     </div>
