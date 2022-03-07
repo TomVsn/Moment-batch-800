@@ -26,12 +26,13 @@
         Add your ticket
       </button>
       <% else %>
-        <h6>Your trip to <%= @participant.transportations.first.destination %> is in
-        <% remaining_days = ((@participant.transportations.first.departure_date - Time.now)/86400).to_i %>
+        <% coming_transportation = @participant.transportations.order('departure_date ASC').select{|transportation| transportation.departure_date > Time.now}.first  %>
+        <h6>Your trip to <%= coming_transportation.destination %> is in
+        <% remaining_days = ((coming_transportation.departure_date - Time.now)/86400).to_i %>
         <%= remaining_days %> days,
-        <%= (((@participant.transportations.first.departure_date - Time.now) % 86400)/3600).to_i %> hours,
-        <%= ((((@participant.transportations.first.departure_date - Time.now) % 86400) % 3600)/60).to_i%> minutes
-        <%= ((((@participant.transportations.first.departure_date - Time.now) % 86400) % 3600) % 60).to_i %> seconds
+        <%= (((coming_transportation.departure_date - Time.now) % 86400)/3600).to_i %> hours,
+        <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600)/60).to_i%> minutes
+        <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600) % 60).to_i %> seconds
 
         <div class="d-flex">
           <!-- Button trigger modal -->
@@ -62,6 +63,12 @@
             departure : <%= transportation.departure_date.strftime("%A") %>, <%= transportation.departure_date.month %>, <%= transportation.departure_date.day %>, <%= transportation.departure_date.year %><br>
             From : <%= transportation.origin %>
             To: <%= transportation.destination %><br>
+            At : <%= transportation.departure_date.hour %> :
+            <% if transportation.departure_date.min == 0 %>
+            00
+            <% else %>
+              <%= transportation.departure_date.min %>
+            <% end %>
           </div>
           <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#EditTransportationModal">
             <i class="fas fa-edit"></i>
