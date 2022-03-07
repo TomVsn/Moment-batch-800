@@ -36,6 +36,8 @@ gem 'headless', '~> 2.2', '>= 2.2.3'
 gem 'devise'
 gem 'pundit'
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
