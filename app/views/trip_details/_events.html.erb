@@ -1,41 +1,56 @@
-<div class="container" style="overflow: scroll; height: 215px">
+<div class="container" style="overflow: scroll; height: 80%">
   <% @trip.events.each do |event| %>
-      <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
-      <br>
-      <div class="row event-info" style="height:60px margin-bottom:10px">
-        <div class="col col-4">
-          <div class="event-icon">
-            <%= link_to event_path(event), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fas fa-times delete-event"></i>
-            <% end %>
-            <i class="fas fa-edit edit-event" data-bs-toggle="modal" data-bs-target="#editEventModal-<%= event.id %>"></i>
 
+    <div class="activity-grid">
+      <div class="activity-time">
+        <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
+      </div>
+      <div class="activity-icon">
+        <%= link_to event_path(event), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fas fa-times delete-event"></i>
+        <% end %>
+          <i class="fas fa-edit edit-event" data-bs-toggle="modal" data-bs-target="#editEventModal-<%= event.id %>"></i>
+      </div>
+      <div class="activity-title">
+        <%= event.start_date.hour %>:<%= event.start_date.min %> <%= event.description %>
+      </div>
+      <div class="activity-avatar-first">
+        <% if event.event_participants.first %>
+          <div class="avatar">
+            <%= image_tag "user-placeholder.png", width: 30, height: 30%>
+            <%= link_to event_participant_path(event.event_participants.first), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fas fa-times delete-event-participant"></i>
+            <% end %>
           </div>
-        </div>
-        <div class="col col-8">
-          <div class="event-description" ><%= event.start_date.hour %>:<%= event.start_date.min %>
-          <%= event.description %></div>
-          <div class="row">
-            <% event.event_participants.first(2).each do |event_participant|%>
-                <div class="col">
-                  <div class="avatar">
-                    <%= image_tag "user-placeholder.png", width: 30, height: 30%>
-                    <%= link_to event_participant_path(event_participant), method: :delete, data: { confirm: "Are you sure?" } do %>
-                      <i class="fas fa-times delete-event-participant"></i>
-                    <% end %>
-                  </div>
-                </div>
-            <% end %>
-            <% unless @participant.participates?(event) %>
-              <%= simple_form_for [event, @event_participant] do |f|%>
-                <%= button_tag type: 'submit', style:"background: none; border: none; color: #004E00;" do %>
-                  <div class="btn-join-event" aria-hidden="true">Participate</div>
-                <% end %>
-              <% end %>
-            <% end %>
-        </div>
+        <% end %>
       </div>
+      <div class="activity-avatar-second">
+        <% if event.event_participants[1] %>
+          <div class="avatar">
+            <%= image_tag "user-placeholder.png", width: 30, height: 30%>
+            <%= link_to event_participant_path(event.event_participants[1]), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fas fa-times delete-event-participant"></i>
+            <% end %>
+          </div>
+        <% end %>
       </div>
+      <div class="activity-avatar-rest">
+        <% if event.event_participants.count > 2 %>
+          <div class="avatar" style="background-color:#5E6265; color:white">
+            <%= event.event_participants.count - 2 %>
+          </div>
+        <% end %>
+      </div>
+      <div class="activity-participate-button">
+        <% unless @participant.participates?(event) %>
+          <%= simple_form_for [event, @event_participant] do |f|%>
+            <%= button_tag type: 'submit', style:"background: none; border: none; color: #004E00;" do %>
+                          <div class="btn-join-event" aria-hidden="true">Participate</div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
   <!-- Button trigger modal -->
 </div>
