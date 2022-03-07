@@ -18,7 +18,7 @@ class TripPolicy < ApplicationPolicy
 
   def update?
     # que le propriétaire
-    record.user == user
+    true
   end
 
   def destroy?
