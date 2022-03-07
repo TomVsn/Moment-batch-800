@@ -1,4 +1,4 @@
-<div class="container" style="overflow: scroll; height: 80px">
+<div class="container" style="overflow: scroll; height: auto">
   <div class="d-flex">
     <h3 class="me-3"> <%= @total_per_participant%> €</h3>
     <!-- Button trigger modal Create expenses -->
@@ -10,7 +10,6 @@
       Details
     </button>
   </div>
-  <p><%= @total_per_participant %>€ / participant</p>
 
   <!-- Modal Show Expenses -->
   <div class="modal fade" id="ModalExpensesDetails" tabindex="-1" aria-labelledby="ModalExpensesDetailsLabel" aria-hidden="true">

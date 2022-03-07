@@ -44,6 +44,7 @@ class TripsController < ApplicationController
 
       @participants_expenses = Participant.where(trip: @participant.trip)
       @total_per_participant = ((@sum_of_mutual_expenses / @participants_expenses.count) + @non_mutual_expenses).round(2)
+      @my_expenses = {mutual: @sum_of_mutual_expenses / @participants_expenses.count, individual: @non_mutual_expenses}
     end
     # first_step = @trip.participants.map { |participant| participant.transportations}
     # @transportations = first_step.flatten
