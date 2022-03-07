@@ -53,9 +53,6 @@
       <div class="modal-body" id="Index-photos">
         <% @trip.photos.each do |photo| %>
           <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill %>
-           <%# <%= link_to 'X', delete_image_attachment(photo),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %>
         <% end %>
       </div>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddPhotosModal">

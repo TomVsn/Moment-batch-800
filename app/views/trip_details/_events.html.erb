@@ -104,7 +104,7 @@
       </div>
       <div class="modal-body">
          <%= simple_form_for(event) do |f| %>
-          <%= f.input :description, label:"What are you planning?", placeholder: "Bowling, Boat party, Dinner at La Pergola,.." %>
+          <%= f.input :description, label:"What are you planning ?", placeholder: "Bowling, Boat party, Dinner at La Pergola,.." %>
           <div class="event-dates">
             <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
             <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
