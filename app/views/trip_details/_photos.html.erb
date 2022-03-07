@@ -2,25 +2,28 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <%if @trip.photos[0] != nil%>
-        <%=cl_image_tag @trip.photos[0].key, gravity: :center, height: 200, width: 400, crop: :thumb, style:"border-radius: 3px", alt:"First slide", class:"d-block w-100"%>
+        <%=cl_image_tag @trip.photos[0].key, gravity: :center, height: 219, width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100"%>
       <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646646018/hfvhc5dke5r3qvjmgn0j.jpg", height: 300, width: 300, alt:"First slide", class:"d-block w-100")%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646646018/hfvhc5dke5r3qvjmgn0j.jpg",height: 219, width: 300, alt:"First slide", class:"d-block w-100")%>
       <%end%>
     </div>
     <div class="carousel-item">
       <%if @trip.photos[1] != nil%>
-        <%=cl_image_tag @trip.photos[1].key, gravity: :center, height: 200, width: 400, crop: :thumb, style:"border-radius: 3px", alt:"First slide", class:"d-block w-100"%>
+        <%=cl_image_tag @trip.photos[1].key, gravity: :center, height: 219, width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100"%>
       <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646648847/o1hgy77kvn4zppnmfaoq.jpg", height: 300, width: 400, alt:"First slide", class:"d-block w-100")%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646648847/o1hgy77kvn4zppnmfaoq.jpg",height: 219, width: 400, alt:"First slide", class:"d-block w-100")%>
       <%end%>
     </div>
     <div class="carousel-item">
       <%if @trip.photos[2] != nil%>
-        <%=cl_image_tag @trip.photos[2].key, gravity: :center, height: 200, width: 400, crop: :thumb, style:"border-radius: 3px", alt:"First slide", class:"d-block w-100"%>
+        <%=cl_image_tag @trip.photos[2].key, gravity: :center, height: 219, width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100"%>
       <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646649101/yn6dwusfg1m8lrtd2ljh.jpg", height: 300, width: 400, alt:"First slide", class:"d-block w-100")%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646649101/yn6dwusfg1m8lrtd2ljh.jpg",height: 219, width: 400, alt:"First slide", class:"d-block w-100")%>
       <%end%>
     </div>
+    <button type="button" class="btn btn-add" id="addPhoto" data-bs-toggle="modal" data-bs-target="#AddPhotosModal">
+      +
+    </button>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -30,15 +33,13 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+
   <div class="text-center">
     <%if @trip.photos.attached?%>
       <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#PhotosModal">
         Discover all photos
       </button>
     <%end%>
-      <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#AddPhotosModal">
-      Add photos
-      </button>
   </div>
 </div>
 
