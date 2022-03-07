@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2022_03_07_084203) do
+ActiveRecord::Schema.define(version: 2022_03_07_111211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,16 +40,7 @@ ActiveRecord::Schema.define(version: 2022_03_07_084203) do
     t.index ["trip_id"], name: "index_accomodations_on_trip_id"
   end
 
-  create_table "chatrooms", force: :cascade do |t|
-    t.string "name"
-    t.bigint "trip_id", null: false
-    t.bigint "participant_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["participant_id"], name: "index_chatrooms_on_participant_id"
-    t.index ["trip_id"], name: "index_chatrooms_on_trip_id"
-
-   create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -148,6 +138,10 @@ ActiveRecord::Schema.define(version: 2022_03_07_084203) do
     t.datetime "arrival_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "departure_hour_hour"
+    t.integer "departure_hour_minute"
+    t.integer "arrival_hour_hour"
+    t.integer "arrival_hour_minute"
     t.index ["participant_id"], name: "index_transportations_on_participant_id"
   end
 
@@ -181,8 +175,6 @@ ActiveRecord::Schema.define(version: 2022_03_07_084203) do
   add_foreign_key "accomodation_votes", "accomodations"
   add_foreign_key "accomodation_votes", "participants"
   add_foreign_key "accomodations", "trips"
-  add_foreign_key "chatrooms", "participants"
-  add_foreign_key "chatrooms", "trips"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chatrooms", "participants"
