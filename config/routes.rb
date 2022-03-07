@@ -27,4 +27,10 @@ Rails.application.routes.draw do
     end
   end
   resources :event_participants, only: [:destroy]
+  resources :accomodations, only: [] do
+    member do
+      get :confirm_accomodation
+    end
+  end
+
 end

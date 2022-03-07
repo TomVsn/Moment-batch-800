@@ -49,6 +49,18 @@ class AccomodationsController < ApplicationController
     redirect_to trip_path(@trip)
   end
 
+  def confirm_accomodation
+    @accomodation = Accomodation.find(params[:id])
+    if @accomodation.confirmed == true
+      @accomodation.update(confirmed: false)
+    else
+      @accomodation.update(confirmed: true)
+    end
+    authorize @accomodation
+    @trip = @accomodation.trip
+    redirect_to trip_path(@trip)
+  end
+
   private
 
   def accomodations_params

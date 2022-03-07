@@ -22,6 +22,10 @@ class AccomodationPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def confirm_accomodation?
+    true
+  end
 end
 
 # ajouter ce matin
