@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_02_161601) do
+ActiveRecord::Schema.define(version: 2022_03_07_083202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2022_03_02_161601) do
     t.float "price"
     t.string "img"
     t.index ["trip_id"], name: "index_accomodations_on_trip_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.bigint "trip_id", null: false
+    t.bigint "participant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["participant_id"], name: "index_chatrooms_on_participant_id"
+    t.index ["trip_id"], name: "index_chatrooms_on_trip_id"
   end
 
   create_table "event_participants", force: :cascade do |t|
@@ -133,6 +143,8 @@ ActiveRecord::Schema.define(version: 2022_03_02_161601) do
   add_foreign_key "accomodation_votes", "accomodations"
   add_foreign_key "accomodation_votes", "participants"
   add_foreign_key "accomodations", "trips"
+  add_foreign_key "chatrooms", "participants"
+  add_foreign_key "chatrooms", "trips"
   add_foreign_key "event_participants", "events"
   add_foreign_key "event_participants", "participants"
   add_foreign_key "events", "participants"

@@ -29,7 +29,7 @@
             <% unless @participant.participates?(event) %>
               <%= simple_form_for [event, @event_participant] do |f|%>
                 <%= button_tag type: 'submit', style:"background: none; border: none; color: #004E00;" do %>
-                              <div class="btn-join-event" aria-hidden="true">Participate</div>
+                  <div class="btn-join-event" aria-hidden="true">Participate</div>
                 <% end %>
               <% end %>
             <% end %>
@@ -58,8 +58,8 @@
       <div class="modal-body">
         <%= simple_form_for [@participant, @event] do |f| %>
           <%= f.input :description %>
-          <%= f.input :start_date %>
-          <%= f.input :end_date %>
+          <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
           <%= f.submit "Add an event", class: "btn btn-primary" %>
         <% end %>
       </div>
