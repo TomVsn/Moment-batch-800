@@ -115,3 +115,10 @@ textarea::placeholder {
 .inline-question {
   width: 45%;
   }
+
+  .mapboxgl-ctrl-geocoder {
+    max-width: none;
+    width: 100%;
+    border: 1px solid lightgrey;
+    box-shadow: none;
+  }
