@@ -1,0 +1,5 @@
+meta_product_name: "Momento"
+meta_title: "Momento - Organize moments with the people you love in one place"
+meta_description: "Momento is a tool to plan easily and in one place any moment with the ones you love. You can manage participants, accomodations, transports, expenses, activities, photos and discuss. All in one page"
+meta_image: "cover-momento.jpeg" # should exist in `app/assets/images/`
+twitter_account: "@myriam_dbl"   # required for Twitter Cards
