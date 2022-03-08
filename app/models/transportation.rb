@@ -9,5 +9,7 @@ class Transportation < ApplicationRecord
 
   geocoded_by :origin
   geocoded_by :destination
-  after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :geocode, if: :will_save_change_to_origin?
+  after_validation :geocode, if: :will_save_change_to_destination?
+
 end
