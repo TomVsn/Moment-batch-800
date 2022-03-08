@@ -142,3 +142,17 @@ $dark: #777777;
   background-color: white;
   box-shadow: none;
 }
+
+#message_content {
+  padding: 0!important;
+  box-shadow: none!important;
+}
+
+.text {
+  border-color: none!important;
+  resize: none!important;
+}
+
+.textarea {
+  resize: none;
+}

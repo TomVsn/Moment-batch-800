@@ -19,9 +19,15 @@
 </div> %>
 
 <!-- Aller du trip of the participant -->
-  <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
-    +
-  </button>
+ <div class="d-flex">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-light btn-sm btn-more-infos" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
+      more info
+    </button>
+    <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
+      +
+    </button>
+  </div>
 <% coming_transportation = @participant.transportations.order('departure_date ASC').select{|transportation| transportation.departure_date > Time.now}.first  %>
 <% if @participant.transportations == [] %>
   <p style="color:black">Add your bus, plane or anything ticket !</p>
@@ -32,15 +38,7 @@
   <%= (((coming_transportation.departure_date - Time.now) % 86400)/3600).to_i %> hours,
   <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600)/60).to_i%> minutes
   <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600) % 60).to_i %> seconds
-  <div class="d-flex">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
-      See more
-    </button>
-    <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
-      +
-    </button>
-  </div>
+
 <% elsif @participant.transportations.each {|transportation| transportation.departure_date < Time.now} %>
   You have no ticket coming soon
     <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
@@ -174,7 +172,7 @@
                   <%= f.input :arrival_date, label:"When will you arrive?", as: :string, required: false, input_html: {class: "datepicker"} %>
                 </div>
                 <div class="transportations-others-infos d-flex justify-content-around">
-                  <%= f.input :mean, label:"How will you travel?", as: :select, collection: Transportation::CATEGORIES %>
+                  <%= f.collection_radio_buttons :mean, [[1, 'bus'], [2, 'train'], [3,'plane'], [4,'car'], [5, 'various'], [6,'other']], :first, :last, { item_wrapper_tag: false } %>
                   <%= f.input :price, label:"How much did it cost?" %>
                 </div>
                 <div class="text-center mt-3">

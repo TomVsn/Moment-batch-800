@@ -65,18 +65,24 @@
 
 <%# modale add photo %>
 <div class="modal fade" id="AddPhotosModal" tabindex="-1" aria-labelledby="AddPhotosModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="AddPhotosModalLabel">Photos</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for @trip do |f| %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        <%= f.submit "Add my photos", class:"btn btn-outline-warning-sessions" %>
-        <% end %>
-      </div>
+      <div class="position-relative" style="z-index: 2;">
+          <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 15px; right: 15px;"></button>
+        </div>
+        <div class="modal-body py-5">
+          <div class="container">
+            <div class="d-flex w-100 align-items-center">
+              <h4 class="text-center mb-4 highlight-title mx-auto">ADD YOUR PHOTOS</h4>
+            </div>
+              <%= simple_form_for @trip do |f| %>
+              <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+              <div class="text-center mt-3">
+                <%= f.submit "Add my photos", class: "btn btn-primary btnAddEvent gap-2 col-6" %>
+              </div>
+              <% end %>
+          </div>
+        </div>
     </div>
   </div>
 </div>

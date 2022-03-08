@@ -25,19 +25,51 @@
   height: 30px;
   width: 30px;
   background-color: white;
-  color: rgba($color: #000000, $alpha: 0.4);
+  color: #F79F79;
   border: solid 1px;
-  border-color: rgba($color: #000000, $alpha: 0.4);
+  border-color: #F79F79;
   border-radius: 50%;
   align-items: center;
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1;
 }
 
 .btn-add:hover {
- border-color: black;
+ background-color: #F79F79;
+ color: white;
 }
 
+.btn-more-infos {
+  position: absolute;
+  top: 16px;
+  right: 10px;
+  z-index: 1;
+  background: none;
+  color: rgba(0,0,0,0.4);
+  text-decoration: underline;
+  border: none;
+}
+.btn-more-infos:hover {
+  background: none;
+}
+.btn-more-infos:focus {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+.btn-more-infos:active {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+.btn-more-infos:active:focus {
+  border: none;
+  box-shadow: none;
+}
 
 .btn-join-event {
   cursor: pointer;
@@ -86,4 +118,9 @@
 
 .btn-index:hover {
   transform: scale(1.07);
+}
+
+#btnMessageSend {
+  background: none;
+  border: none;
 }

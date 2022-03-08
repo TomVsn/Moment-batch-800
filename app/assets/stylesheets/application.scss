@@ -15,6 +15,14 @@
 @import "pages/index";
 @import "trips/index";
 
+:root {
+  --expense: #50587C;
+  --friend: #B64D6B;
+  --accomodation: #F2B440;
+  --event: #42ABB3;
+  --transportation: #568A75;
+}
+
 body {
   // background-color: #F4F4F4;
   background-color: white;

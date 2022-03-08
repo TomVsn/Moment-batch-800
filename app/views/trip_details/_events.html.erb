@@ -14,7 +14,7 @@
       </div>
       <div class="activity-icon">
         <%= link_to event_path(event), method: :delete, data: { confirm: "Are you sure?" } do %>
-          <i class="fas fa-times delete-event"></i>
+          <i class="fas fa-times-circle delete-event"></i>
         <% end %>
           <i class="fas fa-edit edit-event" data-bs-toggle="modal" data-bs-target="#editEventModal-<%= event.id %>"></i>
       </div>
@@ -26,7 +26,7 @@
           <div class="avatar">
             <%= image_tag "user-placeholder.png", width: 30, height: 30%>
             <%= link_to event_participant_path(event.event_participants.first), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fas fa-times delete-event-participant"></i>
+              <i class="fas fa-times-circle delete-event-participant"></i>
             <% end %>
           </div>
         <% end %>
@@ -36,7 +36,7 @@
           <div class="avatar">
             <%= image_tag "user-placeholder.png", width: 30, height: 30%>
             <%= link_to event_participant_path(event.event_participants[1]), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fas fa-times delete-event-participant"></i>
+              <i class="fas fa-times-circle delete-event-participant"></i>
             <% end %>
           </div>
         <% end %>
@@ -59,14 +59,12 @@
       </div>
     </div>
     <% end %>
-    <div class="container">
-      <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        +
-      </button>
-    </div>
-  <% end %>
   <!-- Button trigger modal -->
+  <% end %>
 </div>
+<button type="button" class="btn btn-add " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  +
+</button>
 
 
 
