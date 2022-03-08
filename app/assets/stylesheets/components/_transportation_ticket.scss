@@ -1,0 +1,40 @@
+.transportation-ticket{
+  background-color:#3A405A;
+  color:white;
+  border-radius: 20px;
+  height: 13rem;
+  .departure-ticket{
+    margin-top: 1rem;
+    text-align: center;
+    height: 25%;
+    justify-content: center;
+  }
+  .origin-destination-infos{
+    height: 33%;
+    font-size:1rem;
+    p{
+      color:white;
+      margin-left: 5rem;
+      font-size:1rem;
+    }
+    .city-ticket{
+      font-size:2rem;
+    }
+  }
+  .departure-time{
+    height: 33%;
+    margin-left: 4.2rem;
+    padding-top: 1rem;
+  }
+
+  .ticket-globe{
+    color:#3A405A;
+    // margin: 3rem 8rem;
+    .fa-globe-europe{
+      background-color:#F79F79;
+      font-size:3rem;
+      padding: 1rem;
+      border-radius: 50%;
+    }
+  }
+}
