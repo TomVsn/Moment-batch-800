@@ -18,3 +18,17 @@ import "bootstrap"
 import { initFlatpickr } from "../plugins/flatpickr";
 
 initFlatpickr();
+
+//= require Chart.bundle
+//= require chartkick
+
+//= require_tree
+//= require jquery
+//= require jquery_ujs
+//= require chartkick
+//= require bootstrap-sprockets
+//= require turbolinks
+//= require_tree .
+
+require("chartkick")
+require("chart.js")

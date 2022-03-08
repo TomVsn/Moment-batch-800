@@ -58,6 +58,11 @@
 
 }
 
+#my-trips-btn {
+  margin-right: 15px;
+  background-color: #d3e9ce;
+  border-radius: 8px;
+
 
 .fav-button {
   color: black;
@@ -69,6 +74,7 @@
 .fav-button:hover {
   color: red !important;
 }
+
 .btn-index {
   background-color: rgba($color: #1E3658, $alpha: 1);
   color: white;
