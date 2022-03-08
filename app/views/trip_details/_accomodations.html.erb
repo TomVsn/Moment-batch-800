@@ -10,7 +10,7 @@
   <% elsif @accomodations.size > 1 && @accomodations.select{|accomodation| accomodation.confirmed == true} == []%>
     <p style="color:black">You have <%= @accomodations.size %> accomodations in your wishlist.</p>
     <p style="color:black">You haven't booked your place to stay yet.</p>
-  <% elsif @accomodations.size > 1 && @accomodations.select{|accomodation| accomodation.confirmed == true} != []%>
+  <% elsif @accomodations.select{|accomodation| accomodation.confirmed == true} != []%>
     <% accomodation_booked = @accomodations.select{|accomodation| accomodation.confirmed == true}.first %>
     <p style="color:green;font-size:14px; text-align:center">You've booked your place to stay!</p>
     <h4 style="text-align:center"><%= accomodation_booked.title %></h3>
