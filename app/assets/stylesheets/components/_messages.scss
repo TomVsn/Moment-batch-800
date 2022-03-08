@@ -1,14 +1,146 @@
+.c-message {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin-bottom: 1rem;
+}
+.c-message__content {
+  margin: 0 0.8rem;
+  width: 100%;
+}
+.c-message__content__bubble {
+  background-color: #79C7C5;
+  padding: 0.25em 0.75em;
+  border-radius: 20px;
+}
+.c-message__content__date {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.c-message.my-message {
+  margin-left: auto;
+  flex-direction: row-reverse;
+  .c-message__content__bubble {
+    background-color: lightgray;
+  }
+}
+
+
+$primary: #79C7C5;
+$secondary: #A1E2D9;
+$white: #F9FBFF;
+$dark: #777777;
+
+
+
 .chatroom {
   height: 100%;
   display: flex;
   flex-direction: column;
-  .title-trip-chat, .form-trip-messages {
+  width: 100%;
+  > .text-center, .form-trip-messages {
     flex: 0 0 auto;
   }
   .trip-messages {
     flex: 1;
     overflow: scroll;
+    width: 100%;
+    background-color: #E6F3F6;
   }
+}
+
+.sending {
+  text-align: right;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 80%;
+  float:right;
+  .bubble {
+    background: lighten($dark, 23%);
+    background-color: $primary;
+    padding: 0.25em;
+    border-radius: 20px;
+    width: 85%;
+    float:right;
+    p {
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+      margin-right:0.5rem;
+      font-size:smaller;
+    }
+  }
+  .message-date{
+    font-size:xx-small;
+    text-align: right;
+  }
+}
+
+.getting {
+  text-align: left;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 85%;
+  margin-left:1rem;
+  margin-right:1rem;
+  .bubble {
+    background: lighten($dark, 23%);
+    background-color: $primary;
+    padding: 0.25em;
+    border-radius: 20px;
+    width: 80%;
+    p {
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+      margin-left:0.5rem;
+      font-size:smaller;
+    }
+  }
+  .message-date{
+    font-size:xx-small;
+    text-align:left;
+  }
+
+  .message-username{
+      margin-bottom: 0.25rem;
+
+  }
+}
+
+.simple-form-messages{
+  background-color: white;
+  // position: absolute;
+  // height: 55px;
+  bottom: 0;
+  background: $white;
+  border-radius: 0 0 10px 10px;
+  .input-message{
+    height:50%;
+    width: 80%;
+  }
+  .message_content{
+    margin-bottom: 0px !important;
+  }
+  .textarea.form-control{
+    border-bottom: none !important;
+    padding-top:none !important;
+  }
+  button{
+    // position: absolute;
+    background-color: transparent;
+    // top:  19px;
+    opacity: 0.8;
+    // right: 17px;
+    html {
+        display: grid;
+        min-height: 100%;
+      }
+    }
+  }
+
+.form-control:focus{
+  background-color: white;
+  box-shadow: none;
 }
 
 #message_content {

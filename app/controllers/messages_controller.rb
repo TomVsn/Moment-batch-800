@@ -15,7 +15,13 @@ class MessagesController < ApplicationController
     @new_message.trip = @trip
     authorize @new_message
     if @new_message.save
-      redirect_to trip_path(@trip, anchor: "message-#{@new_message.id}")
+      TripChannel.broadcast_to(
+        @trip,
+        message_html: render_to_string(partial: "trip_details/message", locals: {message: @new_message}),
+        auhtor_id: current_user.id
+      )
+      head :ok
+      # redirect_to trip_path(@trip, anchor: "message-#{@new_message.id}")
     else
       redirect_to trip_path(@trip, anchor: "message-#{@new_message.id}")
     end

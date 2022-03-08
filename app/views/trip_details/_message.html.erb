@@ -1,0 +1,19 @@
+<div id="message-<%= message.id %>">
+  <div class="c-message <%= "my-message" if message.participant.user == current_user %>" data-trip-subscription-target="message">
+    <div class="c-message__avatar">
+      <% if message.participant.user.photo.attached? %>
+        <%= cl_image_tag message.participant.user.photo.key, class: 'avatar' %>
+      <% else %>
+        <%= image_tag "user-placeholder.png", class: 'avatar' %>
+      <% end %>
+    </div>
+    <div class="c-message__content">
+      <div class="c-message__content__bubble">
+        <%= message.content%>
+      </div>
+      <div class="c-message__content__date">
+        <%= message.created_at.strftime("%a %b %e at %l:%M %p") %>
+      </div>
+    </div>
+  </div>
+</div>

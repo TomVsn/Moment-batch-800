@@ -2,8 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 import consumer from "../channels/consumer"
 
 export default class extends Controller {
-  static values = { tripId: Number }
-  static targets = ["messages", "form"]
+  static values = {
+    tripId: Number,
+    currentUserId: Number
+  }
+  static targets = ["messages", "form", "message"]
 
   connect() {
     this.channel = consumer.subscriptions.create(
@@ -13,8 +16,9 @@ export default class extends Controller {
   }
 
   insertMessageScrollDownAndResetForm(data) {
-    this.messagesTarget.insertAdjacentHTML("beforeend", data)
-    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-    this.formTarget.reset()
+    this.messagesTarget.insertAdjacentHTML("beforeend", data.message_html);
+    if (this.currentUserIdValue != data.auhtor_id) this.messageTargets[this.messageTargets.length - 1].classList.remove('my-message');
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
+    this.formTarget.reset();
   }
 }
