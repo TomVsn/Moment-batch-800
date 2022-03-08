@@ -1,19 +1,20 @@
 <!-- Button trigger modal -->
 <% if @accomodations == [] %>
-  <p style="color:black">You have not chosen an accomodation yet !</p>
+  <p style="color:black">You have not chosen an accomodation yet.</p>
   <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#CreateAccomodationModal">
     +
   </button>
 <% else %>
-  <% if @accomodations.size == 1 %>
+  <% if @accomodations.size == 1 && @accomodations.select{|accomodation| accomodation.confirmed == true} == []%>
     <p style="color:black">You have 1 accomodation in your wishlist.</p>
-  <% else %>
-     <p style="color:black">You have <%= @accomodations.size %> accomodations in your wishlist.</p>
-  <% end %>
-  <% if @accomodations.select{|accomodation| accomodation.confirmed == true} == [] %>
+  <% elsif @accomodations.size > 1 && @accomodations.select{|accomodation| accomodation.confirmed == true} == []%>
+    <p style="color:black">You have <%= @accomodations.size %> accomodations in your wishlist.</p>
     <p style="color:black">You haven't booked your place to stay yet.</p>
-  <% else %>
-    <p style="color:black">You have booked your place to stay, you're ready to go !</p>
+  <% elsif @accomodations.size > 1 && @accomodations.select{|accomodation| accomodation.confirmed == true} != []%>
+    <% accomodation_booked = @accomodations.select{|accomodation| accomodation.confirmed == true}.first %>
+    <p style="color:green;font-size:14px; text-align:center">You've booked your place to stay!</p>
+    <h4 style="text-align:center"><%= accomodation_booked.title %></h3>
+    <h6 style="text-align:center"><%= accomodation_booked.address %></h6>
   <% end %>
   <div class="d-flex justify-content-evenly">
     <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#IndexAccomodationModal">
