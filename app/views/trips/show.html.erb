@@ -1,14 +1,21 @@
+
 <div style="background-color: #F3F5FF;">
   <div class="container container-dashboard">
+
     <div class="dashboard-box dashboard-info">
-      <div class="d-flex justify-content-between" style="width: 50%">
+      <div class="d-flex flex-column flex-grow-1 dates-infos" style="width: 50%, height: 100%">
         <p><%= "#{@trip.start_date.day}/#{@trip.start_date.month}/#{@trip.start_date.year}"%></p>
         <p><%= "#{@trip.end_date.day}/#{@trip.end_date.month}/#{@trip.end_date.year}"%></p>
       </div>
-      <div class="d-flex">
+      <div class="title-infos">
         <h1><%= @trip.title %></h1>
       </div>
-      <%= @trip.description %>
+      <div class="description-infos">
+        <%= @trip.description %>
+      </div>
+      <div class="img-infos">
+        <%= image_tag "Germany.png", class:"img-img-infos" %>
+      </div>
     </div>
     <div class="dashboard-box dashboard-accomodation">
       <p>Accomodations</p>
@@ -23,9 +30,11 @@
     </div>
     <div class="dashboard-box dashboard-expenses">
       <p>Expenses</p>
-      <%= render 'trip_details/expenses' %>
-      <div class="pie-chart">
-        <%= pie_chart [["Individual", @non_mutual_expenses], ["Mutual", (@sum_of_mutual_expenses / @participants_expenses.count)]],height: "100%", width: "100%", height: "10rem", round: 0, colors: ["#3A405A", "#6A74A0"], legend: "bottom" %>
+      <div class="d-flex">
+        <%= render 'trip_details/expenses' %>
+        <div class="pie-chart flex-grow-1" style="margin-top: -50px;">
+          <%= pie_chart [["Individual", @non_mutual_expenses], ["Mutual", (@sum_of_mutual_expenses / @participants_expenses.count)]],height: "200px", width: "100%", round: 0, colors: ["#3A405A", "#6A74A0"], legend: "bottom" %>
+        </div>
       </div>
     </div>
     <div class="dashboard-box dashboard-activities">

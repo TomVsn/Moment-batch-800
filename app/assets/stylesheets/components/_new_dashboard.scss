@@ -6,6 +6,7 @@
   width: 100%;
 }
 .dashboard-box {
+  position: relative;
   background-color: white;
   border-radius: 20px;
   margin: 10px;
@@ -19,14 +20,17 @@
   }
 }
 .dashboard-info {
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr;
+  grid-template-rows: 1fr 2fr;
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 4;
-  color: white!important;
-  background-color: #090A3F;
+  // color: white!important;
+  // background-color: #090A3F;
   p {
-    color: white;
+    color: black;
   }
 }
 
@@ -35,6 +39,10 @@
   grid-column-end: 2;
   grid-row-start: 6;
   grid-row-end: 9;
+
+  p {
+    color: var(--accomodation);
+  }
 }
 
 .dashboard-transportation {
@@ -42,24 +50,43 @@
   grid-column-end: 2;
   grid-row-start: 4;
   grid-row-end: 6;
+
+  p {
+    color: var(--transportation);
+  }
 }
+
 .dashboard-people {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 7;
   grid-row-end: 9;
+
+  p {
+    color: var(--friend);
+  }
 }
+
 .dashboard-expenses {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 4;
   grid-row-end: 7;
+
+  p {
+    color: var(--expense);
+  }
 }
+
 .dashboard-activities {
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 6;
+
+  p {
+    color: var(--event);
+  }
 }
 
 .dashboard-photos {
