@@ -1,0 +1,17 @@
+#events-index::-webkit-scrollbar-track
+{
+border-radius: 10px;
+}
+
+#events-index::-webkit-scrollbar
+{
+width: 8px;
+background-color: #FEFEFE;
+border-radius: 80px;
+}
+
+#events-index::-webkit-scrollbar-thumb
+{
+border-radius: 80px;
+background-color: #A6DADE;
+}

@@ -1,4 +1,4 @@
-<div class="container" style="overflow: scroll; height: 80%">
+<div class="container" style="overflow: scroll; height: 80%" id="events-index">
   <% if @trip.events == [] %>
     <div class="container">
       <p style="color:black">Plan an event</p>
@@ -14,6 +14,7 @@
       </div>
       <div class="activity-icon">
         <%= link_to event_path(event), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <%= image_tag "#{event.category}.png", class:"activity-img"%>
           <i class="fas fa-times-circle delete-event"></i>
         <% end %>
           <i class="fas fa-edit edit-event" data-bs-toggle="modal" data-bs-target="#editEventModal-<%= event.id %>"></i>
@@ -86,6 +87,7 @@
         </div>
         <%= simple_form_for [@participant, @event] do |f| %>
           <%= f.input :description, label:"What are you planning?", placeholder: "Bowling, Boat party, Dinner at La Pergola,.." %>
+          <%= f.input :category, as: :select, collection: Event::ACTIVITIES%>
           <div class="event-dates d-flex justify-content-around">
             <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
             <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
