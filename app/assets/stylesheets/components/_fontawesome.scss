@@ -20,10 +20,11 @@
 
 .edit-event {
   position: absolute;
-  left: -1px;
-  bottom: 1px;
+  right: -1px;
+  top: -1px;
   color: black;
   display: none;
+  font-size: 10px;
 }
 
 .activity-grid:hover {

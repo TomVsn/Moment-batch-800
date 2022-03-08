@@ -10,3 +10,17 @@
     overflow: scroll;
   }
 }
+
+#message_content {
+  padding: 0!important;
+  box-shadow: none!important;
+}
+
+.text {
+  border-color: none!important;
+  resize: none!important;
+}
+
+.textarea {
+  resize: none;
+}
