@@ -45,12 +45,16 @@
 
 .btn-more-infos {
   position: absolute;
-  top: 10px;
+  top: 16px;
   right: 10px;
   z-index: 1;
   background-color: white;
   color: rgba(0,0,0,0.4);
   text-decoration: underline;
+  border: none;
+}
+.btn-more-infos:hover {
+  background-color: white;
 }
 
 
