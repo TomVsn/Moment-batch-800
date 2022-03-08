@@ -1,7 +1,44 @@
+// CREATE TRANSPORTATION
+.btnAddTransportation:hover {
+  background-color: #F8B293;
+  color: black;
+  border-color: #F8B293;
+}
+
+// CREATE EVENT
+.btnAddEvent:hover {
+  background-color: #F8B293;
+  color: black;
+  border-color: #F8B293;
+}
+
+// CREATE TRIP
+.btnAddTrip:hover {
+  background-color: #F8B293;
+  color: black;
+  border-color: #F8B293;
+}
+
+// CREATE EXPENSE
+.btnAddExpense:hover {
+  background-color: #F8B293;
+  color: black;
+  border-color: #F8B293;
+}
 
 // CREATE ACCOMODATION
 .btnAddUrl {
   height: 39px;
+}
+.btnAddUrl:hover {
+ background-color: #F8B293;
+ color: black;
+ border-color: #F8B293;
+}
+.btnAddAccomodation:hover {
+  background-color: #F8B293;
+  color: black;
+  border-color: #F8B293;
 }
 
 .inputUrlAccomodation {
@@ -112,6 +149,11 @@ textarea::placeholder {
   background-color: transparent;
   border-radius: 0px;
 }
+
+.inline-question {
+  width: 45%;
+}
+
 .inline-question {
   width: 45%;
   }
