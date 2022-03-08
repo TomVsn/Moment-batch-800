@@ -1,10 +1,30 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#IndexAccomodationModal">
-  See details
-</button>
-<button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#CreateAccomodationModal">
-  +
-</button>
+<% if @accomodations == [] %>
+  <p style="color:black">You have not chosen an accomodation yet !</p>
+  <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#CreateAccomodationModal">
+    +
+  </button>
+<% else %>
+  <% if @accomodations.size == 1 %>
+    <p style="color:black">You have 1 accomodation in your wishlist.</p>
+  <% else %>
+     <p style="color:black">You have <%= @accomodations.size %> accomodations in your wishlist.</p>
+  <% end %>
+  <% if @accomodations.select{|accomodation| accomodation.confirmed == true} == [] %>
+    <p style="color:black">You haven't booked your place to stay yet.</p>
+  <% else %>
+    <p style="color:black">You have booked your place to stay, you're ready to go !</p>
+  <% end %>
+  <div class="d-flex justify-content-evenly">
+    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#IndexAccomodationModal">
+      See details
+    </button>
+    <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#CreateAccomodationModal">
+      +
+    </button>
+  </div>
+<% end %>
+
 
 <!-- Modal index accomodations  -->
 <div class="modal fade" id="IndexAccomodationModal" tabindex="-1" aria-labelledby="IndexAccomodationModalLabel" aria-hidden="true">
@@ -120,7 +140,7 @@
         </div>
       <% end %>
         <div class="text-end p-4">
-          <p>Not interested in any of our suggestions ?</p>
+          <p>Not interested in any of our suggestions?</p>
           <%# bouton modale create %>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CreateAccomodationModal">
             Add an accomodation
@@ -143,7 +163,7 @@
       <div class="modal-body py-5">
         <div class="container">
           <div class="d-flex w-100 align-items-center">
-            <h4 class="text-center mb-4 highlight-title mx-auto">Add an accomodation</h4>
+            <h4 class="text-center mb-4 highlight-title mx-auto" id="titleAccomodationModal">ADD AN ACCOMODATION</h4>
           </div>
           <%# <h6>Choose the way to enter your infos :</h6> %>
           <div class="formUrlAccomodation">
@@ -157,17 +177,18 @@
           </div>
           <p class="mt-3 mb-0 text-black">If you found it otherwise : Address</p>
           <%= simple_form_for [@trip, @new_accomodation] do |f| %>
+          <%# <%= form_for new_trip_accomodation_path(@trip, @new_accomodation) do |f| %>
             <div class="d-flex justify-content-between">
               <%= f.input :title, placeholder: "title", label: false %>
               <%= f.input :address,
-              input_html: { data: { geocoder_target: "address" }, placeholder:"86 avenue des Champs Elysées, 75008 Paris", class: "d-none" },
-              wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }, label: false%>
+               input_html: { data: { geocoder_target: "address" }, class: "d-none" },
+               wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY']}}, label: false %>
               <%= f.input :price, placeholder: "price", label: false %>
             </div>
             <%= f.input :img, placeholder:"image address", label: false %>
             <%= f.input :description, placeholder: "description", label: false %>
             <div class="text-center mt-3">
-             <%= f.submit "Add", class: "btn btn-primary gap-2 col-6" %>
+             <%= f.submit "Add", class: "btn btn-primary btnAddAccomodation gap-2 col-6" %>
             </div>
           <% end %>
           <%# <input class="form-check-input" type="checkbox" value="booked" id="flexCheckDefault">
