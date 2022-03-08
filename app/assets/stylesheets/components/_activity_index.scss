@@ -30,7 +30,16 @@
   background-color: #A8DADC;
   position: relative;
   border-radius: 10px;
+
+  .activity-img {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 70%;
+    height: 70%;
+  }
 }
+
 .activity-avatar-first {
   grid-column-start: 3;
   grid-column-end: 4;
