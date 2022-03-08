@@ -52,26 +52,49 @@
 <!-- Modal voir l'aller retour-->
 
 <div class="modal fade" id="ShowTransportationModal" tabindex="-1" aria-labelledby="ShowTransportationModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="ShowTransportationModalLabel">Details of your journeys</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <% if @participant.transportations.size == 1 && @participant.transportations.first.departure_date > Time.now%>
-        <div class="modal-body d-flex justify-content-between">
-          <div>
+        <div class="modal-body">
             Etape <%=  1 %> : <br>
-            departure : <%= @participant.transportations.first.departure_date.strftime("%A") %>, <%= @participant.transportations.first.departure_date.month %>, <%= @participant.transportations.first.departure_date.day %>, <%= @participant.transportations.first.departure_date.year %><br>
-            From : <%= @participant.transportations.first.origin %>
-            To: <%= @participant.transportations.first.destination %><br>
-            At : <%= @participant.transportations.first.departure_date.hour %> :
-            <% if @participant.transportations.first.departure_date.min == 0 %>
-              00
-            <% else %>
-              <%= @participant.transportations.departure_date.min %>
-            <% end %>
-          </div>
+            <div class="transportation-ticket d-flex justify-content-center">
+              <div class="col">
+                  <div class="row departure-ticket d-flex align-items-start">
+                    departure : <%= @participant.transportations.first.departure_date.strftime("%A") %>, <%= @participant.transportations.first.departure_date.month %>, <%= @participant.transportations.first.departure_date.day %>, <%= @participant.transportations.first.departure_date.year %> at <%= @participant.transportations.first.departure_date.hour %> :
+                  <% if @participant.transportations.first.departure_date.min == 0 %>
+                    00
+                  <% else %>
+                    <%= @participant.transportations.departure_date.min %>
+                  <% end %>
+                </div>
+                <div class="row origin-destination-infos">
+                  <div class="col-3">
+                    <p>
+                      From : <br>
+                      <p class="city-ticket"><%= @participant.transportations.first.origin.split(",").first %></p>
+                    </p>
+                  </div>
+                  <div class="col-6 text-center ticket-globe">
+                    <i class="fas fa-globe-europe" style=""></i>
+                  </div>
+                  <div class="col-3">
+                    <p>To: <br>
+                      <p class="city-ticket"><%= @participant.transportations.first.destination.split(",").first %></p>
+                    </p>
+                  </div>
+                </div>
+                <div class="row departure-time d-flex">
+                  <i class="fas fa-clock" style="color:#F79F79; width:unset; max-width:unset; height:fit-content"></i>
+                  <div style="width:unset; max-width:unset; height:fit-content">
+                    <%= ((@participant.transportations.first.arrival_date - @participant.transportations.first.departure_date)/3600).round %>h
+                  </div>
+                </div>
+              </div>
+            </div>
           <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#EditTransportationModal">
             <i class="fas fa-edit"></i>
           </button>
@@ -79,19 +102,44 @@
       </div>
       <% else %>
         <% @participant.transportations.order('departure_date ASC').each_with_index do |transportation, index|  %>
-        <div class="modal-body d-flex justify-content-between">
-          <div>
-            Etape <%=  index + 1 %> : <br>
-            departure : <%= transportation.departure_date.strftime("%A") %>, <%= transportation.departure_date.month %>, <%= transportation.departure_date.day %>, <%= transportation.departure_date.year %><br>
-            From : <%= transportation.origin %>
-            To: <%= transportation.destination %><br>
-            At : <%= transportation.departure_date.hour %> :
-            <% if transportation.departure_date.min == 0 %>
-            00
-            <% else %>
-              <%= transportation.departure_date.min %>
-            <% end %>
+        <div class="modal-body">
+        <% flight_duration = transportation.arrival_date - transportation.departure_date %>
+          Etape <%= index + 1 %> :
+          <div class="transportation-ticket d-flex justify-content-center">
+          <div class="col">
+            <div class="row departure-ticket d-flex align-items-start">
+              Departure : <%= transportation.departure_date.strftime("%A") %>, <%= transportation.departure_date.month %>, <%= transportation.departure_date.day %>, <%= transportation.departure_date.year %> at
+              <%= transportation.departure_date.hour %> h
+                <% if transportation.departure_date.min == 0 %>
+                00
+                <% else %>
+                  <%= transportation.departure_date.min %>
+                <% end %>
+            </div>
+            <div class="row origin-destination-infos">
+              <div class="col-3">
+                <p>
+                  From : <br>
+                  <p class="city-ticket"><%= transportation.origin.split(",").first %></p>
+                </p>
+              </div>
+              <div class="col-6 text-center ticket-globe">
+                <i class="fas fa-globe-europe" style=""></i>
+              </div>
+              <div class="col-3">
+                <p>To: <br>
+                  <p class="city-ticket"><%= transportation.destination.split(",").first %></p>
+                </p>
+              </div>
+            </div>
+            <div class="row departure-time d-flex">
+              <i class="fas fa-clock" style="color:#F79F79; width:unset; max-width:unset; height:fit-content"></i>
+              <div style="width:unset; max-width:unset; height:fit-content">
+                <%= (flight_duration/3600).round %>h
+              </div>
+            </div>
           </div>
+        </div>
           <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#EditTransportationModal">
             <i class="fas fa-edit"></i>
           </button>
