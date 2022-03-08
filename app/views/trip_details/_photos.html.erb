@@ -1,24 +1,24 @@
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
+<div id="carouselExampleControls" class="carousel slide h-100" data-bs-ride="carousel">
+  <div class="carousel-inner h-100">
+    <div class="carousel-item active h-100">
       <%if @trip.photos[0] != nil%>
-        <%=cl_image_tag @trip.photos[0].key, gravity: :center, height: 219, width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100"%>
+        <%=cl_image_tag @trip.photos[0].key, gravity: :center, height: "100%", width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100 h-100"%>
       <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646646018/hfvhc5dke5r3qvjmgn0j.jpg",height: 219, width: 300, alt:"First slide", class:"d-block w-100")%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646646018/hfvhc5dke5r3qvjmgn0j.jpg", width: 300, height: "100%", alt:"First slide", class:"d-block w-100 h-100")%>
       <%end%>
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item h-100">
       <%if @trip.photos[1] != nil%>
-        <%=cl_image_tag @trip.photos[1].key, gravity: :center, height: 219, width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100"%>
+        <%=cl_image_tag @trip.photos[1].key, gravity: :center, width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100 h-100"%>
       <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646648847/o1hgy77kvn4zppnmfaoq.jpg",height: 219, width: 400, alt:"First slide", class:"d-block w-100")%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646648847/o1hgy77kvn4zppnmfaoq.jpg", width: 400, alt:"First slide", class:"d-block w-100 h-100")%>
       <%end%>
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item h-100">
       <%if @trip.photos[2] != nil%>
-        <%=cl_image_tag @trip.photos[2].key, gravity: :center, height: 219, width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100"%>
+        <%=cl_image_tag @trip.photos[2].key, gravity: :center, width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100 h-100"%>
       <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646649101/yn6dwusfg1m8lrtd2ljh.jpg",height: 219, width: 400, alt:"First slide", class:"d-block w-100")%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646649101/yn6dwusfg1m8lrtd2ljh.jpg", width: 400, alt:"First slide", class:"d-block w-100 h-100")%>
       <%end%>
     </div>
     <button type="button" class="btn btn-add" id="addPhoto" data-bs-toggle="modal" data-bs-target="#AddPhotosModal">
