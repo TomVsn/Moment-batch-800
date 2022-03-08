@@ -182,8 +182,8 @@
             <div class="d-flex justify-content-between">
               <%= f.input :title, placeholder: "title", label: false %>
               <%= f.input :address,
-               input_html: { data: { geocoder_target: "address" }, class: "d-none" },
-               wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY']}}, label: false %>
+                          input_html: { data: { geocoder_target: "address" }, class: "d-none" },
+                          wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY']}}, label: false %>
               <%= f.input :price, placeholder: "price", label: false %>
             </div>
             <%= f.input :img, placeholder:"image address", label: false %>
