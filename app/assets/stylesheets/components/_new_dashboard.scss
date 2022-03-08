@@ -40,7 +40,7 @@
   grid-row-start: 6;
   grid-row-end: 9;
 
-  p {
+  #title-card-accomodations {
     color: var(--accomodation);
   }
 }
@@ -51,7 +51,7 @@
   grid-row-start: 4;
   grid-row-end: 6;
 
-  p {
+  #title-card-transportations {
     color: var(--transportation);
   }
 }
@@ -62,7 +62,7 @@
   grid-row-start: 7;
   grid-row-end: 9;
 
-  p {
+  #title-card-participants {
     color: var(--friend);
   }
 }
@@ -73,8 +73,9 @@
   grid-row-start: 4;
   grid-row-end: 7;
 
-  p {
+  #title-card-expenses {
     color: var(--expense);
+    z-index: 1;
   }
 }
 
@@ -84,7 +85,7 @@
   grid-row-start: 1;
   grid-row-end: 6;
 
-  p {
+  #title-card-activities {
     color: var(--event);
   }
 }
