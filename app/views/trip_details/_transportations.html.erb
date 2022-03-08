@@ -19,12 +19,12 @@
 </div> %>
 
 <!-- Aller du trip of the participant -->
+  <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
+    +
+  </button>
 <% coming_transportation = @participant.transportations.order('departure_date ASC').select{|transportation| transportation.departure_date > Time.now}.first  %>
 <% if @participant.transportations == [] %>
   <p style="color:black">Add your bus, plane or anything ticket !</p>
-  <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
-    Add your ticket
-  </button>
 <% elsif coming_transportation != nil && coming_transportation.departure_date > Time.now%>
   <h6>Your trip to <%= coming_transportation.destination %> is in
   <% remaining_days = ((coming_transportation.departure_date - Time.now)/86400).to_i %>
