@@ -120,7 +120,7 @@
         </div>
       <% end %>
         <div class="text-end p-4">
-          <p>Not interested in any of our suggestions ?</p>
+          <p>Not interested in any of our suggestions?</p>
           <%# bouton modale create %>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CreateAccomodationModal">
             Add an accomodation
@@ -143,7 +143,7 @@
       <div class="modal-body py-5">
         <div class="container">
           <div class="d-flex w-100 align-items-center">
-            <h4 class="text-center mb-4 highlight-title mx-auto">Add an accomodation</h4>
+            <h4 class="text-center mb-4 highlight-title mx-auto" id="titleAccomodationModal">ADD AN ACCOMODATION</h4>
           </div>
           <%# <h6>Choose the way to enter your infos :</h6> %>
           <div class="formUrlAccomodation">
@@ -167,7 +167,7 @@
             <%= f.input :img, placeholder:"image address", label: false %>
             <%= f.input :description, placeholder: "description", label: false %>
             <div class="text-center mt-3">
-             <%= f.submit "Add", class: "btn btn-primary gap-2 col-6" %>
+             <%= f.submit "Add", class: "btn btn-primary btnAddAccomodation gap-2 col-6" %>
             </div>
           <% end %>
           <%# <input class="form-check-input" type="checkbox" value="booked" id="flexCheckDefault">
