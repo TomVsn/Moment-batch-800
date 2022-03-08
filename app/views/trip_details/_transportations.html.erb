@@ -174,7 +174,7 @@
                   <%= f.input :arrival_date, label:"When will you arrive?", as: :string, required: false, input_html: {class: "datepicker"} %>
                 </div>
                 <div class="transportations-others-infos d-flex justify-content-around">
-                  <%= f.input :mean, label:"How will you travel?", as: :select, collection: Transportation::CATEGORIES %>
+                  <%= f.collection_radio_buttons :mean, [[1, 'bus'], [2, 'train'], [3,'plane'], [4,'car'], [5, 'various'], [6,'other']], :first, :last, { item_wrapper_tag: false } %>
                   <%= f.input :price, label:"How much did it cost?" %>
                 </div>
                 <div class="text-center mt-3">
