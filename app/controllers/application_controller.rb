@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :photo])
   end
 
+  def default_url_options
+    { host: ENV["www.momento-trips.com"] || "localhost:3000" }
+  end
+
   private
 
   def skip_pundit?
