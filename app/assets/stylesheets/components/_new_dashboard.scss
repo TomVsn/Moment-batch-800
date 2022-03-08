@@ -18,6 +18,9 @@
   }
 }
 .dashboard-info {
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr;
+  grid-template-rows: 1fr 2fr;
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 1;
