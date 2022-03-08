@@ -22,8 +22,10 @@
 
   <div class="form-trip-messages">
     <%= simple_form_for [@participant, @new_message], remote: true, html: {class: "d-flex"} do |f| %>
-      <%= f.input :content, label: false, placeholder: "Message", wrapper_html: {class: "flex-grow-1"}%>
-      <%= f.submit "Send", class: "btn btn-primary" %>
+      <%= f.input :content, label: false, placeholder: "Message", wrapper_html: {class: "flex-grow-1 messageBox"}%>
+      <%= button_tag type: 'submit', id: "btnMessageSend" do %>
+        <i class="fas fa-paper-plane"></i>
+      <% end %>
     <% end %>
   </div>
 </div>
