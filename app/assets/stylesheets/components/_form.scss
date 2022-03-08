@@ -159,25 +159,37 @@ textarea::placeholder {
 
 .inline-question {
   width: 45%;
-  }
+}
 
-  .mapboxgl-ctrl-geocoder {
-    max-width: none;
-    width: 100%;
-    border: 1px solid lightgrey;
-    box-shadow: none;
-  }
+.mapboxgl-ctrl-geocoder {
+  max-width: none;
+  width: 100%;
+  border: 1px solid lightgrey;
+  box-shadow: none;
+}
 
-  .mapboxgl-ctrl-geocoder.mapboxgl-ctrl {
-    border: none;
-    padding-top: 15px;
-  }
+.mapboxgl-ctrl-geocoder.mapboxgl-ctrl {
+  border: none;
+  padding-top: 15px;
+}
 
-  .mapboxgl-ctrl-geocoder--input {
-    border: none;
-    padding-bottom: 1rem;
-  }
+.mapboxgl-ctrl-geocoder--input {
+  border: none;
+  padding-bottom: 1rem;
+}
 
-  .mapboxgl-ctrl-geocoder--pin-right {
-    display: none;
-  }
+.mapboxgl-ctrl-geocoder--pin-right {
+  display: none;
+}
+
+.transportation_origin {
+  border-bottom: 1.5px solid black;
+  padding-left: 13px;
+  padding-right: 5px;
+}
+
+.transportation_destination {
+  border-bottom: 1.5px solid black;
+  padding-left: 13px;
+  padding-right: 5px;
+}
