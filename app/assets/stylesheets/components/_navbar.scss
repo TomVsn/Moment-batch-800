@@ -11,6 +11,16 @@
   width: 40px;
 }
 
-// .navbar {
-//   max-height: 50px;
-// }
+.navbar {
+  position: fixed;
+  width: 100vw;
+  z-index: 5;
+}
+
+.navbar-transparent {
+  background-color: transparent;
+}
+
+.navbar-white {
+  background-color: white;
+}

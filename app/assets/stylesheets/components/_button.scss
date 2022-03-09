@@ -102,10 +102,15 @@
 #my-trips-btn {
   margin-right: 15px;
   border-radius: 8px;
+  color: white;
 
     &:hover {
-      border-color: #1E3658;
+      border-color: white;
     }
+}
+
+.my-trip-black {
+  color: #1E3658 !important;
 }
 
 .fav-button {
