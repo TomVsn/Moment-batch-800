@@ -8,3 +8,15 @@ li {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+:focus:active {
+  box-shadow: none;
+}
+
+:focus:target {
+  box-shadow: none;
+}
+
+:focus {
+  box-shadow: none!important;
+}
