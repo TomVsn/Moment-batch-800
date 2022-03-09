@@ -8,6 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import { initFlatpickr } from "../plugins/flatpickr";
+import { navbarEffectOnScroll } from "../components/navbar_effect";
 
 
 Rails.start()
@@ -17,6 +18,7 @@ ActiveStorage.start()
 
 document.addEventListener('turbolinks:load', () => {
   initFlatpickr();
+  navbarEffectOnScroll();
 });
 
 import "controllers"

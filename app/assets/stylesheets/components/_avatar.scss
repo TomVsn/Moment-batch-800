@@ -8,6 +8,7 @@
       height: 30px;
     }
 }
+
 .avatar-large {
   width: 56px;
   border-radius: 50%;
@@ -72,4 +73,11 @@
   height: 40px;
   border-radius: 50%;
   transition: transform 0.4s;
+}
+
+.avatar-show {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 15;
 }
