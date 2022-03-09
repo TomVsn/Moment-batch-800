@@ -119,7 +119,7 @@ $dark: #777777;
     width: 80%;
   }
   .message_content{
-    margin-bottom: 0px !important;
+    // margin-bottom: 0px !important;
   }
   .textarea.form-control{
     border-bottom: none !important;
@@ -144,7 +144,7 @@ $dark: #777777;
 }
 
 #message_content {
-  padding: 0!important;
+  // padding: 0!important;
   box-shadow: none!important;
 }
 
@@ -155,4 +155,5 @@ $dark: #777777;
 
 .textarea {
   resize: none;
+
 }
