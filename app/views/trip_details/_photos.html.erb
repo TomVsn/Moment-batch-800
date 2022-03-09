@@ -4,21 +4,21 @@
       <%if @trip.photos[0] != nil%>
         <%=cl_image_tag @trip.photos[0].key, gravity: :center, height: "100%", width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100 h-100"%>
       <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646646018/hfvhc5dke5r3qvjmgn0j.jpg", width: 300, height: "100%", alt:"First slide", class:"d-block w-100 h-100")%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646815801/barcelone1_sfc1vd.jpg", width: 300, height: "100%", alt:"First slide", class:"d-block w-100 h-100")%>
       <%end%>
     </div>
     <div class="carousel-item h-100">
       <%if @trip.photos[1] != nil%>
         <%=cl_image_tag @trip.photos[1].key, gravity: :center, width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100 h-100"%>
       <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646648847/o1hgy77kvn4zppnmfaoq.jpg", width: 400, alt:"First slide", class:"d-block w-100 h-100")%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646815801/barcelone2_lt2rh2.jpg", width: 400, alt:"First slide", class:"d-block w-100 h-100")%>
       <%end%>
     </div>
     <div class="carousel-item h-100">
       <%if @trip.photos[2] != nil%>
         <%=cl_image_tag @trip.photos[2].key, gravity: :center, width: 400, crop: :thumb, style:"border-radius: 20px", alt:"First slide", class:"d-block w-100 h-100"%>
       <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646649101/yn6dwusfg1m8lrtd2ljh.jpg", width: 400, alt:"First slide", class:"d-block w-100 h-100")%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646815801/barcelone3_i9vkpd.jpg", width: 400, alt:"First slide", class:"d-block w-100 h-100")%>
       <%end%>
     </div>
     <button type="button" class="btn btn-add" id="addPhoto" data-bs-toggle="modal" data-bs-target="#AddPhotosModal">
