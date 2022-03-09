@@ -30,7 +30,7 @@
       <div class="activity-avatar-first">
         <% if event.event_participants.first %>
           <div class="avatar">
-            <%= cl_image_tag event.event_participants.first.participant.user.photo.key, width: 30, height: 30, class:"avatar avatar-events"%>
+            <%= cl_image_tag event.event_participants.first.participant.user.photo.key, class:"avatar"%>
             <%= link_to event_participant_path(event.event_participants.first), method: :delete, data: { confirm: "Are you sure?" } do %>
               <i class="fas fa-times-circle delete-event-participant"></i>
             <% end %>
@@ -40,7 +40,7 @@
       <div class="activity-avatar-second">
         <% if event.event_participants[1] %>
           <div class="avatar">
-            <%= cl_image_tag event.event_participants[1].participant.user.photo.key, class: "avatar avatar-events"%>
+            <%= cl_image_tag event.event_participants[1].participant.user.photo.key, class: "avatar"%>
             <%= link_to event_participant_path(event.event_participants[1]), method: :delete, data: { confirm: "Are you sure?" } do %>
               <i class="fas fa-times-circle delete-event-participant"></i>
             <% end %>

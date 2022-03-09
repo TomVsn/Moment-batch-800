@@ -5,7 +5,11 @@
   </div>
     <%= image_tag "Friends-trip2.jpg", class:"img-banner"%>
   <div class="banner-btn text-center m-5">
-    <%= link_to "Join us !", trips_path, class: "btn btn-lg btn-homepage"  %>
+    <% unless user_signed_in? %>
+      <%= link_to "Join us !", trips_path, class: "btn btn-lg btn-homepage"  %>
+    <% else %>
+    <%= link_to "See my trips", trips_path, class: "btn btn-lg btn-homepage" %>
+    <% end %>
   </div>
 </div>
 

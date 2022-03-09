@@ -21,9 +21,11 @@
 <!-- Aller du trip of the participant -->
  <div class="d-flex">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-light btn-sm btn-more-infos" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
-      more info
-    </button>
+    <% unless @participant.transportations == [] %>
+      <button type="button" class="btn btn-light btn-sm btn-more-infos" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
+        more info
+      </button>
+      <% end %>
     <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
       +
     </button>
