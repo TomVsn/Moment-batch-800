@@ -1,5 +1,5 @@
 <p style="color:black">Plan your activities</p>
-<div class="container" style="overflow: scroll; height: 80%" id="events-index">
+<div class="container" style="overflow-y: scroll; height: 80%" id="events-index">
   <% if @trip.events == [] %>
     <div class="container">
       <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -13,11 +13,16 @@
         <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
       </div>
       <div class="activity-icon">
-        <%= link_to event_path(event), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <div class="dropdown-box activity-box">
+          <i class="fas fa-ellipsis-h" type="button" id="indexActions" data-bs-toggle="dropdown" aria-expanded="false"></i>
+            <ul class="dropdown-menu" aria-labelledby="indexActions">
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editEventModal-<%= event.id %>">Modify activity...</a></li>
+                <%= link_to event_path(event), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <li><p class="dropdown-item delete-action-activity" >Delete</p></li>
+              <% end %>
+            </ul>
+        </div>
         <%= image_tag "#{event.category}.png", class:"activity-img"%>
-          <i class="fas fa-times-circle delete-event"></i>
-        <% end %>
-          <i class="fas fa-edit edit-event" data-bs-toggle="modal" data-bs-target="#editEventModal-<%= event.id %>"></i>
       </div>
       <div class="activity-title">
         <%= event.start_date.hour %>:<%= event.start_date.min %> <%= event.description %>
@@ -44,8 +49,8 @@
       </div>
       <div class="activity-avatar-rest">
         <% if event.event_participants.count > 2 %>
-          <div class="avatar" style="background-color:#5E6265; color:white">
-            <%= event.event_participants.count - 2 %>
+          <div class="avatar-more-participants">
+            + <%= event.event_participants.count - 2 %>
           </div>
         <% end %>
       </div>
