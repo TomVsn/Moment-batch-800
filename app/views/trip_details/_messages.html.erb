@@ -1,9 +1,7 @@
-<div class="chatroom" data-controller="trip-subscription" data-trip-subscription-current-user-id-value="<%= current_user.id %>"
+<div id="chatroom" data-controller="trip-subscription" data-trip-subscription-current-user-id-value="<%= current_user.id %>"
   data-trip-subscription-trip-id-value="<%= @trip.id %>">
-  <div class="text-center">
-    <p class="mt-3"><%= @trip.title %></p>
-  </div>
-  <div class="trip-messages px-2 py-2" data-trip-subscription-target="messages">
+  <div class="trip-messages px-2 pb-2 pt-4" data-trip-subscription-target="messages">
+    <div data-action="click->chatroom-card#hideChatroom">X</div>
     <% if @messages == [] %>
       <p style="color:black; text-align:center" class="py-5">Be the first to send a message !</p>
     <% else %>

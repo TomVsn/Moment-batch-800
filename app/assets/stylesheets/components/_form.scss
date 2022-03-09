@@ -46,6 +46,7 @@
   flex-grow:1 !important;
 }
 .transportation-form{
+
   .origin-destination, .transportation-dates{
     display: flex;
     justify-content: space-between;
@@ -192,4 +193,12 @@ textarea::placeholder {
   border-bottom: 1.5px solid black;
   padding-left: 13px;
   padding-right: 5px;
+}
+
+.datepicker {
+  background-color: white !important;
+}
+
+.form-select {
+  background-color: white !important;
 }

@@ -7,12 +7,15 @@
 .c-message__content {
   margin: 0 0.8rem;
   width: 100%;
+  line-height: 1.3rem;
 }
 .c-message__content__bubble {
-  background-color: rgb(66,171,179);
+  background-color: rgba(132, 205, 211, 0.7);
   padding: 0.25em 0.75em;
   border-radius: 20px;
   line-break: auto;
+  padding: 1rem;
+  font-size:0.9rem;
 }
 .c-message__content__date {
   font-size: 0.7rem;
@@ -23,7 +26,7 @@
   margin-left: auto;
   flex-direction: row-reverse;
   .c-message__content__bubble {
-    background-color: #9ED7DB;
+    background-color: rgba(158, 215, 219, 0.4);
   }
 }
 
@@ -39,11 +42,15 @@ $dark: #777777;
 
 
 
-.chatroom {
+#chatroom {
   height: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 20%;
+  position:absolute;
+  top:0rem;
+  right:100px;
+  z-index:1000;
   > .text-center, .form-trip-messages {
     flex: 0 0 auto;
   }
@@ -52,6 +59,7 @@ $dark: #777777;
     overflow: scroll;
     width: 100%;
     background-color: #FFFFFF;
+    border-radius: 20px 20px 0 0;
 
   }
   > .text-center{
@@ -121,4 +129,15 @@ $dark: #777777;
   // margin-left: 1rem;
   background-color: #F2F2F2;
 
+}
+
+.chatroom-circle{
+  border-radius:50%;
+  color:blue;
+  width:50px;
+  height:50px;
+  background-color:blue;
+  position:absolute;
+  right:5rem;
+  bottom:1rem;
 }

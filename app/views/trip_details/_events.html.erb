@@ -1,4 +1,7 @@
-<p style="color:black">Plan your activities</p>
+
+ <% if @trip.events == [] %>
+  <p style="color:black">Plan your activities</p>
+ <% end %>
 <div class="container" id="events-index">
   <% if @trip.events == [] %>
     <div class="container">
@@ -10,7 +13,7 @@
     <% @trip.events.order('start_date ASC').each do |event| %>
     <div class="activity-grid">
       <div class="activity-time">
-        <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
+        <%= event.start_date.strftime("%A").first(2)%> <%= event.start_date.day %>
       </div>
       <div class="activity-icon">
         <div class="dropdown-box activity-box">
@@ -30,7 +33,7 @@
       <div class="activity-avatar-first">
         <% if event.event_participants.first %>
           <div class="avatar">
-            <%= cl_image_tag event.event_participants.first.participant.user.photo.key, width: 30, height: 30, class:"avatar avatar-events"%>
+            <%= cl_image_tag event.event_participants.first.participant.user.photo.key, class:"avatar"%>
             <%= link_to event_participant_path(event.event_participants.first), method: :delete, data: { confirm: "Are you sure?" } do %>
               <i class="fas fa-times-circle delete-event-participant"></i>
             <% end %>
@@ -40,7 +43,7 @@
       <div class="activity-avatar-second">
         <% if event.event_participants[1] %>
           <div class="avatar">
-            <%= cl_image_tag event.event_participants[1].participant.user.photo.key, class: "avatar avatar-events"%>
+            <%= cl_image_tag event.event_participants[1].participant.user.photo.key, class: "avatar"%>
             <%= link_to event_participant_path(event.event_participants[1]), method: :delete, data: { confirm: "Are you sure?" } do %>
               <i class="fas fa-times-circle delete-event-participant"></i>
             <% end %>

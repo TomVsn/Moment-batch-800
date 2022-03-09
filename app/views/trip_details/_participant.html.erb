@@ -1,8 +1,20 @@
 <div class="btn btn-add" data-bs-toggle="modal" data-bs-target="#participantCreate">
   +
 </div>
-<h3><%= @participants.count %> friends invited</h3>
-
+<div class="row friends-row">
+  <% @participants.first(2).each do |friend| %>
+  <div class="col-3">
+    <%= cl_image_tag friend.user.photo.key, class:"avatar" %>
+  </div>
+  <% end %>
+  <% if @participants.count > 2 %>
+    <div class="col-3">
+      <div class="avatar-more-friends">
+        + <%= @participants.count - 2 %>
+      </div>
+    </div>
+  <% end %>
+</div>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-light btn-sm btn-more-infos" data-bs-toggle="modal" data-bs-target="#showParticipantsModal">
   more info

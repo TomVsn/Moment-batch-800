@@ -21,9 +21,11 @@
 <!-- Aller du trip of the participant -->
  <div class="d-flex">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-light btn-sm btn-more-infos" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
-      more info
-    </button>
+    <% unless @participant.transportations == [] %>
+      <button type="button" class="btn btn-light btn-sm btn-more-infos" data-bs-toggle="modal" data-bs-target="#ShowTransportationModal">
+        more info
+      </button>
+      <% end %>
     <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#AddTransportationModal">
       +
     </button>
@@ -32,12 +34,12 @@
 <% if @participant.transportations == [] %>
   <p style="color:black">Add your bus, plane or anything ticket !</p>
 <% elsif coming_transportation != nil && coming_transportation.departure_date > Time.now%>
-  <h6>Your trip to <%= coming_transportation.destination %> is in
+  <h6>Your trip to <strong><%= coming_transportation.destination.split(",").first %></strong> is in
   <% remaining_days = ((coming_transportation.departure_date - Time.now)/86400).to_i %>
-  <%= remaining_days %> days,
-  <%= (((coming_transportation.departure_date - Time.now) % 86400)/3600).to_i %> hours,
-  <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600)/60).to_i%> minutes
-  <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600) % 60).to_i %> seconds
+  <%= remaining_days %> days
+  <%# <%= (((coming_transportation.departure_date - Time.now) % 86400)/3600).to_i hours, %>
+  <%# <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600)/60).to_i minutes %>
+  <%# <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600) % 60).to_i seconds %>
 
 <% elsif @participant.transportations.each {|transportation| transportation.departure_date < Time.now} %>
   You have no ticket coming soon
@@ -192,12 +194,12 @@
                   wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'], geocoder_placeholder_value:"London Heathrow,..." } }, label: false%>
               </div>
               <div class="transportations-dates d-flex justify-content-around">
-                <%= f.input :departure_date, label:"When are you leaving?", as: :string, required: false, input_html: {class: "datepicker"} %>
-                <%= f.input :arrival_date, label:"When will you arrive?", as: :string, required: false, input_html: {class: "datepicker"} %>
+                <%= f.input :departure_date, label:"When are you leaving?", as: :string, required: false, input_html: {class: "datepicker"}, placeholder:"21/03/2022"%>
+                <%= f.input :arrival_date, label:"When will you arrive?", as: :string, required: false, input_html: {class: "datepicker"}, placeholder:"27/03/2022"%>
               </div>
               <div class="transportations-others-infos d-flex justify-content-around">
-                <%= f.input :mean, label:"How will you travel?", as: :select, collection: Transportation::CATEGORIES %>
-                <%= f.input :price, label:"How much did it cost?" %>
+                <%= f.input :mean, label:"How will you travel?", as: :select, collection: Transportation::CATEGORIES, id:"travel-mean" %>
+                <%= f.input :price, label:"How much did it cost?", placeholder:"100 €" %>
               </div>
               <div class="text-center mt-3">
                 <%= f.submit "Let's go!", class: "btn btn-primary btnAddTransportation gap-2 col-6" %>
