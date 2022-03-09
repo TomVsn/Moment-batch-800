@@ -47,6 +47,7 @@ $dark: #777777;
     overflow: scroll;
     width: 100%;
     background-color: #E6F3F6;
+    padding: 15px;
   }
 }
 
@@ -120,6 +121,8 @@ $dark: #777777;
   }
   .message_content{
     margin-bottom: 0px !important;
+    padding-top: 15px;
+    padding-left: 15px;
   }
   .textarea.form-control{
     border-bottom: none !important;

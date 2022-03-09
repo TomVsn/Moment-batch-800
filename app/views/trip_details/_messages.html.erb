@@ -5,7 +5,7 @@
   </div>
   <div class="trip-messages px-2" data-trip-subscription-target="messages">
     <% if @messages == [] %>
-      <p style="color:black">Be the first to send a message !</p>
+      <p style="color:black">Be the first to send a message!</p>
     <% else %>
       <% @messages.each do |message| %>
         <%= render "trip_details/message", message: message %>
