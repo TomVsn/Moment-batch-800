@@ -35,3 +35,37 @@
   margin-left: -10px;
 
 }
+
+.avatar-uninvited {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  transition: transform 0.4s;
+  background: none;
+  background-color: white;
+
+}
+
+.avatar-uninvited:hover {
+  transform: scale(1.1);
+
+  .add-friend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.1);
+  }
+}
+
+.add-friend {
+  display: none;
+  background-color: rgba(0,0,0,0.2);
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
