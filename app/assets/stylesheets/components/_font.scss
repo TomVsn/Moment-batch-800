@@ -9,6 +9,11 @@ li {
   text-overflow: ellipsis;
 }
 
+
+a:hover {
+  color: #F79F79;
+}
+
 :focus:active {
   box-shadow: none;
 }
