@@ -28,3 +28,9 @@ background-color: #A6DADE;
   left: auto !important;
   right: 0 !important;
 }
+
+#events-index {
+  height: 80%;
+  overflow-y: scroll;
+  overflow: auto;
+}
