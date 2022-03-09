@@ -24,7 +24,7 @@
   <div id="nav-tab" class="tab-content">
     <div class="tab-pane fade show active" id="coming" role="tabpanel" aria-labelledby="coming-tab">
       <div class="card-list">
-        <% if @coming_trips.count == 0 %>
+        <% if @coming_trips == nil %>
           <div class="card-trip-empty" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             <h1>Plan your next journey</h1>
             <div class="round-plus">
