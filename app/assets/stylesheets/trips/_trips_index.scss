@@ -6,3 +6,30 @@
   padding-left: 1em;
   padding-right: 1em;
 }
+
+
+.nav-tabs {
+  width: 30%!important;
+  justify-content: space-between;
+  align-self: center;
+  border: none;
+  margin-bottom: 20px;
+    .nav-link {
+      width: auto;
+      color: #F79F79;
+      border: 1px solid #F79F79;
+      background: none;
+      border-radius: 3px;
+    }
+    .nav-link.active {
+      color: white;
+      background-color: #F79F79;
+    }
+    .nav-link:focus {
+      color: white;
+      background-color: #F79F79;
+    }
+    .nav-link:hover {
+      border-color: #F79F79;
+    }
+}
