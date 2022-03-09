@@ -1,6 +1,6 @@
 .container-dashboard {
   display: grid;
-  grid-template-columns: 2.4fr 2.4fr 2.5fr;
+  grid-template-columns: 2.4fr 1.5fr 2.5fr 0.4fr;
   grid-template-rows: repeat(8, 1fr )[last-line];
   height: 90vh;
   width: 100%;
