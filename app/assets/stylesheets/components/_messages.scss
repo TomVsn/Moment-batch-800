@@ -46,7 +46,11 @@ $dark: #777777;
   height: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 20%;
+  position:absolute;
+  top:0rem;
+  right:100px;
+  z-index:1000;
   > .text-center, .form-trip-messages {
     flex: 0 0 auto;
   }
