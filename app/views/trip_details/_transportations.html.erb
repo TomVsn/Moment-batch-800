@@ -58,11 +58,11 @@
         <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 15px; right: 15px;"></button>
       </div>
       <% if @participant.transportations.size == 1 && @participant.transportations.first.departure_date > Time.now%>
-        <div class="modal-body py-5 mx-5">
-            Step <%=  1 %> : <br>
+        <div class="modal-body mx-5">
             <div class="transportation-ticket d-flex justify-content-center mt-2">
+            <p style="color:black; text-align:center">Step 1:</p>
               <div class="col">
-                  <div class="row departure-ticket d-flex align-items-start">
+                  <div class="row departure-ticket d-flex align-items-center">
                     departure : <%= @participant.transportations.first.departure_date.strftime("%A") %>, <%= @participant.transportations.first.departure_date.month %>, <%= @participant.transportations.first.departure_date.day %>, <%= @participant.transportations.first.departure_date.year %> at <%= @participant.transportations.first.departure_date.hour %> :
                   <% if @participant.transportations.first.departure_date.min == 0 %>
                     00
@@ -109,12 +109,12 @@
       </div>
       <% else %>
         <% @participant.transportations.order('departure_date ASC').each_with_index do |transportation, index|  %>
-        <div class="modal-body py-5 mx-5">
+        <div class="modal-body mx-5">
         <% flight_duration = transportation.arrival_date - transportation.departure_date %>
-          Step <%= index + 1 %> :
+          <p style="color:black; text-align:center">Step <%= index + 1 %>:</p>
           <div class="transportation-ticket d-flex justify-content-center mt-2">
           <div class="col">
-            <div class="row departure-ticket d-flex align-items-start">
+            <div class="row departure-ticket d-flex align-items-center">
               Departure : <%= transportation.departure_date.strftime("%A") %>, <%= transportation.departure_date.month %>, <%= transportation.departure_date.day %>, <%= transportation.departure_date.year %> at
               <%= transportation.departure_date.hour %> h
                 <% if transportation.departure_date.min == 0 %>
