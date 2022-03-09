@@ -80,3 +80,8 @@
   overflow: scroll;
   word-wrap: break-word;
 }
+
+
+input[type=text]:focus {
+  outline: none;
+}
