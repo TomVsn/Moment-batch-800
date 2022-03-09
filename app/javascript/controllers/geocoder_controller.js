@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 export default class extends Controller {
-  static values = { apiKey: String }
+  static values = { apiKey: String, placeholder: String }
 
   static targets = ["address"]
 
@@ -10,7 +10,7 @@ export default class extends Controller {
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
       types: "country,region,place,postcode,locality,neighborhood,address",
-      placeholder: "Address",
+      placeholder: this.placeholderValue,
     });
     this.geocoder.addTo(this.element)
     this.geocoder.on("result", event => this.#setInputValue(event))

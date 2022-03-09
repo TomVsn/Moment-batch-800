@@ -171,10 +171,10 @@
                <div class="origin-destination d-flex justify-content-around">
                 <%= f.input :origin,
                   input_html: { data: { geocoder_target: "address" }, placeholder:"Paris Orly, Gare Bordeaux Saint Jean, 56 rue de la Chine 75020 Paris", class: "d-none" },
-                  wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }, label: false%>
+                  wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'], geocoder_placeholder_value:"Paris Orly..." } }, label: false%>
                 <%= f.input :destination,
                   input_html: { data: { geocoder_target: "address" }, placeholder:"Rome, Gare de Lyon Perrache, Gite de Canelles,...", class: "d-none" },
-                  wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }, label: false%>
+                  wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'], geocoder_placeholder_value:"London Heathrow,..." } }, label: false%>
               </div>
               <div class="transportations-dates d-flex justify-content-around">
                 <%= f.input :departure_date, label:"When are you leaving?", as: :string, required: false, input_html: {class: "datepicker"} %>
@@ -212,8 +212,12 @@
             </div>
               <%= simple_form_for [transportation], class:"transportation-form" do |f|%>
                 <div class="origin-destination d-flex justify-content-around">
-                  <%= f.input :origin, label:"From...", placeholder: 'Paris' %>
-                  <%= f.input :destination, label:"To...", placeholder: 'Rome' %>
+                  <%= f.input :origin,
+                  input_html: { data: { geocoder_target: "address" }, placeholder:"Paris Orly, Gare Bordeaux Saint Jean, 56 rue de la Chine 75020 Paris", class: "d-none" },
+                  wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'], geocoder_placeholder_value:"Paris Orly..." } }, label: false%>
+                  <%= f.input :destination,
+                  input_html: { data: { geocoder_target: "address" }, placeholder:"Rome, Gare de Lyon Perrache, Gite de Canelles,...", class: "d-none" },
+                  wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'], geocoder_placeholder_value:"London Heathrow,..." } }, label: false%>
                 </div>
                 <div class="transportations-dates d-flex justify-content-around">
                   <%= f.input :departure_date, label:"When are you leaving?", as: :string, required: false, input_html: {class: "datepicker"} %>
