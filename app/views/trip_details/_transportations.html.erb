@@ -67,7 +67,7 @@
                   <% if @participant.transportations.first.departure_date.min == 0 %>
                     00
                   <% else %>
-                    <%= @participant.transportations.departure_date.min %>
+                    <%= @participant.transportations[0].departure_date.min %>
                   <% end %>
                 </div>
                 <div class="row origin-destination-infos" style="height:80px">
