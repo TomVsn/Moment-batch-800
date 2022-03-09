@@ -1,4 +1,7 @@
-<p style="color:black">Plan your activities</p>
+
+ <% if @trip.events == [] %>
+  <p style="color:black">Plan your activities</p>
+ <% end %>
 <div class="container" id="events-index">
   <% if @trip.events == [] %>
     <div class="container">
@@ -10,7 +13,7 @@
     <% @trip.events.order('start_date ASC').each do |event| %>
     <div class="activity-grid">
       <div class="activity-time">
-        <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
+        <%= event.start_date.strftime("%A").first(2)%> <%= event.start_date.day %>
       </div>
       <div class="activity-icon">
         <div class="dropdown-box activity-box">

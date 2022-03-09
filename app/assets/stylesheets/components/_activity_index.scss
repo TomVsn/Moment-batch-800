@@ -1,25 +1,30 @@
 .activity-grid {
   display: grid;
-  grid-template-columns: repeat(2, 26.6px) repeat(6, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  height: 80px;
+  grid-template-columns: repeat(2, 30px) repeat(6, 1fr);
+  grid-template-rows: 20px 40px;
+  height: 70px;
+  margin-bottom: 10px;
 }
 .activity-time {
   grid-column-start: 1;
-  grid-column-end: 8;
+  grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 2;
+  font-weight: lighter;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .activity-title {
   grid-column-start: 3;
   grid-column-end: 8;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  font-weight: bold;
+  grid-row-start: 1;
+  grid-row-end: 2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-left: 10px;
+  margin-bottom: -10px;
 }
 
 .activity-icon {
@@ -27,7 +32,7 @@
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 4;
-  background-color: #A8DADC;
+  background-color: #b1dadb85;
   position: relative;
   border-radius: 10px;
 
@@ -43,30 +48,34 @@
 .activity-avatar-first {
   grid-column-start: 3;
   grid-column-end: 4;
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
   margin-left: 10px;
   height: 30px;
+  margin-top: 10px;
 }
 .activity-avatar-second {
   grid-column-start: 4;
   grid-column-end: 5;
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
   height: 30px;
+  margin-top: 10px;
 }
 .activity-avatar-rest {
   grid-column-start: 5;
   grid-column-end: 6;
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
   margin-left: 10px;
   height: 30px;
+  margin-top: 10px;
 }
 .activity-participate-button {
   grid-column-start: 6;
   grid-column-end: 8;
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
   margin-left: 10px;
+  margin-top: 10px;
 }
