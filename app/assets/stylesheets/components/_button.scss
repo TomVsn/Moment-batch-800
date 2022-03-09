@@ -101,8 +101,11 @@
 
 #my-trips-btn {
   margin-right: 15px;
-  background-color: #d3e9ce;
   border-radius: 8px;
+
+    &:hover {
+      border-color: #1E3658;
+    }
 }
 
 .fav-button {
