@@ -10,7 +10,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="showParticipantsModal" tabindex="-1" aria-labelledby="showParticipantsModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="position-relative" style="z-index: 2;">
         <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 15px; right: 15px;"></button>
@@ -44,7 +44,7 @@
 
 <!--Modal Add a participant-->
 <div class="modal fade" id="participantCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="position-relative" style="z-index: 2;">
         <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 15px; right: 15px;"></button>
@@ -54,23 +54,32 @@
           <div class="d-flex w-100 align-items-center">
             <h4 class="text-center mb-4 highlight-title mx-auto">ADD A FRIEND</h4>
           </div>
-          <div class="w-50 mx-auto">
+          <div class="w-60 mx-auto">
             <% @users.each do |user| %>
               <ul>
                 <% unless user.participates?(@trip) %>
                   <li>
                     <div class="row align-items-center">
-                      <div class="col justify-content-center">
-                        <%= user.username %>
-                      </div>
                       <div class="col">
                         <%= simple_form_for [@trip, @new_participant] do |f|%>
                           <%= f.input :user_id, as: :hidden, input_html: {value: user.id}%>
                           <%= f.input :trip_id, as: :hidden, input_html: {value: @trip.id} %>
-                          <%= button_tag type: 'submit', style:"border:none", class:"bg-white" do %>
-                            <i class="fas fa-user-plus"></i>
+                          <%= button_tag type: 'submit', style:"border:none; background-color: white" do %>
+                            <div class="col avatar-uninvited">
+                              <% if user.photo != nil && user.photo.key != nil%>
+                                <%= cl_image_tag user.photo.key, class:"avatar add-participant"%>
+                              <% else %>
+                                <%= image_tag "https://res.cloudinary.com/dyqby7tbh/image/upload/v1646667807/placeholder_user_f6tjii.png", class:"avatar add-participant"%>
+                              <% end %>
+                              <div class="add-friend">
+                              +
+                              </div>
+                            </div>
+                            <% end %>
                           <% end %>
-                        <% end %>
+                      </div>
+                      <div class="col justify-content-left">
+                        <%= user.username %>
                       </div>
                     </div>
                   </li>
