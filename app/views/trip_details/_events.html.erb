@@ -1,5 +1,5 @@
 <p style="color:black">Plan your activities</p>
-<div class="container" style="overflow-y: scroll; height: 80%" id="events-index">
+<div class="container" id="events-index">
   <% if @trip.events == [] %>
     <div class="container">
       <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -30,7 +30,7 @@
       <div class="activity-avatar-first">
         <% if event.event_participants.first %>
           <div class="avatar">
-            <%= image_tag "user-placeholder.png", width: 30, height: 30%>
+            <%= cl_image_tag event.event_participants.first.participant.user.photo.key, width: 30, height: 30, class:"avatar avatar-events"%>
             <%= link_to event_participant_path(event.event_participants.first), method: :delete, data: { confirm: "Are you sure?" } do %>
               <i class="fas fa-times-circle delete-event-participant"></i>
             <% end %>
@@ -40,7 +40,7 @@
       <div class="activity-avatar-second">
         <% if event.event_participants[1] %>
           <div class="avatar">
-            <%= image_tag "user-placeholder.png", width: 30, height: 30%>
+            <%= image_tag cl_image_tag event.event_participants[1].participant.user.photo.key, class: "avatar avatar-events"%>
             <%= link_to event_participant_path(event.event_participants[1]), method: :delete, data: { confirm: "Are you sure?" } do %>
               <i class="fas fa-times-circle delete-event-participant"></i>
             <% end %>
