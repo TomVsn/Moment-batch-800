@@ -19,11 +19,11 @@
   background: #A6DADE;
   margin-top: 15px;
   width: 180px;
+  transition: transform 0.4s;;
 
 
   &:hover {
-    font-weight: bold;
-    color: black;
+    transform: scale(1.03);
   }
 }
 
