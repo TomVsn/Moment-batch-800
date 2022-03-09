@@ -165,5 +165,17 @@
 }
 
 .modal{
-  backdrop-filter: blur(3px)
+  backdrop-filter: blur(3px);
+
+  .card  {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+
+    .list-group-item {
+      border-bottom: 1.5px solid #50587C;
+      padding-top: 50px;
+    }
+  }
 }
