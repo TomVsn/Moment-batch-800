@@ -54,14 +54,13 @@
 <div class="modal fade" id="ShowTransportationModal" tabindex="-1" aria-labelledby="ShowTransportationModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ShowTransportationModalLabel">Details of your journeys</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="position-relative" style="z-index: 2;">
+        <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 15px; right: 15px;"></button>
       </div>
       <% if @participant.transportations.size == 1 && @participant.transportations.first.departure_date > Time.now%>
-        <div class="modal-body">
-            Etape <%=  1 %> : <br>
-            <div class="transportation-ticket d-flex justify-content-center">
+        <div class="modal-body py-5 mx-5">
+            Step <%=  1 %> : <br>
+            <div class="transportation-ticket d-flex justify-content-center mt-2">
               <div class="col">
                   <div class="row departure-ticket d-flex align-items-start">
                     departure : <%= @participant.transportations.first.departure_date.strftime("%A") %>, <%= @participant.transportations.first.departure_date.month %>, <%= @participant.transportations.first.departure_date.day %>, <%= @participant.transportations.first.departure_date.year %> at <%= @participant.transportations.first.departure_date.hour %> :
@@ -71,41 +70,49 @@
                     <%= @participant.transportations.departure_date.min %>
                   <% end %>
                 </div>
-                <div class="row origin-destination-infos">
-                  <div class="col-3">
+                <div class="row origin-destination-infos" style="height:80px">
+                  <div class="circle-ticket-left">i</div>
+                  <div class="col-3 origin-infos">
                     <p>
                       From : <br>
                       <p class="city-ticket"><%= @participant.transportations.first.origin.split(",").first %></p>
                     </p>
                   </div>
-                  <div class="col-6 text-center ticket-globe">
+                  <div class="col-2">
+                    <hr style="color:#F79F79, height:2px">
+                  </div>
+                  <div class="col-2 text-center ticket-globe text-center ticket-globe mt-2 d-flex justify-content-center">
                     <i class="fas fa-globe-europe" style=""></i>
                   </div>
-                  <div class="col-3">
+                  <div class="col-2">
+                    <hr style="color:#F79F79, height:2px">
+                  </div>
+                  <div class="col-3 destination-infos" style="height:80px">
                     <p>To: <br>
                       <p class="city-ticket"><%= @participant.transportations.first.destination.split(",").first %></p>
                     </p>
                   </div>
+                  <div class="circle-ticket-right">j</div>
                 </div>
                 <div class="row departure-time d-flex">
                   <i class="fas fa-clock" style="color:#F79F79; width:unset; max-width:unset; height:fit-content"></i>
                   <div style="width:unset; max-width:unset; height:fit-content">
                     <%= ((@participant.transportations.first.arrival_date - @participant.transportations.first.departure_date)/3600).round %>h
                   </div>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#EditTransportationModal" class="btn btn-light btn-sm edit-transportation">
+              modify...
+            </button>
                 </div>
               </div>
             </div>
-          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#EditTransportationModal">
-            <i class="fas fa-edit"></i>
-          </button>
         <%# <%= je suis pas sure pour le retour, à valider sur un vrai truc qu'on aura rentré %>
       </div>
       <% else %>
         <% @participant.transportations.order('departure_date ASC').each_with_index do |transportation, index|  %>
-        <div class="modal-body">
+        <div class="modal-body py-5 mx-5">
         <% flight_duration = transportation.arrival_date - transportation.departure_date %>
-          Etape <%= index + 1 %> :
-          <div class="transportation-ticket d-flex justify-content-center">
+          Step <%= index + 1 %> :
+          <div class="transportation-ticket d-flex justify-content-center mt-2">
           <div class="col">
             <div class="row departure-ticket d-flex align-items-start">
               Departure : <%= transportation.departure_date.strftime("%A") %>, <%= transportation.departure_date.month %>, <%= transportation.departure_date.day %>, <%= transportation.departure_date.year %> at
@@ -116,33 +123,41 @@
                   <%= transportation.departure_date.min %>
                 <% end %>
             </div>
-            <div class="row origin-destination-infos">
-              <div class="col-3">
+            <div class="row origin-destination-infos" style="height:80px">
+              <div class="circle-ticket-left">i</div>
+              <div class="col-3 origin-infos">
                 <p>
                   From : <br>
                   <p class="city-ticket"><%= transportation.origin.split(",").first %></p>
                 </p>
               </div>
-              <div class="col-6 text-center ticket-globe">
+              <div class="col-2">
+                <hr style="color:#F79F79, height:2px">
+              </div>
+              <div style="height:80px" class="col-2 text-center ticket-globe mt-2 d-flex justify-content-center">
                 <i class="fas fa-globe-europe" style=""></i>
               </div>
-              <div class="col-3">
+              <div class="col-2">
+                <hr style="height:2px">
+              </div>
+              <div class="col-3 destination-infos" style="height:80px">
                 <p>To: <br>
                   <p class="city-ticket"><%= transportation.destination.split(",").first %></p>
                 </p>
               </div>
+              <div class="circle-ticket-right">j</div>
             </div>
-            <div class="row departure-time d-flex">
-              <i class="fas fa-clock" style="color:#F79F79; width:unset; max-width:unset; height:fit-content"></i>
-              <div style="width:unset; max-width:unset; height:fit-content">
-                <%= (flight_duration/3600).round %>h
-              </div>
+            <div class="row departure-time d-flex mt-1">
+                <i class="fas fa-clock" style="color:#F79F79; width:unset; max-width:unset; height:fit-content"></i>
+                <div style="width:unset; max-width:unset; height:fit-content">
+                  <%= (flight_duration/3600).round %>h
+                </div>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#EditTransportationModal" class="btn btn-light btn-sm edit-transportation">
+              modify...
+            </button>
             </div>
           </div>
         </div>
-          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#EditTransportationModal">
-            <i class="fas fa-edit"></i>
-          </button>
           <%# <%= je suis pas sure pour le retour, à valider sur un vrai truc qu'on aura rentré %>
         </div>
       <% end %>
@@ -208,7 +223,7 @@
         <div class="modal-body py-5">
           <div class="container">
             <div class="d-flex w-100 align-items-center">
-              <h4 class="text-center mb-4 highlight-title mx-auto" id="titleAccomodationModal">ADD AN ITINERARY</h4>
+              <h4 class="text-center mb-4 highlight-title mx-auto" id="titleAccomodationModal">EDIT AN ITINERARY</h4>
             </div>
               <%= simple_form_for [transportation], class:"transportation-form" do |f|%>
                 <div class="origin-destination d-flex justify-content-around">
