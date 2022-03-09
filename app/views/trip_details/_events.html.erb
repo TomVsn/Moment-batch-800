@@ -7,7 +7,7 @@
       </button>
     </div>
   <% else %>
-    <% @trip.events.each do |event| %>
+    <% @trip.events.order('start_date ASC').each do |event| %>
     <div class="activity-grid">
       <div class="activity-time">
         <%= event.start_date.strftime("%A") %> <%= event.start_date.day %>-<%= event.start_date.month %>
