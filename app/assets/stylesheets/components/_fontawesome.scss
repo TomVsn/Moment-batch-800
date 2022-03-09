@@ -7,7 +7,6 @@
   position: absolute;
   top: -2px;
   right: 9px;
-  color: red;
   display: none;
 }
 .delete-event {
@@ -31,6 +30,13 @@
   .delete-event {
     display: block;
   }
+
+  .activity-box {
+    display: block;
+    left: -4px;
+    background: none;
+  }
+
   .edit-event {
     display: block;
   }
@@ -39,5 +45,6 @@
 .avatar:hover {
   .delete-event-participant {
     display: block;
+    color: black;
   }
 }
