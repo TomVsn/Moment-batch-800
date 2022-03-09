@@ -13,7 +13,7 @@
     <% end %>
   </div>
 
-  <div class="form-trip-messages">
+  <div class="form-trip-messages" style="background-color: #F2F2F2; border-radius: 0 0 20px 20px;">
     <%= simple_form_for [@participant, @new_message],
       remote: true,
       html: {
@@ -25,7 +25,7 @@
         placeholder: "Send something",
         wrapper_html: {class: "flex-grow-1"},
         input_html: {class:"border-0 px-1 py-1"} %>
-      <button type="submit" class="bg-transparent border-0"><i class="fas fa-paper-plane" style="color:#79C7C5"></i></button>
+      <button type="submit" class="bg-transparent border-0"><i class="fas fa-paper-plane" style="color:rgb(66,171,179)"></i></button>
     <% end %>
   </div>
 </div>

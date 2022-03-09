@@ -9,7 +9,7 @@
   width: 100%;
 }
 .c-message__content__bubble {
-  background-color: #79C7C5;
+  background-color: rgb(66,171,179);
   padding: 0.25em 0.75em;
   border-radius: 20px;
   line-break: anywhere;
@@ -23,8 +23,12 @@
   margin-left: auto;
   flex-direction: row-reverse;
   .c-message__content__bubble {
-    background-color: lightgray;
+    background-color: #9ED7DB;
   }
+}
+
+.message_content .text .required{
+  margin-bottom: 0px !important;
 }
 
 
@@ -47,90 +51,43 @@ $dark: #777777;
     flex: 1;
     overflow: scroll;
     width: 100%;
-    background-color: #E6F3F6;
+    background-color: #FFFFFF;
+  }
+  > .text-center{
+    background-color: #F2F2F2;
+    border-radius: 20px 20px 0 0;
   }
 }
 
-.sending {
-  text-align: right;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 80%;
-  float:right;
-  .bubble {
-    background: lighten($dark, 23%);
-    background-color: $primary;
-    padding: 0.25em;
-    border-radius: 20px;
-    width: 85%;
-    float:right;
-    p {
-      margin-top: 0.25rem;
-      margin-bottom: 0.25rem;
-      margin-right:0.5rem;
-      font-size:smaller;
-    }
-  }
-  .message-date{
-    font-size:xx-small;
-    text-align: right;
-  }
-}
-
-.getting {
-  text-align: left;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 85%;
-  margin-left:1rem;
-  margin-right:1rem;
-  .bubble {
-    background: lighten($dark, 23%);
-    background-color: $primary;
-    padding: 0.25em;
-    border-radius: 20px;
-    width: 80%;
-    p {
-      margin-top: 0.25rem;
-      margin-bottom: 0.25rem;
-      margin-left:0.5rem;
-      font-size:smaller;
-    }
-  }
-  .message-date{
-    font-size:xx-small;
-    text-align:left;
-  }
-
-  .message-username{
-      margin-bottom: 0.25rem;
-
-  }
+.form-trip-messages{
+  background-color: #F2F2F2;
+  border-radius: 0 0 20px 20px;
 }
 
 .simple-form-messages{
-  background-color: white;
+  background-color: #F2F2F2;
   // position: absolute;
   // height: 55px;
   bottom: 0;
-  background: $white;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 20px 20px;
+  margin-top: 1rem;
+  margin-left: 1rem;
   .input-message{
     height:50%;
     width: 80%;
   }
-  .message_content{
-    // margin-bottom: 0px !important;
-  }
+
   .textarea.form-control{
     border-bottom: none !important;
     padding-top:none !important;
   }
   button{
     // position: absolute;
-    background-color: transparent;
+    background-color: #F2F2F2;
     // top:  19px;
     opacity: 0.8;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
     // right: 17px;
     html {
         display: grid;
@@ -140,13 +97,15 @@ $dark: #777777;
   }
 
 .form-control:focus{
-  background-color: white;
+  background-color: #F2F2F2;
   box-shadow: none;
 }
 
 #message_content {
   // padding: 0!important;
   box-shadow: none!important;
+  margin-bottom: -1rem;
+  background-color: #F2F2F2;
 }
 
 .text {
@@ -156,5 +115,9 @@ $dark: #777777;
 
 .textarea {
   resize: none;
+  // margin-top: 1rem;
+  // margin-bottom: -1rem;
+  // margin-left: 1rem;
+  background-color: #F2F2F2;
 
 }
