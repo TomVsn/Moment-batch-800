@@ -1,6 +1,8 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <%= link_to "Momento", root_path, class: "btn btn-light" %>
+    <%= link_to root_path do%>
+      <%= image_tag "Logo.png", style: "height: 50px;" %>
+    <% end %>
 
       <div class="d-flex">
         <% if user_signed_in? %>
