@@ -1,6 +1,6 @@
 .activity-grid {
   display: grid;
-  grid-template-columns: 60px repeat(6, 1fr);
+  grid-template-columns: 60px 2fr repeat(5, 1fr);
   grid-template-rows: 30px 30px;
   height: 70px;
   margin-bottom: 10px;
@@ -20,6 +20,7 @@
   text-overflow: ellipsis;
   margin-left: 10px;
   align-self: flex-end;
+  font-size: 18px;
 }
 
 .activity-icon {

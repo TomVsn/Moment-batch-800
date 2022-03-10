@@ -13,7 +13,7 @@
     <% @trip.events.order('start_date ASC').each do |event| %>
     <div class="activity-grid">
       <div class="activity-time">
-        <%= event.start_date.strftime("%A").first(2)%> <%= event.start_date.day %>
+        <%= event.start_date.strftime("%A").first(2)%> <%= event.start_date.day %> <%= event.start_date.hour %>:<%= event.start_date.min %>
       </div>
       <div class="activity-icon">
         <div class="dropdown-box activity-box">
@@ -28,7 +28,7 @@
         <%= image_tag "#{event.category}.png", class:"activity-img"%>
       </div>
       <div class="activity-title">
-        <%= event.start_date.hour %>:<%= event.start_date.min %> <%= event.description %>
+        <%= event.description %>
       </div>
       <div class="activity-avatar-first">
         <% if event.event_participants.first %>
