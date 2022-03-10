@@ -3,7 +3,7 @@
 </div>
 <div class="row friends-row">
   <% @participants.first(3).each do |participant| %>
-  <div class="col-3">
+  <div class="col-3 p-0">
     <% if participant.user.photo != nil && participant.user.photo.key != nil%>
       <%= cl_image_tag participant.user.photo.key, class:"avatar add-participant"%>
     <% else %>
@@ -12,7 +12,7 @@
   </div>
   <% end %>
   <% if @participants.count > 3 %>
-    <div class="col-3">
+    <div class="col-3 p-0">
       <div class="avatar-more-friends">
         + <%= @participants.count - 3 %>
       </div>
