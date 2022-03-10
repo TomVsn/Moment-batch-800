@@ -140,4 +140,10 @@ $dark: #777777;
   position:absolute;
   right:5rem;
   bottom:1rem;
+  .notification-bulle{
+    background-color: red;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+  }
 }

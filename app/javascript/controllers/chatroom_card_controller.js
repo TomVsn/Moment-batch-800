@@ -7,14 +7,14 @@ export default class extends Controller {
     // console.log(this.chatroomTarget)
     // console.log(`ici`)
     // console.log(this.chatroomTarget.classList)
-    console.log(this.circle_chatroomTarget)
+    // console.log(this.circle_chatroomTarget)
     this.chatroomTarget.classList.remove("d-none")
     this.circle_chatroomTarget.classList.add("d-none")
   }
 
 
   hideChatroom(){
-    console.log(this.chatroomTarget)
+    // console.log(this.chatroomTarget)
     this.chatroomTarget.classList.add("d-none")
     this.circle_chatroomTarget.classList.remove("d-none")
 

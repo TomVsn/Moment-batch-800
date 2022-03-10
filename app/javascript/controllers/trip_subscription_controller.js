@@ -6,7 +6,7 @@ export default class extends Controller {
     tripId: Number,
     currentUserId: Number
   }
-  static targets = ["messages", "form", "message"]
+  static targets = ["messages", "form", "message", "notif"]
 
   connect() {
     this.channel = consumer.subscriptions.create(
@@ -16,6 +16,7 @@ export default class extends Controller {
   }
 
   insertMessageScrollDownAndResetForm(data) {
+    console.log(this.notifTarget)
     this.messagesTarget.insertAdjacentHTML("beforeend", data.message_html);
     if (this.currentUserIdValue != data.auhtor_id) this.messageTargets[this.messageTargets.length - 1].classList.remove('my-message');
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);

@@ -1,29 +1,35 @@
-<div id="chatroom" data-controller="trip-subscription" data-trip-subscription-current-user-id-value="<%= current_user.id %>"
-  data-trip-subscription-trip-id-value="<%= @trip.id %>">
-  <div class="trip-messages px-2 pb-2 pt-4" data-trip-subscription-target="messages">
-    <div data-action="click->chatroom-card#hideChatroom">X</div>
-    <% if @messages == [] %>
-      <p style="color:black; text-align:center" class="py-5">Be the first to send a message !</p>
-    <% else %>
-      <% @messages.each do |message| %>
-        <%= render "trip_details/message", message: message %>
-      <% end %>
-    <% end %>
+<div data-controller="trip-subscription" data-controller="chatroom-card">
+  <div class="chatroom-circle" data-chatroom-card-target="circle_chatroom" data-action="click->chatroom-card#revealChatroom">
+    <div class="notification-bulle d-none" data-trip-subscription-target="notif"></div>
   </div>
 
-  <div class="form-trip-messages" style="background-color: #F2F2F2; border-radius: 0 0 20px 20px;">
-    <%= simple_form_for [@participant, @new_message],
-      remote: true,
-      html: {
-        class: "d-flex simple-form-messages",
-        'data-trip-subscription-target': 'form'
-        } do |f| %>
-      <%= f.input :content,
-        label: false,
-        placeholder: "Send something",
-        wrapper_html: {class: "flex-grow-1"},
-        input_html: {class:"border-0 px-1 py-1"} %>
-      <button type="submit" class="bg-transparent border-0"><i class="fas fa-paper-plane" style="color:rgb(66,171,179)"></i></button>
-    <% end %>
+  <div id="chatroom" class="d-none" data-chatroom-card-target="chatroom" data-trip-subscription-current-user-id-value="<%= current_user.id %>"
+    data-trip-subscription-trip-id-value="<%= @trip.id %>">
+    <div class="trip-messages px-2 pb-2 pt-4" data-trip-subscription-target="messages">
+      <div data-action="click->chatroom-card#hideChatroom">X</div>
+      <% if @messages == [] %>
+        <p style="color:black; text-align:center" class="py-5">Be the first to send a message !</p>
+      <% else %>
+        <% @messages.each do |message| %>
+          <%= render "trip_details/message", message: message %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="form-trip-messages" style="background-color: #F2F2F2; border-radius: 0 0 20px 20px;">
+      <%= simple_form_for [@participant, @new_message],
+        remote: true,
+        html: {
+          class: "d-flex simple-form-messages",
+          'data-trip-subscription-target': 'form'
+          } do |f| %>
+        <%= f.input :content,
+          label: false,
+          placeholder: "Send something",
+          wrapper_html: {class: "flex-grow-1"},
+          input_html: {class:"border-0 px-1 py-1"} %>
+        <button type="submit" class="bg-transparent border-0"><i class="fas fa-paper-plane" style="color:rgb(66,171,179)"></i></button>
+      <% end %>
+    </div>
   </div>
 </div>
