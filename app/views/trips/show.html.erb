@@ -43,10 +43,11 @@
   <div class="dashboard-box dashboard-photos">
     <%= render 'trip_details/photos' %>
   </div>
-  <div class="d-none" data-chatroom-card-target="chatroom">
+  <div class="dashboard-chat d-none" data-chatroom-card-target="chatroom">
     <%= render 'trip_details/messages' %>
   </div>
   <div class="chatroom-circle" data-chatroom-card-target="circle_chatroom" data-action="click->chatroom-card#revealChatroom">
+    <i class="fas fa-comment-dots"></i>
     <div class="notif-puce d-none" data-trip-subscription-target="notif" data-chatroom-card-target="notif"></div>
   </div>
   <%# <div class="dashboard-box dashboard-chat" style="padding-bottom: 0px;"> %>

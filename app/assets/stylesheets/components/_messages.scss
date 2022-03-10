@@ -14,7 +14,7 @@
   padding: 0.25em 0.75em;
   border-radius: 20px;
   line-break: auto;
-  padding: 1rem;
+  padding: 0.7rem;
   font-size:0.9rem;
 }
 .c-message__content__date {
@@ -34,14 +34,6 @@
   margin-bottom: 0px !important;
 }
 
-
-$primary: #79C7C5;
-$secondary: #A1E2D9;
-$white: #F9FBFF;
-$dark: #777777;
-
-
-
 #chatroom {
   height: 100%;
   display: flex;
@@ -52,6 +44,8 @@ $dark: #777777;
   right:0px;
   z-index:1000;
   box-shadow: 20px;
+  padding:24px 0px;
+  box-shadow: 20px 0px !important;
   > .text-center, .form-trip-messages {
     flex: 0 0 auto;
   }
@@ -76,8 +70,6 @@ $dark: #777777;
 
 .simple-form-messages{
   background-color: #F2F2F2;
-  // position: absolute;
-  // height: 55px;
   bottom: 0;
   border-radius: 0 0 20px 20px;
   margin-top: 1rem;
@@ -118,11 +110,6 @@ $dark: #777777;
   background-color: #F2F2F2;
 }
 
-.text {
-  border-color: none!important;
-  resize: none!important;
-}
-
 .textarea {
   resize: none;
   // margin-top: 1rem;
@@ -134,16 +121,25 @@ $dark: #777777;
 
 .chatroom-circle{
   border-radius:50%;
-  color:blue;
-  width:50px;
-  height:50px;
-  background-color:blue;
+  color:rgba(0, 0, 0, 0.7);
+  width:40px;
+  height:40px;
+  background-color:rgba(132, 205, 211, 0.7);
   position:absolute;
-  right:5rem;
-  bottom:1rem;
+  right: 0.6rem;
+  top:4rem;
+  text-align: center;
+  padding-top: 0.4rem;
   .notif-puce{
     width: 15px;
     height: 15px;
-    background-color: red;
+    background-color: #f79f79;
+    border-radius:50px;
+    position: absolute;
+    bottom:1.7rem;
+    left:-0.3em;
+  }
+  .fa-comment-dots{
+    font-size:x-large;
   }
 }
