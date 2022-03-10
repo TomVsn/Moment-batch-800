@@ -12,9 +12,9 @@
     <p style="color:black">You haven't booked your place to stay yet.</p>
   <% elsif @accomodations.select{|accomodation| accomodation.confirmed == true} != []%>
     <% accomodation_booked = @accomodations.select{|accomodation| accomodation.confirmed == true}.first %>
-    <p style="color:green;font-size:14px; text-align:center">You've booked your place to stay!</p>
+    <p style="color:green;font-size:14px; margin-bottom: 0.5em;">You've booked your place to stay!</p>
     <div class="booked-accomodation">
-      <div class="booked-accomodation-img">
+      <div class="booked-accomodation-img ms-0">
         <%= image_tag accomodation_booked.img, class:"confirmed-accomodation-dashboard"%>
       </div>
       <div class="booked-accomodation-title">

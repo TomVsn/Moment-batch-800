@@ -22,15 +22,15 @@
   }
 }
 .dashboard-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 2fr 2fr;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr;
+  // grid-template-rows: 1fr 2fr 2fr;
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 4;
   // color: white!important;
-  background-color: #fbb44ab0;
+  background-color: #fac062ba;
   p {
     color: black;
   }
