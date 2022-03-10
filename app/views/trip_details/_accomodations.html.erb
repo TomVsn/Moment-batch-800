@@ -57,7 +57,7 @@
               <%= accomodation.title %>
               <br>
               <p class="text-break pb-3" style="max-width: 240px; font-size: 16px;"><%= accomodation.description %></p>
-              <%= link_to "booked", confirm_accomodation_accomodation_path(accomodation), style: accomodation.confirmed == true ? 'color: #568A75; padding: 3px 5px; border-radius: 4px; background-color: #d2f1e4; text-decoration: none;' : 'display: none;' %>
+                <%= link_to "booked", confirm_accomodation_accomodation_path(accomodation), style: accomodation.confirmed == true ? 'color: #568A75; padding: 3px 5px; border-radius: 4px; background-color: #d2f1e4; text-decoration: none;' : 'color: black; padding: 3px 5px; border-radius: 4px; border: 1px solid black; text-decoration: none;' %>
             </div>
             <h2 class="card-index-accomodation-pricing position-absolute" style="bottom: 7px; right: 20px"><%= accomodation.price %> €</h2>
             <div class="card-index-accomodation-user">
