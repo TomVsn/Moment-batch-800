@@ -51,6 +51,14 @@ class TripsController < ApplicationController
     @new_transportation = Transportation.new
     @new_accomodation_vote = AccomodationVote.new
     @new_message = Message.new
+    @markers = @accomodations.geocoded.map do |accomodation|
+      {
+        lat: accomodation.latitude,
+        lng: accomodation.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { accomodations: accomodation }),
+        image_url: helpers.asset_url("emplacement.png")
+      }
+    end
     authorize @trip
   end
 
