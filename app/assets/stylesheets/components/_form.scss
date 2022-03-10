@@ -128,7 +128,7 @@ textarea::placeholder {
 .accomodation_address {
   flex-grow: 1;
   padding-right: 5px;
-  border-bottom: 1.5px solid black;
+  border-bottom: 1.5px solid rgba(0,0,0,0.3);
   margin-right: 10px;
   margin-left: 6px;
 }
@@ -149,9 +149,13 @@ textarea::placeholder {
   border-right: none;
   border-left: none;
   // border-bottom: 1.5px solid #000;
-  border-bottom: 1.5px solid #000000;
+  border-bottom: 1.5px solid rgba(0,0,0,0.3);
   background-color: transparent;
   border-radius: 0px;
+}
+
+.form-control:focus {
+  background-color: white;
 }
 
 .inline-question {
@@ -201,6 +205,18 @@ textarea::placeholder {
 
 .form-select {
   background-color: white !important;
+}
+
+
+.suggestions-wrapper {
+  position: absolute;
+  background-color: white;
+  border: 0.5px solid rgba(0,0,0,0.2);
+  padding-right: 20px;
+}
+
+.modal-content {
+  border-radius: 10px;
 }
 
 .transportation_mean {
