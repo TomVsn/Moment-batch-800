@@ -1,15 +1,15 @@
 <div id="chatroom">
-  <div class="trip-messages px-2 pb-2 pt-4" data-trip-subscription-target="messages">
-    <div data-action="click->chatroom-card#hideChatroom" style="position:sticky; top:0px">
+  <div class="trip-messages px-2 pb-2" data-trip-subscription-target="messages">
+    <div data-action="click->chatroom-card#hideChatroom" style="position:sticky; top:0rem; background-color:white" class="pt-3 px-2">
       <i class="fas fa-times"></i>
     </div>
-    <% if @messages == [] %>
-      <p style="color:black; text-align:center" class="py-5">Be the first to send a message !</p>
-    <% else %>
-      <% @messages.each do |message| %>
-        <%= render "trip_details/message", message: message %>
+      <% if @messages == [] %>
+        <p style="color:black; text-align:center" class="py-5">Be the first to send a message !</p>
+      <% else %>
+        <% @messages.each do |message| %>
+          <%= render "trip_details/message", message: message %>
+        <% end %>
       <% end %>
-    <% end %>
   </div>
 
   <div class="form-trip-messages" style="background-color: #F2F2F2; border-radius: 0 0 20px 20px;">

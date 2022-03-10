@@ -34,9 +34,8 @@
 <% if @participant.transportations == [] %>
   <p style="color:black">Add your travel ticket !</p>
 <% elsif coming_transportation != nil && coming_transportation.departure_date > Time.now%>
-  <h6>Your trip to <strong><%= coming_transportation.destination.split(",").first %></strong> is in
-  <% remaining_days = ((coming_transportation.departure_date - Time.now)/86400).to_i %>
-  <%= remaining_days %> days
+  <h6>
+    Your trip to <strong><%= coming_transportation.destination.split(",").first %></strong> is in <% remaining_days = ((coming_transportation.departure_date - Time.now)/86400).to_i %><%= remaining_days %> days.</h6>
   <%# <%= (((coming_transportation.departure_date - Time.now) % 86400)/3600).to_i hours, %>
   <%# <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600)/60).to_i minutes %>
   <%# <%= ((((coming_transportation.departure_date - Time.now) % 86400) % 3600) % 60).to_i seconds %>
