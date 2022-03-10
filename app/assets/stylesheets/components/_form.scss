@@ -207,6 +207,7 @@ textarea::placeholder {
   background-color: white !important;
 }
 
+
 .suggestions-wrapper {
   position: absolute;
   background-color: white;
@@ -216,4 +217,40 @@ textarea::placeholder {
 
 .modal-content {
   border-radius: 10px;
+}
+
+.transportation_mean {
+  width: 230px;
+}
+
+#transportation_price {
+  background-color: white;
+}
+
+#expense_title {
+  background-color: white;
+}
+
+#expense_amount {
+  background-color: white;
+}
+
+#accomodation_title {
+  background-color: white;
+}
+
+#accomodation_price {
+  background-color: white;
+}
+
+#accomodation_img {
+  background-color: white;
+}
+
+#accomodation_description {
+  background-color: white;
+}
+
+#event_description {
+  background-color: white;
 }
