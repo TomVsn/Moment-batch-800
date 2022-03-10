@@ -1,11 +1,11 @@
 <div id="carouselExampleControls" class="carousel slide h-100" data-bs-ride="carousel">
   <div class="carousel-inner h-100">
     <div class="carousel-item active h-100">
-      <%if @trip.photos[0] != nil%>
-        <%=cl_image_tag @trip.photos[0].key, gravity: :center, height: "100%", width: 400, crop: :thumb, style:"border-radius: 20px; object-fit: cover;", alt:"First slide", class:"d-block w-100 h-100"%>
-      <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646815801/barcelone1_sfc1vd.jpg", width: 300, height: "100%", alt:"First slide", class:"d-block w-100 h-100", style: "object-fit: cover;")%>
-      <%end%>
+      <%# <%if @trip.photos[0] != nil%>
+        <%# <%=cl_image_tag @trip.photos[0].key, gravity: :center, height: "100%", width: 400, crop: :thumb, style:"border-radius: 20px; object-fit: cover;", alt:"First slide", class:"d-block w-100 h-100"%>
+      <%# <%else%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646931497/barcelone4_yctfmn.jpg", width: 300, height: "100%", alt:"First slide", class:"d-block w-100 h-100", style: "object-fit: cover;")%>
+      <%# <%end%>
     </div>
     <div class="carousel-item h-100">
       <%if @trip.photos[1] != nil%>
