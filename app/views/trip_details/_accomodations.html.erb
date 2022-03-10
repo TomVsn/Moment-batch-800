@@ -29,7 +29,7 @@
 
 <!-- Modal index accomodations  -->
 <div class="modal fade" id="IndexAccomodationModal" tabindex="-1" aria-labelledby="IndexAccomodationModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content d-flex flex-column">
       <!-- if book confirmed  -->
       <% if @accomodations.find_by(confirmed: true) %>
@@ -153,7 +153,7 @@
 
 <!-- Modal create -->
 <div class="modal fade" id="CreateAccomodationModal" tabindex="-1" aria-labelledby="CreateAccomodationModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="position-relative" style="z-index: 2;">
         <button type="button" class="btn position-absolute" data-bs-toggle="modal" data-bs-target="#IndexAccomodationModal" style="top: 15px; left: 15px;">
