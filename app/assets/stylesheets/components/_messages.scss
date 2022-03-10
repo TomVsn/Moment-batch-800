@@ -49,8 +49,9 @@ $dark: #777777;
   width: 20%;
   position:absolute;
   top:0rem;
-  right:100px;
+  right:0px;
   z-index:1000;
+  box-shadow: 20px;
   > .text-center, .form-trip-messages {
     flex: 0 0 auto;
   }
