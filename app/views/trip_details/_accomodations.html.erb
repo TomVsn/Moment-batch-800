@@ -13,8 +13,17 @@
   <% elsif @accomodations.select{|accomodation| accomodation.confirmed == true} != []%>
     <% accomodation_booked = @accomodations.select{|accomodation| accomodation.confirmed == true}.first %>
     <p style="color:green;font-size:14px; text-align:center">You've booked your place to stay!</p>
-    <h4 style="text-align:center"><%= accomodation_booked.title %></h3>
-    <h6 style="text-align:center"><%= accomodation_booked.address %></h6>
+    <div class="booked-accomodation">
+      <div class="booked-accomodation-img">
+        <%= image_tag accomodation_booked.img, class:"confirmed-accomodation-dashboard"%>
+      </div>
+      <div class="booked-accomodation-title">
+          <h4><%= accomodation_booked.title %></h3>
+      </div>
+      <div class="booked-accomodation-address">
+        <h6><%= accomodation_booked.address %></h6>
+      </div>
+    </div>
   <% end %>
   <div class="d-flex justify-content-evenly">
     <button type="button" class="btn btn-light btn-sm btn-more-infos" data-bs-toggle="modal" data-bs-target="#IndexAccomodationModal">
