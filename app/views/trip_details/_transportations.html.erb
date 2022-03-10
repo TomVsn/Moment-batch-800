@@ -32,7 +32,7 @@
   </div>
 <% coming_transportation = @participant.transportations.order('departure_date ASC').select{|transportation| transportation.departure_date > Time.now}.first  %>
 <% if @participant.transportations == [] %>
-  <p style="color:black">Add your bus, plane or anything ticket !</p>
+  <p style="color:black">Add your travel ticket !</p>
 <% elsif coming_transportation != nil && coming_transportation.departure_date > Time.now%>
   <h6>Your trip to <strong><%= coming_transportation.destination.split(",").first %></strong> is in
   <% remaining_days = ((coming_transportation.departure_date - Time.now)/86400).to_i %>
