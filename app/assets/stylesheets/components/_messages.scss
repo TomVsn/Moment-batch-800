@@ -40,8 +40,6 @@ $secondary: #A1E2D9;
 $white: #F9FBFF;
 $dark: #777777;
 
-
-
 #chatroom {
   height: 100%;
   display: flex;
@@ -140,4 +138,10 @@ $dark: #777777;
   position:absolute;
   right:5rem;
   bottom:1rem;
+  .notification-bulle{
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+  }
 }
