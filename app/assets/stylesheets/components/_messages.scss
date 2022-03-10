@@ -130,6 +130,7 @@
   top:4rem;
   text-align: center;
   padding-top: 0.4rem;
+  transition: transform 0.4s;
   .notif-puce{
     width: 15px;
     height: 15px;
@@ -142,4 +143,9 @@
   .fa-comment-dots{
     font-size:x-large;
   }
+}
+
+.chatroom-circle:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
