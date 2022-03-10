@@ -2,15 +2,15 @@
   +
 </div>
 <div class="row friends-row">
-  <% @participants.first(2).each do |friend| %>
+  <% @participants.first(3).each do |friend| %>
   <div class="col-3">
     <%= cl_image_tag friend.user.photo.key, class:"avatar" %>
   </div>
   <% end %>
-  <% if @participants.count > 2 %>
+  <% if @participants.count > 3 %>
     <div class="col-3">
       <div class="avatar-more-friends">
-        + <%= @participants.count - 2 %>
+        + <%= @participants.count - 3 %>
       </div>
     </div>
   <% end %>
