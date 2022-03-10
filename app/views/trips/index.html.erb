@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<div class="container">
+<div>
   <nav class="d-inline-flex w-100 justify-content-around">
     <div class="nav nav-tabs w-100" id="nav-tab" role="tablist">
       <button class="nav-link active w-30" id="coming-tab" data-bs-toggle="tab" data-bs-target="#coming" type="button" role="tab" aria-controls="coming" aria-selected="true">Your coming trips</button>
@@ -34,7 +34,12 @@
           </div>
         <% end %>
         <% @coming_trips.each do |trip| %>
-          <div class="card-trip_index">
+          <% if trip.photos_attachments.empty?%>
+            <% trip_photo = "https://res.cloudinary.com/dyqby7tbh/image/upload/v1646906952/seul-au-monde_gspvll.jpg"%>
+          <% else %>
+            <% trip_photo = cl_image_path trip.photos.first.key%>
+          <% end %>
+          <div class="card-trip_index" style="background-image:url(<%=trip_photo%>);">
             <%= link_to trip_path(trip) do %>
               <div class="card-trip_index-title">
                 <h1><%= trip.title %></h1>

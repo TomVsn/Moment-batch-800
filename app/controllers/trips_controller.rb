@@ -65,6 +65,11 @@ class TripsController < ApplicationController
     @trip.user = @user
     authorize @trip
     if @trip.save
+      if params[:trip][:photos].present?
+        params[:trip][:photos].each do |photo|
+          @trip.photos.attach(io: photo.tempfile, filename: photo.original_filename, content_type: photo.content_type)
+        end
+      end
       @participant = Participant.create!(user: @user, trip: @trip)
       redirect_to trip_path(@trip)
     else
@@ -99,6 +104,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:start_date, :end_date, :title, :description, :city, :participants, :transportations, :messages, :events, :user, :user_id, :id)
+    params.require(:trip).permit(:start_date, :end_date, :title, :description, :city, :photos)
   end
 end
