@@ -3,12 +3,6 @@ class AccomodationsController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
     @accomodations = policy_scope(@trip.accomodations)
-    @markers = @accomodation.geocoded.map do |flat|
-      {
-        lat: accomodation.latitude,
-        lng: accomodation.longitude
-      }
-    end
   end
 
   def show

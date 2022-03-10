@@ -35,17 +35,18 @@
 }
 
 #chatroom {
-  height: 100%;
+  height: 95%;
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 30%;
   position:absolute;
   top:0rem;
   right:0px;
   z-index:1000;
   box-shadow: 20px;
-  padding:24px 0px;
-  box-shadow: 20px 0px !important;
+  margin-top:16px;
+  box-shadow: 0 0 10px rgba(0,0,0, 0.6) !important;
+  border-radius:20px;
   > .text-center, .form-trip-messages {
     flex: 0 0 auto;
   }
@@ -126,11 +127,12 @@
   height:40px;
   background-color:rgba(132, 205, 211, 0.7);
   position:absolute;
-  right: 0.6rem;
+  right: 20px;
   top:4rem;
   text-align: center;
   padding-top: 0.4rem;
   transition: transform 0.4s;
+  box-shadow: 0 0 10px rgba(0,0,0, 0.2) !important;
   .notif-puce{
     width: 15px;
     height: 15px;
