@@ -57,4 +57,9 @@
   grid-area: 1/7/3/8;
   align-self: center;
   justify-self: center;
+  transition: transform 0.4s;
+}
+
+.activity-participate-button:hover {
+  transform: scale(1.03);
 }
