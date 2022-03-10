@@ -78,8 +78,8 @@
             <%= simple_form_for [@participant, @new_expense] do |f| %>
               <div class="expense-form">
                 <div class="input-expenses d-flex justify-content-around">
-                  <%= f.input :title, label:"Purchase", placeholder:"Bought item" %>
-                  <%= f.input :amount, label: "Amount", placeholder:"Price" %>
+                  <%= f.input :title, label:"Purchase", placeholder:"Flight ticket" %>
+                  <%= f.input :amount, label: "Amount", placeholder:"90 €" %>
                 </div>
                   <div class="d-flex justify-content-center mt-5">
                     <%= f.input :mutual, as: :boolean, input_html: { class: "toggle", value: true }, label:"Tick this box if the purchase was for everyone" %>

@@ -86,12 +86,12 @@
 
 .dropdown-box {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  bottom: 10px;
+  right: 10px;
   width: 20px;
   height: 20px;
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: none;
   border-radius: 50%;
   display: none;
   justify-content: center;
