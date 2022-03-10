@@ -42,7 +42,7 @@
           <div class="card-trip_index" style="background-image:url(<%=trip_photo%>);">
             <%= link_to trip_path(trip) do %>
               <div class="card-trip_index-title">
-                <h1><%= trip.title %></h1>
+                <h1 id="trip-title"><%= trip.title %></h1>
               </div>
               <div class="card-trip_index-details">
                 <div class="card-trip_index-details-dates">
