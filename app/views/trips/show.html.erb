@@ -33,8 +33,8 @@
     <p id="title-card-expenses">Expenses</p>
     <div class="d-flex">
       <%= render 'trip_details/expenses' %>
-      <div class="pie-chart flex-grow-1" style="margin-top: -50px; padding-left: 20px;">
-        <%= pie_chart [["Individual", @non_mutual_expenses], ["Mutual", (@sum_of_mutual_expenses / @participants_expenses.count)]],height: "200px", width: "100%", round: 0, colors: ["#3A405A", "#6A74A0"], legend: "bottom" %>
+      <div class="pie-chart flex-grow-1" style="margin-top: -50px; margin-left: 20px">
+        <%= pie_chart [["Individual", @non_mutual_expenses], ["Mutual", (@sum_of_mutual_expenses / @participants_expenses.count)]],height: "250px", width: "110%", round: 0, colors: ["#3A405A", "#6A74A0"], legend: "none" %>
       </div>
     </div>
   </div>

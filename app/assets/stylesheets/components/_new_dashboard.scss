@@ -74,6 +74,7 @@
   grid-column-end: 3;
   grid-row-start: 4;
   grid-row-end: 7;
+  overflow: hidden;
 
   #title-card-expenses {
     color: var(--expense);
