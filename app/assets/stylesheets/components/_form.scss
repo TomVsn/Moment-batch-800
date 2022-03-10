@@ -188,13 +188,13 @@ textarea::placeholder {
 }
 
 .transportation_origin {
-  border-bottom: 1.5px solid black;
+  border-bottom: 1.5px solid rgba(0,0,0,0.3);
   padding-left: 13px;
   padding-right: 5px;
 }
 
 .transportation_destination {
-  border-bottom: 1.5px solid black;
+  border-bottom: 1.5px solid rgba(0,0,0,0.3);
   padding-left: 13px;
   padding-right: 5px;
 }
@@ -221,6 +221,10 @@ textarea::placeholder {
 
 .transportation_mean {
   width: 100%;
+}
+
+#transportation_mean {
+  margin-top: 20px;
 }
 
 #transportation_price {
