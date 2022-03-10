@@ -1,6 +1,8 @@
 <div id="chatroom">
   <div class="trip-messages px-2 pb-2 pt-4" data-trip-subscription-target="messages">
-    <div data-action="click->chatroom-card#hideChatroom">X</div>
+    <div data-action="click->chatroom-card#hideChatroom" style="position:sticky; top:0px">
+      <i class="fas fa-times"></i>
+    </div>
     <% if @messages == [] %>
       <p style="color:black; text-align:center" class="py-5">Be the first to send a message !</p>
     <% else %>

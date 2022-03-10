@@ -4,3 +4,32 @@
   height: 30%;
   margin-left: 0px;
 }
+
+.invited-participants {
+  position: relative;
+  display: flex;
+  transition: transform 0.4s;
+  text-decoration: none;
+}
+
+.invited-participants:hover {
+  transform: scale(1.2);
+  .invited-participants-hidden {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.invited-participants-hidden {
+  display: none;
+  position: absolute;
+  border-radius: 50%;
+  z-index: 1000;
+  transition: transform 0.4s;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  color: white;
+}
