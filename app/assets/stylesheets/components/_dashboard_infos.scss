@@ -32,19 +32,16 @@
   width: 0px;
 }
 .img-infos{
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 4;
-  width: 100%;
+  // grid-column-start: 2;
+  // grid-column-end: 3;
+  // grid-row-start: 1;
+  // grid-row-end: 4;
+
   height: 100%;
-  margin-top: -19px;
-  margin-right: -22px;
-  margin-left: 38px;
 
   .img-img-infos {
     border-radius: 20px;
-    height: 214px;
-    width: 312px;
+    height: 200px;
+    object-fit: contain;
   }
 }
