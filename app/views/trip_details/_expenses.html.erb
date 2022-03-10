@@ -1,6 +1,7 @@
-<div class="" style="overflow: scroll; height: auto">
-  <div class="d-flex flex-column">
+<div class="expenses-text">
+    <h3 style="margin-top: 25px; font-size:calc(1rem); width: 84px;"> So far, you have spent </h3>
     <h3 style="font-size:calc(1.4rem); width: 84px;"> <%= @total_per_participant %> €</h3>
+  <div class="d-flex flex column">
     <!-- Button trigger modal Create expenses -->
     <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#ModalExpensesCreate">
       +
@@ -10,7 +11,6 @@
       more info
     </button>
   </div>
-
   <!-- Modal Show Expenses -->
   <div class="modal fade" id="ModalExpensesDetails" tabindex="-1" aria-labelledby="ModalExpensesDetailsLabel" aria-hidden="true" style="max-height: 95%">
     <div class="modal-dialog">
