@@ -1,4 +1,5 @@
-<div class="container-dashboard" style="position:relative" data-controller="chatroom-card">
+<div class="container-dashboard" style="position:relative" data-controller="chatroom-card trip-subscription" data-trip-subscription-current-user-id-value="<%= current_user.id %>"
+  data-trip-subscription-trip-id-value="<%= @trip.id %>">
   <div class="avatar-show">
     <%= render 'shared/avatar' %>
   </div>
@@ -46,7 +47,7 @@
     <%= render 'trip_details/messages' %>
   </div>
   <div class="chatroom-circle" data-chatroom-card-target="circle_chatroom" data-action="click->chatroom-card#revealChatroom">
-    i
+    <div class="notif-puce d-none" data-trip-subscription-target="notif" data-chatroom-card-target="notif"></div>
   </div>
   <%# <div class="dashboard-box dashboard-chat" style="padding-bottom: 0px;"> %>
     <%# <%= render 'trip_details/messages' %>

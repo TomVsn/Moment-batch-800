@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["chatroom", "circle_chatroom"]
+  static targets = ["chatroom", "circle_chatroom", "notif"]
 
   revealChatroom() {
     // console.log(this.chatroomTarget)
@@ -10,6 +10,7 @@ export default class extends Controller {
     console.log(this.circle_chatroomTarget)
     this.chatroomTarget.classList.remove("d-none")
     this.circle_chatroomTarget.classList.add("d-none")
+    this.notifTarget.classList.add("d-none");
   }
 
 
