@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :owned_trips, class_name: 'Trip', foreign_key: :user_id
   validates :username, presence: true
   has_one_attached :photo
+  has_many :notifications, as: :recipient, dependent: :delete_all
 
   def participates?(trip)
     participants.find_by(trip: trip).present?

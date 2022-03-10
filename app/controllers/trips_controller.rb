@@ -51,6 +51,7 @@ class TripsController < ApplicationController
     @new_transportation = Transportation.new
     @new_accomodation_vote = AccomodationVote.new
     @new_message = Message.new
+    @notifications = current_user.notifications
     authorize @trip
   end
 
