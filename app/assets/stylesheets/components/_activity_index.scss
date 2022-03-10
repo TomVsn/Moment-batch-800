@@ -1,37 +1,29 @@
 .activity-grid {
   display: grid;
-  grid-template-columns: repeat(2, 30px) repeat(6, 1fr);
-  grid-template-rows: 20px 40px;
+  grid-template-columns: 60px repeat(6, 1fr);
+  grid-template-rows: 30px 30px;
   height: 70px;
   margin-bottom: 10px;
 }
 .activity-time {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  grid-area: 1/2/2/3;
   font-weight: lighter;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-left: 10px;
 }
 .activity-title {
-  grid-column-start: 3;
-  grid-column-end: 8;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  grid-area: 2/2/3/4;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-left: 10px;
-  margin-bottom: -10px;
+  align-self: flex-end;
 }
 
 .activity-icon {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 4;
+  grid-area: 1/1/3/2;
   background-color: #b1dadb85;
   position: relative;
   border-radius: 10px;
@@ -46,36 +38,22 @@
 }
 
 .activity-avatar-first {
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  margin-left: 10px;
-  height: 30px;
-  margin-top: 10px;
+  grid-area: 1/4/3/5;
+  height: 40px;
+  align-self: center;
 }
 .activity-avatar-second {
-  grid-column-start: 4;
-  grid-column-end: 5;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  height: 30px;
-  margin-top: 10px;
+  grid-area: 1/5/3/6;
+  height: 40px;
+  align-self: center;
 }
 .activity-avatar-rest {
-  grid-column-start: 5;
-  grid-column-end: 6;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  margin-left: 10px;
-  height: 30px;
-  margin-top: 10px;
+  grid-area: 1/6/3/7;
+  height: 40px;
+  align-self: center;
 }
 .activity-participate-button {
-  grid-column-start: 6;
-  grid-column-end: 8;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  margin-left: 10px;
-  margin-top: 10px;
+  grid-area: 1/7/3/8;
+  align-self: center;
+  justify-self: center;
 }
