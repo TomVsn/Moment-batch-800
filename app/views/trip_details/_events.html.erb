@@ -80,7 +80,7 @@
 
 <!-- Modal create an event -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="position-relative" style="z-index: 2;">
         <button type="button" class="btn position-absolute" data-bs-toggle="modal" data-bs-target="#ModalExpensesDetails" style="top: 15px; left: 15px;">
@@ -113,7 +113,7 @@
 <!-- Modal edit an event -->
 <% @trip.events.each do |event| %>
   <div class="modal fade" id="editEventModal-<%= event.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="position-relative" style="z-index: 2;">
           <button type="button" class="btn position-absolute" data-bs-toggle="modal" data-bs-target="#ModalExpensesDetails" style="top: 15px; left: 15px;">

@@ -2,11 +2,11 @@
   font-family: $fredoka;
   background-color: #1E3658;
   color: white;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 20px;
-  width: 150px;
   position: relative;
   z-index: 2;
+  min-width: 150px;
 }
 .btn-homepage:hover {
   background-color: #F79F79;
@@ -15,7 +15,7 @@
 .btn-banner {
   color: black;
   padding: 8px 24px;
-  border-radius: 30px;
+  border-radius: 6px;
   background: #A6DADE;
   margin-top: 15px;
   width: 180px;
@@ -101,7 +101,7 @@
 
 #my-trips-btn {
   margin-right: 15px;
-  border-radius: 8px;
+  border-radius: 6px;
   color: white;
 
     &:hover {
@@ -151,4 +151,12 @@
 
 .edit-expenses:hover {
   background: none;
+}
+
+#coming-tab {
+  border-radius: 6px;
+}
+
+#past-tab {
+  border-radius: 6px;
 }

@@ -1,0 +1,28 @@
+.booked-accomodation {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 4fr 6fr;
+  grid-template-rows: 0.4fr 1fr;
+}
+
+.booked-accomodation-img{
+  grid-area: 1 / 1 / 3 / 2;
+  .confirmed-accomodation-dashboard {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    border-radius: 10px;
+  }
+  margin: 10px;
+}
+
+.booked-accomodation-title {
+  grid-area: 1 / 2 / 2 / 3;
+  margin: 10px;
+}
+
+.booked-accomodation-address {
+ grid-area: 2 / 2 / 3 / 3;
+ margin: 10px;
+ margin-top: 0px;
+}

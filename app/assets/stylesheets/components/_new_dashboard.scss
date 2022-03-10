@@ -10,7 +10,7 @@
 .dashboard-box {
   position: relative;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 10px;
   justify-self: stretch;
   align-self: stretch;
@@ -23,14 +23,14 @@
 }
 .dashboard-info {
   display: grid;
-  grid-template-columns: 1fr 2fr 3fr;
-  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr;
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 4;
   // color: white!important;
-  // background-color: #090A3F;
+  background-color: #fbb44ab0;
   p {
     color: black;
   }

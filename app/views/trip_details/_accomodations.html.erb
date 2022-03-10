@@ -13,8 +13,17 @@
   <% elsif @accomodations.select{|accomodation| accomodation.confirmed == true} != []%>
     <% accomodation_booked = @accomodations.select{|accomodation| accomodation.confirmed == true}.first %>
     <p style="color:green;font-size:14px; text-align:center">You've booked your place to stay!</p>
-    <h4 style="text-align:center"><%= accomodation_booked.title %></h3>
-    <h6 style="text-align:center"><%= accomodation_booked.address %></h6>
+    <div class="booked-accomodation">
+      <div class="booked-accomodation-img">
+        <%= image_tag accomodation_booked.img, class:"confirmed-accomodation-dashboard"%>
+      </div>
+      <div class="booked-accomodation-title">
+          <h4><%= accomodation_booked.title %></h3>
+      </div>
+      <div class="booked-accomodation-address">
+        <h6><%= accomodation_booked.address %></h6>
+      </div>
+    </div>
   <% end %>
   <div class="d-flex justify-content-evenly">
     <button type="button" class="btn btn-light btn-sm btn-more-infos" data-bs-toggle="modal" data-bs-target="#IndexAccomodationModal">
@@ -29,131 +38,62 @@
 
 <!-- Modal index accomodations  -->
 <div class="modal fade" id="IndexAccomodationModal" tabindex="-1" aria-labelledby="IndexAccomodationModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content d-flex flex-column">
-      <!-- if book confirmed  -->
-      <% if @accomodations.find_by(confirmed: true) %>
-        <div class="w-100 position-relative" style="min-height: 40vh">
-          <div class="d-flex m-4">
-            <div style="width: 60%;">
-              <%if @accomodations.find_by(confirmed: true).img.present?%>
-                <%=image_tag @accomodations.find_by(confirmed: true).img, class:"index-img" %>
-              <%end %>
-            </div>
-            <div class="d-flex align-items-center m-3" style="width: 40%;">
-              <div class="container">
-                <h1 class="title"><%= @accomodations.find_by(confirmed: true).title %></h1>
-                <h6 class="text-break card-text"><%= @accomodations.find_by(confirmed: true).address %></h6>
-                <p class="text-break card-text"><%= @accomodations.find_by(confirmed: true).description %></p>
-                <div class="d-flex justify-content-between">
-                  <div>
-                  <i class="far fa-heart"></i> <%= @accomodations.find_by(confirmed: true).accomodation_votes.size%>
-                  </div>
-                  <h5><%= @accomodations.find_by(confirmed: true).price %> €</h5>
-                </div>
-                <%= link_to "You're not going here anymore?", confirm_accomodation_accomodation_path(@accomodations.find_by(confirmed: true)) %>
-              </div>
-            </div>
-          </div>
-          <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 8px; right: 8px;"></button>
-        </div>
-        <div class="modal-body w-100 d-flex align-items-center justify-content-evenly flex-wrap">
-          <% @accomodations.reject{|accomodation| accomodation.confirmed == true}.each do |accomodation|%>
-            <div class="card-index-accomodation position-relative" style="width: 32%;">
-              <%= link_to trip_accomodation_path(accomodation.trip, accomodation), method: :delete, data: { confirm: "Are you sure?" }, class:"cross d-inline position-absolute", style:"top: 3px; right: 8px;" do %>
-                <i class="fas fa-times"></i>
-              <% end %>
-              <% if accomodation.img.present?%>
-                <%=image_tag accomodation.img, class:"index-img" %>
-              <% end %>
-              <div class="card-index-accomodation-infos">
-                <div>
-                  <%= accomodation.title %>
-                  <br>
-                  <p class="text-break" style="max-width: 240px;"><%= accomodation.description %></p>
-                  <%= link_to "booked", confirm_accomodation_accomodation_path(accomodation) %>
-                </div>
-                <h2 class="card-index-accomodation-pricing position-absolute" style="bottom: 7px; right: 20px"><%= accomodation.price %> €</h2>
-                <div class="card-index-accomodation-user ">
-                  <%# pas liké %>
-                  <% unless @participant.votes?(accomodation) %>
-                    <div>
-                      <%= link_to participant_accomodation_accomodation_votes_path(@participant, accomodation, @new_accomodation_vote), class: "d-flex align-items-center fav-button", method: :post do %>
-                        <i class="far fa-heart pe-1"></i><%= accomodation.accomodation_votes.size%>
-                      <% end%>
-                    </div>
-                  <%# liké %>
-                  <% else %>
-                    <div>
-                      <% accomodation_vote = AccomodationVote.find_by(participant_id: @participant.id, accomodation_id: accomodation.id) %>
-                      <%= link_to accomodation_accomodation_vote_path(accomodation_vote), class: "d-flex align-items-center fav-button", method: :delete, data: { confirm: "Are you sure?" } do %>
-                        <i class="fas fa-heart pe-1"></i><%= accomodation.accomodation_votes.size%>
-                      <% end%>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
+     <div class="position-relative" style="z-index: 2;">
+        <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 15px; right: 15px;"></button>
+      </div>
+      <div class="modal-body w-100 d-flex align-items-center justify-content-evenly flex-wrap py-5">
+        <% @accomodations.each do |accomodation|%>
+        <div class="card-index-accomodation position-relative mb-3" style="width: 32%; <% if accomodation.confirmed == true %>opacity: 1;<% elsif @accomodations.find_by(confirmed: true).nil? %>opacity: 1;<% else %>opacity: 0.3;<% end %>">
+          <%= link_to trip_accomodation_path(accomodation.trip, accomodation), method: :delete, data: { confirm: "Are you sure?" }, class:"cross d-inline position-absolute", style:"top: 3px; right: 8px;" do %>
+            <i class="fas fa-times"></i>
           <% end %>
-        </div>
-      <!-- if no book confirmed  -->
-      <% else %>
-        <div class="w-100 position-relative bg-secondary bg-gradient d-flex justify-content-center align-items-center" style="min-height: 40vh">
-          <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 7px; right: 7px;"></button>
-          <p>No reservation selected</p>
-        </div>
-        <div class="modal-body w-100 d-flex align-items-center justify-content-evenly flex-wrap">
-          <% @accomodations.each do |accomodation|%>
-          <div class="card-index-accomodation position-relative mb-3" style="width: 32%;">
-            <%= link_to trip_accomodation_path(accomodation.trip, accomodation), method: :delete, data: { confirm: "Are you sure?" }, class:"cross d-inline position-absolute", style:"top: 3px; right: 8px;" do %>
-              <i class="fas fa-times"></i>
-            <% end %>
-            <%if accomodation.img.present?%>
-              <%=image_tag accomodation.img, class:"index-img" %>
-            <%end %>
-            <div class="card-index-accomodation-infos">
+          <%if accomodation.img.present?%>
+            <%=image_tag accomodation.img, class:"index-img" %>
+          <%end %>
+          <div class="card-index-accomodation-infos">
+            <div>
+              <%= accomodation.title %>
+              <br>
+              <p class="text-break pb-3" style="max-width: 240px; font-size: 16px;"><%= accomodation.description %></p>
+              <%= link_to "booked", confirm_accomodation_accomodation_path(accomodation), style: accomodation.confirmed == true ? 'color: #568A75; padding: 3px 5px; border-radius: 4px; background-color: #d2f1e4; text-decoration: none;' : 'display: none;' %>
+            </div>
+            <h2 class="card-index-accomodation-pricing position-absolute" style="bottom: 7px; right: 20px"><%= accomodation.price %> €</h2>
+            <div class="card-index-accomodation-user">
+              <%# pas liké %>
+              <% unless @participant.votes?(accomodation) %>
+                <%= link_to participant_accomodation_accomodation_votes_path(@participant, accomodation, @new_accomodation_vote), class: "d-flex align-items-center fav-button", method: :post do %>
+                  <i class="far fa-heart pe-1"></i><%= accomodation.accomodation_votes.size%>
+                <% end%>
+              <%# liké %>
+              <% else %>
               <div>
-                <%= accomodation.title %>
-                <br>
-                <p class="text-break" style="max-width: 240px;"><%= accomodation.description %></p>
-                <%= link_to "booked", confirm_accomodation_accomodation_path(accomodation) %>
-              </div>
-              <h2 class="card-index-accomodation-pricing position-absolute" style="bottom: 7px; right: 20px"><%= accomodation.price %> €</h2>
-              <div class="card-index-accomodation-user">
-                <%# pas liké %>
-                <% unless @participant.votes?(accomodation) %>
-                  <%= link_to participant_accomodation_accomodation_votes_path(@participant, accomodation, @new_accomodation_vote), class: "d-flex align-items-center fav-button", method: :post do %>
-                    <i class="far fa-heart pe-1"></i><%= accomodation.accomodation_votes.size%>
-                  <% end%>
-                <%# liké %>
-                <% else %>
-                <div>
-                  <% accomodation_vote = AccomodationVote.find_by(participant_id: @participant.id, accomodation_id: accomodation.id) %>
-                  <%= link_to accomodation_accomodation_vote_path(accomodation_vote), class: "d-flex align-items-center fav-button", method: :delete, data: { confirm: "Are you sure?" } do %>
-                    <i class="fas fa-heart pe-1"></i><%= accomodation.accomodation_votes.size%>
-                  <% end %>
-                </div>
+                <% accomodation_vote = AccomodationVote.find_by(participant_id: @participant.id, accomodation_id: accomodation.id) %>
+                <%= link_to accomodation_accomodation_vote_path(accomodation_vote), class: "d-flex align-items-center fav-button", method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <i class="fas fa-heart pe-1"></i><%= accomodation.accomodation_votes.size%>
                 <% end %>
               </div>
+              <% end %>
             </div>
           </div>
-          <% end %>
         </div>
-      <% end %>
-        <div class="text-end p-4">
-          <p>Not interested in any of our suggestions?</p>
-          <%# bouton modale create %>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CreateAccomodationModal">
-            Add an accomodation
-          </button>
-        </div>
+        <% end %>
+      </div>
+      <div class="text-end p-4">
+        <p>Not interested in any of our suggestions?</p>
+        <%# bouton modale create %>
+        <button type="button" class="btn btn-lg btn-homepage" data-bs-toggle="modal" data-bs-target="#CreateAccomodationModal">
+          Add an accomodation
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Modal create -->
 <div class="modal fade" id="CreateAccomodationModal" tabindex="-1" aria-labelledby="CreateAccomodationModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="position-relative" style="z-index: 2;">
         <button type="button" class="btn position-absolute" data-bs-toggle="modal" data-bs-target="#IndexAccomodationModal" style="top: 15px; left: 15px;">
@@ -178,7 +118,7 @@
             <%= f.input :img, placeholder:"image address", label: false %>
             <%= f.input :description, placeholder: "description", label: false %>
             <div class="text-center mt-3">
-             <%= f.submit "Add", class: "btn btn-primary btnAddAccomodation gap-2 col-6" %>
+             <%= f.submit "Add", class: "btn btn-lg btn-homepage" %>
             </div>
           <% end %>
         </div>
