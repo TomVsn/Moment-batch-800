@@ -1,52 +1,54 @@
-
-<div style="background-color: #F3F5FF; padding-right: 20px; padding-left: 20px; padding-bottom: 15px; position:relative" data-controller="chatroom-card">
-  <div class="container-dashboard">
-
-    <div class="dashboard-box dashboard-info">
-      <div class="d-flex flex-column flex-grow-1 dates-infos" style="width: 50%, height: 100%">
-        <p><%= "#{@trip.start_date.day}/#{@trip.start_date.month}/#{@trip.start_date.year}"%></p>
-        <p><%= "#{@trip.end_date.day}/#{@trip.end_date.month}/#{@trip.end_date.year}"%></p>
-      </div>
-      <div class="title-infos">
-        <h1><%= @trip.title %></h1>
-      </div>
-      <div class="img-infos">
-        <%= image_tag "Spain.png", class:"img-img-infos" %>
-      </div>
-    </div>
-    <div class="dashboard-box dashboard-accomodation">
-      <p id="title-card-accomodations">Accomodations</p>
-      <%= render 'trip_details/accomodations' %>
-    </div>
-    <div class="dashboard-box dashboard-transportation">
-      <p id="title-card-transportations">Transports</p>
-      <%= render 'trip_details/transportations' %>
-    </div>
-    <div class="dashboard-box dashboard-people">
-      <p id="title-card-participants">Friends<%= render 'trip_details/participant' %></p>
-    </div>
-    <div class="dashboard-box dashboard-expenses">
-      <p id="title-card-expenses">Expenses</p>
-      <div class="d-flex">
-        <%= render 'trip_details/expenses' %>
-        <div class="pie-chart flex-grow-1" style="margin-top: -50px; padding-left: 20px;">
-          <%= pie_chart [["Individual", @non_mutual_expenses], ["Mutual", (@sum_of_mutual_expenses / @participants_expenses.count)]],height: "200px", width: "100%", round: 0, colors: ["#3A405A", "#6A74A0"], legend: "bottom" %>
-        </div>
-      </div>
-    </div>
-    <div class="dashboard-box dashboard-activities">
-      <p id="title-card-activities">Activities</p>
-      <%= render 'trip_details/events' %>
-    </div>
-    <div class="dashboard-box dashboard-photos">
-      <%= render 'trip_details/photos' %>
-    </div>
-      <div class="d-none" data-chatroom-card-target="chatroom">
-      <%= render 'trip_details/messages' %>
-      </div>
-    <div class="chatroom-circle" data-chatroom-card-target="circle_chatroom" data-action="click->chatroom-card#revealChatroom">i</div>
-    <%# <div class="dashboard-box dashboard-chat" style="padding-bottom: 0px;"> %>
-      <%# <%= render 'trip_details/messages' %>
-    <%# </div> %>
+<div class="container-dashboard" style="position:relative" data-controller="chatroom-card">
+  <div class="avatar-show">
+    <%= render 'shared/avatar' %>
   </div>
+  <div class="dashboard-box dashboard-info">
+    <div class="d-flex flex-column flex-grow-1 dates-infos" style="width: 50%, height: 100%">
+      <p><%= "#{@trip.start_date.day}/#{@trip.start_date.month}/#{@trip.start_date.year}"%></p>
+      <p><%= "#{@trip.end_date.day}/#{@trip.end_date.month}/#{@trip.end_date.year}"%></p>
+    </div>
+    <div class="title-infos">
+      <h1><%= @trip.title %></h1>
+    </div>
+    <div class="img-infos">
+      <%= image_tag "Spain.png", class:"img-img-infos" %>
+    </div>
+  </div>
+
+  <div class="dashboard-box dashboard-accomodation">
+    <p id="title-card-accomodations">Accomodations</p>
+    <%= render 'trip_details/accomodations' %>
+  </div>
+  <div class="dashboard-box dashboard-transportation">
+    <p id="title-card-transportations">Transports</p>
+    <%= render 'trip_details/transportations' %>
+  </div>
+  <div class="dashboard-box dashboard-people">
+    <p id="title-card-participants">Friends<%= render 'trip_details/participant' %></p>
+  </div>
+  <div class="dashboard-box dashboard-expenses">
+    <p id="title-card-expenses">Expenses</p>
+    <div class="d-flex">
+      <%= render 'trip_details/expenses' %>
+      <div class="pie-chart flex-grow-1" style="margin-top: -50px; padding-left: 20px;">
+        <%= pie_chart [["Individual", @non_mutual_expenses], ["Mutual", (@sum_of_mutual_expenses / @participants_expenses.count)]],height: "200px", width: "100%", round: 0, colors: ["#3A405A", "#6A74A0"], legend: "bottom" %>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-box dashboard-activities">
+    <p id="title-card-activities">Activities</p>
+    <%= render 'trip_details/events' %>
+  </div>
+  <div class="dashboard-box dashboard-photos">
+    <%= render 'trip_details/photos' %>
+  </div>
+  <div class="d-none" data-chatroom-card-target="chatroom">
+    <%= render 'trip_details/messages' %>
+  </div>
+  <div class="chatroom-circle" data-chatroom-card-target="circle_chatroom" data-action="click->chatroom-card#revealChatroom">
+    i
+  </div>
+  <%# <div class="dashboard-box dashboard-chat" style="padding-bottom: 0px;"> %>
+    <%# <%= render 'trip_details/messages' %>
+  <%# </div> %>
 </div>
