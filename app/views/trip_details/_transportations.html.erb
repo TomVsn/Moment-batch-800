@@ -54,7 +54,7 @@
 <!-- Modal voir l'aller retour-->
 
 <div class="modal fade" id="ShowTransportationModal" tabindex="-1" aria-labelledby="ShowTransportationModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="position-relative" style="z-index: 2;">
         <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 15px; right: 15px;"></button>
@@ -62,7 +62,6 @@
       <% if @participant.transportations.size == 1 && @participant.transportations.first.departure_date > Time.now%>
         <div class="modal-body mx-5">
             <div class="transportation-ticket d-flex justify-content-center mt-2">
-            <p style="color:black; text-align:center">Step 1:</p>
               <div class="col">
                   <div class="row departure-ticket d-flex align-items-center">
                     departure : <%= @participant.transportations.first.departure_date.strftime("%A") %>, <%= @participant.transportations.first.departure_date.month %>, <%= @participant.transportations.first.departure_date.day %>, <%= @participant.transportations.first.departure_date.year %> at <%= @participant.transportations.first.departure_date.hour %> :
@@ -75,10 +74,7 @@
                 <div class="row origin-destination-infos" style="height:80px">
                   <div class="circle-ticket-left">i</div>
                   <div class="col-3 origin-infos">
-                    <p>
-                      From : <br>
-                      <p class="city-ticket"><%= @participant.transportations.first.origin.split(",").first %></p>
-                    </p>
+                      <p class="city-ticket pt-4"><%= @participant.transportations.first.origin.split(",").first %></p>
                   </div>
                   <div class="col-2">
                     <hr style="color:#F79F79, height:2px">
@@ -90,9 +86,7 @@
                     <hr style="color:#F79F79, height:2px">
                   </div>
                   <div class="col-3 destination-infos" style="height:80px">
-                    <p>To: <br>
-                      <p class="city-ticket"><%= @participant.transportations.first.destination.split(",").first %></p>
-                    </p>
+                      <p class="city-ticket pt-4"><%= @participant.transportations.first.destination.split(",").first %></p>
                   </div>
                   <div class="circle-ticket-right">j</div>
                 </div>
@@ -113,7 +107,6 @@
         <% @participant.transportations.order('departure_date ASC').each_with_index do |transportation, index|  %>
         <div class="modal-body mx-5">
         <% flight_duration = transportation.arrival_date - transportation.departure_date %>
-          <p style="color:black; text-align:center">Step <%= index + 1 %>:</p>
           <div class="transportation-ticket d-flex justify-content-center mt-2">
           <div class="col">
             <div class="row departure-ticket d-flex align-items-center">
@@ -128,10 +121,7 @@
             <div class="row origin-destination-infos" style="height:80px">
               <div class="circle-ticket-left">i</div>
               <div class="col-3 origin-infos">
-                <p>
-                  From : <br>
-                  <p class="city-ticket"><%= transportation.origin.split(",").first %></p>
-                </p>
+                <p class="city-ticket pt-4"><%= transportation.origin.split(",").first %></p>
               </div>
               <div class="col-2">
                 <hr style="color:#F79F79, height:2px">
@@ -143,9 +133,7 @@
                 <hr style="height:2px">
               </div>
               <div class="col-3 destination-infos" style="height:80px">
-                <p>To: <br>
-                  <p class="city-ticket"><%= transportation.destination.split(",").first %></p>
-                </p>
+                  <p class="city-ticket pt-4"><%= transportation.destination.split(",").first %></p>
               </div>
               <div class="circle-ticket-right">j</div>
             </div>
