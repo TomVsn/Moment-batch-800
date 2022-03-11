@@ -7,10 +7,14 @@ class Accomodation < ApplicationRecord
   belongs_to :trip
   has_many :accomodation_votes, dependent: :delete_all
   geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :geocode, if: :geocoding_needed?
   # validates :url, presence: true
 
   after_validation :scrap_appartment, if: :will_save_change_to_url?
+
+  def geocoding_needed?
+    will_save_change_to_address? && !will_save_change_to_latitude? && !will_save_change_to_longitude?
+  end
 
   def set_defaults
     self.confirmed ||= false
