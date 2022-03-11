@@ -21,6 +21,9 @@ document.addEventListener('turbolinks:load', () => {
   navbarEffectOnScroll();
 });
 
+require("chartkick")
+require("chart.js")
+
 import "controllers"
 import "bootstrap"
 
@@ -34,6 +37,3 @@ import "bootstrap"
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-
-require("chartkick")
-require("chart.js")
