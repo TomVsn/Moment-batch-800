@@ -29,6 +29,7 @@ export default class extends Controller {
       customMarker.style.backgroundSize = "contain"
       customMarker.style.width = "25px"
       customMarker.style.height = "25px"
+      console.log(marker.lng, marker.lat)
 
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
