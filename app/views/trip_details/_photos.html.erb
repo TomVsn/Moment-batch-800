@@ -4,21 +4,21 @@
       <%# <%if @trip.photos[0] != nil%>
         <%# <%=cl_image_tag @trip.photos[0].key, gravity: :center, height: "100%", width: 400, crop: :thumb, style:"border-radius: 20px; object-fit: cover;", alt:"First slide", class:"d-block w-100 h-100"%>
       <%# <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646931497/barcelone4_yctfmn.jpg", width: 300, height: "100%", alt:"First slide", class:"d-block w-100 h-100", style: "object-fit: cover;")%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646993179/rome_2_a6ewb9.jpg", width: 300, height: "100%", alt:"First slide", class:"d-block w-100 h-100", style: "object-fit: cover;")%>
       <%# <%end%>
     </div>
     <div class="carousel-item h-100">
-      <%if @trip.photos[1] != nil%>
-        <%=cl_image_tag @trip.photos[1].key, gravity: :center, width: 400, crop: :thumb, style:"border-radius: 20px; object-fit: cover;", alt:"First slide", class:"d-block w-100 h-100"%>
-      <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646815801/barcelone2_lt2rh2.jpg", width: 400, alt:"First slide", class:"d-block w-100 h-100", style: "object-fit: cover;")%>
-      <%end%>
+      <%# <%if @trip.photos[1] != nil%>
+        <%# <%=cl_image_tag @trip.photos[1].key, gravity: :center, width: 400, crop: :thumb, style:"border-radius: 20px; object-fit: cover;", alt:"First slide", class:"d-block w-100 h-100"%>
+      <%# <%else%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646993179/rome_1_g9cwy5.jpg", width: 400, alt:"First slide", class:"d-block w-100 h-100", style: "object-fit: cover;")%>
+      <%# <%end%>
     </div>
     <div class="carousel-item h-100">
       <%if @trip.photos[2] != nil%>
         <%=cl_image_tag @trip.photos[2].key, gravity: :center, width: 400, crop: :thumb, style:"border-radius: 20px; object-fit: cover;", alt:"First slide", class:"d-block w-100 h-100"%>
       <%else%>
-        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646815801/barcelone3_i9vkpd.jpg", width: 400, alt:"First slide", class:"d-block w-100 h-100", style: "object-fit: cover;")%>
+        <%= image_tag("https://res.cloudinary.com/dyqby7tbh/image/upload/v1646993183/rome3_gtqnaq.jpg", width: 400, alt:"First slide", class:"d-block w-100 h-100", style: "object-fit: cover;")%>
       <%end%>
     </div>
     <button type="button" class="btn btn-add" id="addPhoto" data-bs-toggle="modal" data-bs-target="#AddPhotosModal">
