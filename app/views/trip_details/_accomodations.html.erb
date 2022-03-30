@@ -113,14 +113,16 @@
           <div class="d-flex w-100 align-items-center">
             <h4 class="text-center mb-4 highlight-title mx-auto" id="titleAccomodationModal">ADD AN ACCOMODATION</h4>
           </div>
-          <%= simple_form_for [@trip, @new_accomodation] do |f| %>
+          <%= simple_form_for [@trip, @new_accomodation], html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'], geocoder_placeholder_value:"Gite de la Cannelle,..."} } do |f| %>
           <%# <%= form_for new_trip_accomodation_path(@trip, @new_accomodation) do |f| %>
             <div class="d-flex justify-content-between">
               <%= f.input :title, placeholder: "Family house", label: "Name" %>
               <%= f.input :address,
                           input_html: { data: { geocoder_target: "address" }, class: "d-none" },
-                          wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'], geocoder_placeholder_value:"Gite de la Cannelle,..."}}, label: "Address" %>
+                          wrapper_html: { data: { geocoder_target: "addressWrapper" }}, label: "Address" %>
               <%= f.input :price, placeholder: "300 €", label: "Price" %>
+              <%= f.input :latitude, as: :hidden, input_html: { data: { geocoder_target: "latitude" }} %>
+              <%= f.input :longitude, as: :hidden, input_html: { data: { geocoder_target: "longitude" }} %>
             </div>
             <%= f.input :img, placeholder:"https://www.familyhouse.com/.jpeg", label: "Image url" %>
             <%= f.input :description, placeholder: "Perfect house for families", label: "Description" %>

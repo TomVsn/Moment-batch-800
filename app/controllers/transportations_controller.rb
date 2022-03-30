@@ -49,6 +49,6 @@ class TransportationsController < ApplicationController
   private
 
   def transportations_params
-    params.require(:transportation).permit(:price, :origin, :mean, :destination, :departure_date, :departure_hour, :arrival_date, :arrival_hour, :participant_id)
+    params.require(:transportation).permit(:price, :origin, :mean, :destination, :departure_date, :departure_hour, :arrival_date, :arrival_hour, :participant_id, :latitude, :longitude)
   end
 end
